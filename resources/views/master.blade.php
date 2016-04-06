@@ -16,10 +16,10 @@
 		<nav class="navbar">
 			<ul>
 				<li><a href="/">home</a></li>
-				<li><a href="#">about</a></li>
-				<li><a href="#">shop</a></li>
-				<li><a href="#">freebees</a></li>
-				<li><a href="#">contact</a></li>
+				<li><a href="about">about</a></li>
+				<li><a href="shop">shop</a></li>
+				<li><a href="gifts">gifts</a></li>
+				<li><a href="contact">contact</a></li>
 			</ul>
 		</nav>
 		
@@ -32,10 +32,10 @@
 	        	<h4>NAV</h4>
 		        <ul>
 		            <li><a href="/">Home</a></li>
-		            <li><a href="#">About</a></li>
-		            <li><a href="#">Shop</a></li>
-		            <li><a href="#">Freebees</a></li>
-		            <li><a href="#">Contact</a></li>
+		            <li><a href="about">About</a></li>
+		            <li><a href="shop">Shop</a></li>
+		            <li><a href="gifts">Gifts</a></li>
+		            <li><a href="contact">Contact</a></li>
 		        </ul>
 	        </div>
 
@@ -53,8 +53,8 @@
 	        <div class="col-sm-3">
 	        	<h4>FIND ME HERE</h4>
 		          <ul>
-		            <li><a href="#">facebook</a></li>
-		            <li><a href="#">instagram</a></li>
+		            <li><a href="https://www.facebook.com/captured.write/" target="_blank">facebook</a></li>
+		            <li><a href="https://www.instagram.com/capturedwrite/" target="_blank">instagram</a></li>
 		            <li><a href="#">Stockists</a></li>
 		          </ul>
 	        </div>
