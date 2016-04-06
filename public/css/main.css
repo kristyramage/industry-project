@@ -24,3 +24,10 @@
 					text-decoration: none;
 					color: #000;
 				}
+.navbar .navbar-toggle .icon-bar {
+    background-color: black;
+}
+
+footer {
+	border-top: 0.2em solid #EDA08C;
+}
