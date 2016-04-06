@@ -13,9 +13,9 @@
 		<div class="col-sm-12 text-center">
 			<img src="#" alt="Captured write logo">
 		</div>
-		<nav>
+		<nav class="navbar">
 			<ul>
-				<li><a href="#">home</a></li>
+				<li><a href="/">home</a></li>
 				<li><a href="#">about</a></li>
 				<li><a href="#">shop</a></li>
 				<li><a href="#">freebees</a></li>
@@ -27,11 +27,11 @@
 			@yield('content')
 		</div>
 
-		<footer class="col-lg-12">
+		<footer class="row">
 	        <div class="col-sm-3">
-	        	<h3>NAV</h3>
+	        	<h4>NAV</h4>
 		        <ul>
-		            <li><a href="#">Home</a></li>
+		            <li><a href="/">Home</a></li>
 		            <li><a href="#">About</a></li>
 		            <li><a href="#">Shop</a></li>
 		            <li><a href="#">Freebees</a></li>
@@ -40,7 +40,7 @@
 	        </div>
 
 	        <div class="col-sm-3">
-	        	<h3>INFO</h3>
+	        	<h4>INFO</h4>
 		        <ul>
 		            <li><a href="#">Stockists</a></li>
 		            <li><a href="#">Shipping</a></li>
@@ -51,7 +51,7 @@
 	        </div>
 
 	        <div class="col-sm-3">
-	        	<h3>FIND ME HERE</h3>
+	        	<h4>FIND ME HERE</h4>
 		          <ul>
 		            <li><a href="#">facebook</a></li>
 		            <li><a href="#">instagram</a></li>
@@ -60,7 +60,7 @@
 	        </div>
 
 	        <div class="col-sm-3">
-	        	<h3>HOLLA AT ME</h3>
+	        	<h4>HOLLA AT ME</h4>
 		        <ul>
 		            <li><a href="#">Email</a></li>
 		        </ul>

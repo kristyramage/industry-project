@@ -1,0 +1,26 @@
+* {
+    text-decoration: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/*	li a {
+		text-decoration: none;
+	}*/
+
+.navbar {
+	text-align: center;
+}
+		.navbar ul li {
+		    display: inline-block;
+		    padding: 5px 10px;
+
+		    -webkit-margin-before: 0em;
+		    -webkit-margin-after: 0em;
+		}
+				footer ul li a,
+				.navbar ul li a {
+					text-decoration: none;
+					color: #000;
+				}
