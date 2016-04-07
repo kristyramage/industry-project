@@ -55,11 +55,12 @@
 
 
 		
-		<div>
+		<div class="content">
 			@yield('content')
 		</div>
 
 		<footer class="row">
+			<hr>
 	        <div class="col-sm-3">
 	        	<h4>NAV</h4>
 		        <ul>

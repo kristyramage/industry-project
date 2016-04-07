@@ -5,9 +5,10 @@
     margin: 0;
 }
 
-/*	li a {
-		text-decoration: none;
-	}*/
+.container
+{
+	max-width: 1200px;
+}
 
 .navbar {
 	text-align: center;
@@ -28,6 +29,43 @@
     background-color: black;
 }
 
-footer {
+footer hr{
 	border-top: 0.2em solid #EDA08C;
 }
+
+
+.go-btn
+{
+	text-align: center;
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+.go-btn button
+{
+	border: 0.3em solid #EDA08C;
+	background-color: transparent;
+	font-weight: bold;
+}
+/* --------------------------------------- home css --------------------------------------- */
+
+#featproducts .col-xs-12.col-sm-4,
+#instahome .col-xs-12.col-sm-4
+{
+	padding-left: 2px;
+	padding-right: 2px;
+	margin-top: 25px; 
+}
+#featproducts .col-xs-12.col-sm-4 img,
+#instahome .col-xs-12.col-sm-4 img
+{
+	padding-bottom: 10px;
+}
+.carousel-example-generic,
+#featproducts,
+#instahome
+{
+	margin: 20px 0;
+}
+
+
+
