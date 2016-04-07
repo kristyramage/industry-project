@@ -43,6 +43,7 @@ footer hr{
 .go-btn button
 {
 	border: 0.3em solid #EDA08C;
+	border-radius: 0px;
 	background-color: transparent;
 	font-weight: bold;
 }
