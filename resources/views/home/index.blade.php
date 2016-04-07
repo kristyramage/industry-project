@@ -68,7 +68,7 @@
 		</div>
 
 		<div class="col-xs-12 go-btn">
-			<button class="btn">Go Store</button>
+			<button class="btn">Go to Store</button>
 		</div>
 
 	</div>
@@ -89,7 +89,7 @@
 		</div>
 
 		<div class="col-xs-12 go-btn">
-			<button class="btn">Go Gallery</button>
+			<button class="btn">Go to Gallery</button>
 		</div>
 
 	</div>
