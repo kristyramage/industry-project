@@ -8,9 +8,9 @@
     </div>
 
 	<div class="row">
-		<img src="http://placehold.it/500x500" alt="..." class="col-sm-6">
+		<img src="http://placehold.it/400x400" alt="..." class="col-sm-5">
 
-		<div class="col-sm-6">
+		<div class="col-sm-7">
 			<p>
 				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
