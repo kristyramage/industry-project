@@ -47,9 +47,9 @@
 						<li><a href="about">about</a></li>
 						<li type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle"><a href="shop">shop  <span class="caret"></span></a></li>
 							<ul class="dropdown-menu">
-					            <li><a href='#'>prints</a></li>
-					            <li><a href='#'>custom print</a></li>
-					            <li><a href='#'>stockists</a></li>
+					            <li><a href='shop'>prints</a></li>
+					            <li><a href='custom'>custom print</a></li>
+					            <li><a href='stockists'>stockists</a></li>
 					         </ul>
 						<li><a href="gifts">gifts</a></li>
 						<li><a href="contact">contact</a></li>
