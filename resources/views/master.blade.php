@@ -48,6 +48,7 @@
 						<li type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle"><a href="shop">shop  <span class="caret"></span></a></li>
 							<ul class="dropdown-menu">
 					            <li><a href='shop'>prints</a></li>
+					            <li><a href='gallery'>gallery</a></li>
 					            <li><a href='custom'>custom print</a></li>
 					            <li><a href='stockists'>stockists</a></li>
 					         </ul>
