@@ -16,12 +16,11 @@ Route::get('/', 'HomeController@index')->middleware('web');
 Route::get('about', 'AboutController@index')->middleware('web');
 
 Route::get('shop', 'ShopController@index')->middleware('web');
-Route::get('gallery', 'ShopController@gallery')->middleware('web');
 Route::get('custom', 'ShopController@custom')->middleware('web');
 
-Route::get('stockists', 'InfoController@stockists')->middleware('web');
+Route::get('gallery', 'GalleryController@index')->middleware('web');
 
-Route::get('gifts', 'GiftsController@index')->middleware('web');
+Route::get('stockists', 'InfoController@stockists')->middleware('web');
 
 Route::get('contact', 'ContactController@index')->middleware('web');
 

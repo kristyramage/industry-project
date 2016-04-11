@@ -7,13 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class ShopController extends Controller
+class GalleryController extends Controller
 {
 	public function index(){
-		return view('shop.index');
+		return view('gallery.index');
 	}
-
-	public function custom(){
-		return view('shop.custom');
-	}
-} 
+}

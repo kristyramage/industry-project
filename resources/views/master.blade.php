@@ -52,8 +52,9 @@
 					            <li><a href='custom'>custom print</a></li>
 					            <li><a href='stockists'>stockists</a></li>
 					         </ul>
-						<li><a href="gifts">gifts</a></li>
 						<li><a href="contact">contact</a></li>
+						<li><a href="login">login</a></li>
+						<li><a href="cart">cart</a></li>
 		            </ul>
 		        </div>
 		    </div>
@@ -92,16 +93,18 @@
 	        <div class="col-sm-3">
 	        	<h4>FIND ME HERE</h4>
 		          <ul>
+		          	<li><a href="#">Email</a></li>
 		            <li><a href="https://www.facebook.com/captured.write/" target="_blank">facebook</a></li>
 		            <li><a href="https://www.instagram.com/capturedwrite/" target="_blank">instagram</a></li>
-		            <li><a href="#">Stockists</a></li>
+		            <li><a href="stockists">Stockists</a></li>
 		          </ul>
 	        </div>
 
 	        <div class="col-sm-3">
-	        	<h4>HOLLA AT ME</h4>
+	        	<h4>ACCOUNT</h4>
 		        <ul>
-		            <li><a href="#">Email</a></li>
+		            <li><a href="login">login</a></li>
+					<li><a href="cart">cart</a></li>
 		        </ul>
 	        </div>
 
