@@ -14,20 +14,27 @@
 	text-align: center;
 }
 		.navbar ul li {
-		    display: inline-block;
+		    display: block;
 		    padding: 5px 10px;
-
-		    -webkit-margin-before: 0em;
-		    -webkit-margin-after: 0em;
 		}
+
+					.dropdown-menu {
+						text-align: center;
+						float: none;
+		    			width: 100%;
+
+					}
+
 				footer ul li a,
 				.navbar ul li a {
 					text-decoration: none;
 					color: #000;
 				}
+
 .navbar .navbar-toggle .icon-bar {
     background-color: black;
 }
+
 
 footer hr{
 	border-top: 0.2em solid #EDA08C;
@@ -68,5 +75,21 @@ footer hr{
 	margin: 20px 0;
 }
 
+
+/* --------------------------------------- sm min width css --------------------------------------- */
+
+@media (min-width: 768px) {
+
+	.navbar ul li {
+		    display: inline-block;
+		}
+					.dropdown-menu {
+						text-align: center;
+						float: none;
+		    			position: absolute;
+		    			width: 100%;
+
+					}
+}
 
 
