@@ -18,6 +18,8 @@ Route::get('about', 'AboutController@index')->middleware('web');
 Route::get('shop', 'ShopController@index')->middleware('web');
 Route::get('custom', 'ShopController@custom')->middleware('web');
 
+Route::get('cart', 'ShopController@cart')->middleware('web');
+
 Route::get('gallery', 'GalleryController@index')->middleware('web');
 
 Route::get('stockists', 'InfoController@stockists')->middleware('web');

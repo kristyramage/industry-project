@@ -16,4 +16,8 @@ class ShopController extends Controller
 	public function custom(){
 		return view('shop.custom');
 	}
+
+	public function cart(){
+		return view('shop.cart');
+	}
 } 
