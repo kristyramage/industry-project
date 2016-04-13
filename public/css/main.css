@@ -12,31 +12,36 @@
 
 /* --------------------------------------- nav and footer css --------------------------------------- */
 
-/*.navbar {
+.navbar {
 	text-align: center;
 }
 		.navbar ul li {
-		    display: block;
+		    display: inline-block;
 		    padding: 5px 10px;
+		    /*width: 100%;*/
 		}
 
 					.dropdown-menu {
 						text-align: center;
+						position: static;
 						float: none;
-		    			width: 100%;
+		    			/*width: 100%;*/
 
 					}
-*/
+					.open {
+						border: none;
+					}
+
 				footer ul li a,
-				/*.navbar ul li a*/ {
+				.navbar ul li a {
 					text-decoration: none;
 					color: #000;
 				}
 
-/*.navbar .navbar-toggle .icon-bar {
+.navbar .navbar-toggle .icon-bar {
     background-color: black;
 }
-*/
+
 
 footer hr{
 	border-top: 0.2em solid #EDA08C;
@@ -82,15 +87,27 @@ footer hr{
 
 @media (min-width: 768px) {
 
-	/*.navbar ul li {
+	.navbar ul li {
 		    display: inline-block;
+		    /*width: 25%;*/
 		}
 					.dropdown-menu {
 						text-align: center;
 		    			position: absolute;
 		    			width: 100%;
 
-					}*/
+					}
+}
+/* --------------------------------------- sm max width css --------------------------------------- */
+@media (max-width: 768px) {
+	.navbar ul li {
+		width: 100%;
+	}
+	.dropdown-menu {
+    	border: none;
+    	-webkit-box-shadow: none;
+            	box-shadow: none;
+    }
 }
 
 

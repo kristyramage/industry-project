@@ -6,7 +6,7 @@
 	<meta name="description" content="description">
 
 	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="/css/menu.css">
+	<!-- <link rel="stylesheet" type="text/css" href="/css/menu.css"> -->
 	<link rel="stylesheet" type="text/css" href="/css/main.css">
 </head>
 <body>
@@ -15,8 +15,8 @@
 			<img src="#" alt="Captured write logo">
 		</div>
 
-		<nav id='cssmenu'>
-        <!-- <div class="logo"><a href="index.html">Responsive </a></div> -->
+		<!-- <nav id='cssmenu'>
+        <div class="logo"><a href="index.html">Responsive </a></div>
         <div id="head-mobile"></div>
         <div class="button"></div>
         <ul>
@@ -38,10 +38,10 @@
           <li><a href='contact'>contact</a></li>
           <li><a href='#'>cart</a></li>
         </ul>
-      </nav>
+      </nav> -->
 
 
-<!-- 		<nav class="navbar navbar-static-top" role="navigation">
+ 		<nav class="navbar navbar-static-top" role="navigation">
 		    <div class="container">
 		        <div class="navbar-header">
 		            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse-1">
@@ -53,7 +53,7 @@
 		        </div>
 
 		        <!-- Collect the nav links, forms, and other content for toggling -->
-		      <!--   <div class="collapse navbar-collapse" id="collapse-1">
+		        <div class="collapse navbar-collapse" id="collapse-1">
 		            <ul class="nav">
 		                <li><a href="/">home</a></li>
 						<li><a href="about">about</a></li>
@@ -69,7 +69,7 @@
 		            </ul>
 		        </div>
 		    </div>
-		</nav> --> 
+		</nav> 
 
 
 		
