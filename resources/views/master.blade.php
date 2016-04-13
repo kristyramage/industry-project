@@ -68,10 +68,8 @@
 	        	<h4>INFO</h4>
 		        <ul>
 		            <li><a href="stockists">Stockists</a></li>
-		            <li><a href="#">Shipping</a></li>
-		            <li><a href="#">Terms</a></li>
-		            <li><a href="#">Return/Refund</a></li>
-		            <li><a href="#">Privacy Policy</a></li>
+		            <li><a href="shipping">Shipping</a></li>
+		            <li><a href="tandc">Terms and Conditions</a></li>
 	          </ul>
 	        </div>
 

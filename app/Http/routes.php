@@ -23,6 +23,8 @@ Route::get('cart', 'ShopController@cart')->middleware('web');
 Route::get('gallery', 'GalleryController@index')->middleware('web');
 
 Route::get('stockists', 'InfoController@stockists')->middleware('web');
+Route::get('shipping', 'InfoController@shipping')->middleware('web');
+Route::get('tandc', 'InfoController@tandc')->middleware('web');
 
 Route::get('contact', 'ContactController@index')->middleware('web');
 
