@@ -6,6 +6,7 @@
 	<meta name="description" content="description">
 
 	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/menu.css">
 	<link rel="stylesheet" type="text/css" href="/css/main.css">
 </head>
 <body>
@@ -14,8 +15,33 @@
 			<img src="#" alt="Captured write logo">
 		</div>
 
+		<nav id='cssmenu'>
+        <!-- <div class="logo"><a href="index.html">Responsive </a></div> -->
+        <div id="head-mobile"></div>
+        <div class="button"></div>
+        <ul>
+          <li class='active'><a href='#'>home</a></li>
+          <li><a href='about'>about</a></li>
+          <li><a href='#'>shop</a>
+            <ul>
+              <li><a href='shop'>prints</a>
+                <ul>
+                  <li><a href='#'>gold foil</a></li>
+                  <li><a href='#'>floral</a></li>
+                </ul>
+              </li>
+              <li><a href='gallery'>gallery</a></li>
+              <li><a href='custom'>custom prints</a></li>
+              <li><a href='stockists'>stockists</a></li>
+            </ul>
+          </li>
+          <li><a href='contact'>contact</a></li>
+          <li><a href='#'>cart</a></li>
+        </ul>
+      </nav>
 
-		<nav class="navbar navbar-static-top" role="navigation">
+
+<!-- 		<nav class="navbar navbar-static-top" role="navigation">
 		    <div class="container">
 		        <div class="navbar-header">
 		            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse-1">
@@ -27,7 +53,7 @@
 		        </div>
 
 		        <!-- Collect the nav links, forms, and other content for toggling -->
-		        <div class="collapse navbar-collapse" id="collapse-1">
+		      <!--   <div class="collapse navbar-collapse" id="collapse-1">
 		            <ul class="nav">
 		                <li><a href="/">home</a></li>
 						<li><a href="about">about</a></li>
@@ -43,7 +69,7 @@
 		            </ul>
 		        </div>
 		    </div>
-		</nav>
+		</nav> --> 
 
 
 		
@@ -100,5 +126,6 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/menu.js"></script>
 </body>
 </html>

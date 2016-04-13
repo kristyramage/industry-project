@@ -10,7 +10,9 @@
 	max-width: 1200px;
 }
 
-.navbar {
+/* --------------------------------------- nav and footer css --------------------------------------- */
+
+/*.navbar {
 	text-align: center;
 }
 		.navbar ul li {
@@ -24,26 +26,26 @@
 		    			width: 100%;
 
 					}
-
+*/
 				footer ul li a,
-				.navbar ul li a {
+				/*.navbar ul li a*/ {
 					text-decoration: none;
 					color: #000;
 				}
 
-.navbar .navbar-toggle .icon-bar {
+/*.navbar .navbar-toggle .icon-bar {
     background-color: black;
 }
-
+*/
 
 footer hr{
 	border-top: 0.2em solid #EDA08C;
 }
 
-
-.go-btn
+/* --------------------------------------- btn css --------------------------------------- */
+.go-text
 {
-	text-align: center;
+	btn-align: center;
 	margin-top: 5px;
 	margin-bottom: 10px;
 }
@@ -80,16 +82,15 @@ footer hr{
 
 @media (min-width: 768px) {
 
-	.navbar ul li {
+	/*.navbar ul li {
 		    display: inline-block;
 		}
 					.dropdown-menu {
 						text-align: center;
-						float: none;
 		    			position: absolute;
 		    			width: 100%;
 
-					}
+					}*/
 }
 
 
