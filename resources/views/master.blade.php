@@ -15,32 +15,6 @@
 			<img src="#" alt="Captured write logo">
 		</div>
 
-		<!-- <nav id='cssmenu'>
-        <div class="logo"><a href="index.html">Responsive </a></div>
-        <div id="head-mobile"></div>
-        <div class="button"></div>
-        <ul>
-          <li class='active'><a href='#'>home</a></li>
-          <li><a href='about'>about</a></li>
-          <li><a href='#'>shop</a>
-            <ul>
-              <li><a href='shop'>prints</a>
-                <ul>
-                  <li><a href='#'>gold foil</a></li>
-                  <li><a href='#'>floral</a></li>
-                </ul>
-              </li>
-              <li><a href='gallery'>gallery</a></li>
-              <li><a href='custom'>custom prints</a></li>
-              <li><a href='stockists'>stockists</a></li>
-            </ul>
-          </li>
-          <li><a href='contact'>contact</a></li>
-          <li><a href='#'>cart</a></li>
-        </ul>
-      </nav> -->
-
-
  		<nav class="navbar navbar-static-top" role="navigation">
 		    <div class="container">
 		        <div class="navbar-header">
