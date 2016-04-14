@@ -60,10 +60,11 @@ footer hr{
 }
 .go-btn button
 {
-	border: 0.3em solid #EDA08C;
+	border: 0.2em solid #EDA08C;
 	border-radius: 0px;
 	background-color: transparent;
 	font-weight: bold;
+	margin: 5px;
 }
 /* --------------------------------------- home css --------------------------------------- */
 

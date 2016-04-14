@@ -1,57 +1,53 @@
 @extends('master')
 
 @section('content')
-	<h1>Cart Page</h1>
+	<h1>Shopping Cart</h1>
 
-	<div class="row">
-		<h3>YOUR CART</h3>
+	<div>
 			<hr>
-			<h3>Your Shopping Cart is Empty</h3>
+			<!-- <h3>Your Shopping Cart is Empty</h3>
 
-			<button class="go-btn">Continue Shopping</button>
+			<button class="go-btn">Continue Shopping</button> -->
+
+
+			<p>You currently have X item(s) in your cart</p>
 
 			<table class="table">
-				<tr class="cart_menu">
-					<th>Item</th>
-					<th><!-- Description --></th>
-					<th class="text-right">Price</th>
-					<th class="text-right">Quantity</th>
-					<th class="text-right">Total</th>
-					<th></th>
-				</tr>
+				<thead>
+					<tr class="cart_menu">
+						<th colspan="2">Item</th>
+						<th>Price</th>
+						<th>Quantity</th>
+						<th colspan="2">Total</th>
+					</tr>
+				</thead>
 
-				<tr>
-					<td><img src="http://placehold.it/100x100" alt="#"></td>
-					<td>
-						<ul>
-						   	<li>Item Name</li>
-						   	<li> </li>
-						   	<li>Art Print/-art print size</li>
-						   	<li>Printed area -size</li>
-						</ul>
-					</td>
-					<td class="text-right">$18.00</td>
-					<td class="text-right">-changable 1</td>
-					<td class="text-right">$18.00</td>
-					<td class="text-right">X</td>
-				</tr>
+				<tbody>
+					<tr>
+						<td><img src="http://placehold.it/100x100" alt="#"></td>
+						<td>Item Name</td>
+						<td>$18.00</td>
+						<td>-changable 1</td>
+						<td>$18.00</td>
+						<td><a href="#">X</a></td>
+					</tr>
+				</tbody>
 
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td class="text-right">Item total</td>
-					<td class="text-right">$18.00</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td class="text-right">Subtotal</td>
-					<td class="text-right">$18.00</td>
-					<td></td>
-				</tr>
+				<tfoot>
+					<tr>
+						<td colspan="4">Total</td>
+						<td colspan="1">$18.00</td>
+						<td></td>
+					</tr>
+				</tfoot>
+				
 			</table>
+		<div class="pull-left go-btn">
+			<button class="btn"><span class="glyphicon glyphicon-chevron-left"></span> CONTINE SHOPPING</button>
+		</div>
+		<div class="pull-right go-btn">
+			<button class="btn"><span class="glyphicon glyphicon-refresh"></span> UPDATE CART</button>
+			<button class="btn">PROCEED TO CHECKOUT <span class="glyphicon glyphicon-chevron-right"></span></button>
+		</div>
 	</div>
 @endsection
