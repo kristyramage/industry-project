@@ -26,8 +26,8 @@
 						position: static;
 						float: none;
 		    			/*width: 100%;*/
-		    			border-top: 0.2em solid #EDA08C;
-		    			border-bottom: 0.2em solid #EDA08C;
+		    			/*border-top: 0.2em solid #EDA08C;*/
+		    			/*border-bottom: 0.2em solid #EDA08C;*/
 		    			border-left: none;
 		    			border-right: none;
 
@@ -52,19 +52,20 @@ footer hr{
 }
 
 /* --------------------------------------- btn css --------------------------------------- */
-.go-text
+/*.go-text
 {
 	btn-align: center;
 	margin-top: 5px;
 	margin-bottom: 10px;
-}
+}*/
 .go-btn button
 {
 	border: 0.2em solid #EDA08C;
 	border-radius: 0px;
 	background-color: transparent;
 	font-weight: bold;
-	margin: 5px;
+	/*margin: 5px;*/
+	/*text-align: center;*/
 }
 /* --------------------------------------- home css --------------------------------------- */
 

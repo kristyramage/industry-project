@@ -17,7 +17,7 @@
 		</div>
 
 		<div class="col-xs-6" >
-		  	<form id="contactForm" action=" ... " method="POST" class="form horizontal">
+		  	<form role="form" id="contactForm" action=" ... " method="POST" class="form horizontal">
 		      <div class="form-group">
 		        <label for="username" class="control-label">Name</label>
 		        <div>
