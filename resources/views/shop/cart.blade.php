@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('content')
-	<h1>Shopping Cart</h1>
+	<h1 class="pageTitle">Shopping Cart</h1>
 
 	<div>
 			<hr>

@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('content')
-	<h1 class="text-center">Prints</h1>
+	<h1 class="pageTitle">Prints</h1>
 
 	<div id="featproducts" class="row">
 		<div class="col-xs-12 col-sm-4">

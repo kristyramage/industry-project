@@ -9,6 +9,9 @@
 {
 	max-width: 1200px;
 }
+.pageTitle {
+	text-align: center;
+}
 
 /* --------------------------------------- nav and footer css --------------------------------------- */
 

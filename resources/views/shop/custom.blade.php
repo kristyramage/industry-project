@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('content')
-	<h1>Order Custom Prints Page</h1>
+	<h1 class="pageTitle">Custom Prints</h1>
 
 	<div class="row">
 		<div class="col-sm-6" >

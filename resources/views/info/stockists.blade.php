@@ -1,5 +1,5 @@
 @extends('master')
 
 @section('content')
-	<h1>Stockists page</h1>
+	<h1 class="pageTitle">Stockists page</h1>
 @endsection
