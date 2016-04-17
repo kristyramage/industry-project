@@ -1,5 +1,8 @@
 @extends('master')
 
+@section('title', 'Contact')
+@section('meta-description', 'Holla at us with any you want to know.')
+
 @section('content')
 
 	<div class="row col-xs-12">

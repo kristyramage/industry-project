@@ -1,5 +1,8 @@
 @extends('master')
 
+@section('title', 'About')
+@section('meta-description', 'Learn about Captured Writes creator and vision.')
+
 @section('content')
 	
 	<div class="row col-xs-12">

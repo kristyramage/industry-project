@@ -2,8 +2,8 @@
 <html>
 <head lang="en">
 	<meta charset="utf-8">
-	<title>Captured Write</title>
-	<meta name="description" content="description">
+	<title>@yield('title') - Captured Write</title>
+	<meta name="description" content="@yield('meta-description')">
 
 	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 	<!-- <link rel="stylesheet" type="text/css" href="/css/menu.css"> -->

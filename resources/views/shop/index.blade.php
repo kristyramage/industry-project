@@ -1,5 +1,8 @@
 @extends('master')
 
+@section('title', 'Prints')
+@section('meta-description', 'Buy everything... twice.')
+
 @section('content')
 	<h1 class="pageTitle">Prints</h1>
 

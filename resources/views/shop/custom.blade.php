@@ -1,5 +1,8 @@
 @extends('master')
 
+@section('title', 'Custom Print')
+@section('meta-description', 'Order your own custom Captured Write print!')
+
 @section('content')
 	<h1 class="pageTitle">Custom Prints</h1>
 

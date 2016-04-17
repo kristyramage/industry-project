@@ -1,5 +1,8 @@
 @extends('master')
 
+@section('title', 'Home')
+@section('meta-description', 'Welcome to Captured Write! We're here to encourage, inspire and share the love.')
+
 @section('content')
 	<!-- <h1>Home Page</h1> -->
 
