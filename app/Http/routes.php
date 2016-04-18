@@ -28,6 +28,12 @@ Route::get('tandc', 'InfoController@tandc')->middleware('web');
 
 Route::get('contact', 'ContactController@index')->middleware('web');
 
+Route::get('register', 'Auth\AuthController@getRegister')->middleware('web');
+Route::post('register', 'Auth\AuthController@postRegister')->middleware('web');
+Route::get('logout', 'Auth\AuthController@logout')->middleware('web');
+
+Route::get('login', 'Auth\AuthController@getLogin')->middleware('web');
+Route::post('login', 'Auth\AuthController@postLogin')->middleware('web');
 
 Route::group(['middleware' => ['web']], function () {
 	//
