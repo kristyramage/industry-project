@@ -7,6 +7,7 @@
 
 	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 	<!-- <link rel="stylesheet" type="text/css" href="/css/menu.css"> -->
+	<link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="/css/main.css">
 </head>
 <body>
