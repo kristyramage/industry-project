@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('title', 'Gallery')
-@section('meta-description', 'From me to you, and you to me. You've made it to Captured Writes gallery where you can feature photos from your instagram.')
+@section('meta-description', 'From me to you, and you to me. You have made it to Captured Writes gallery where you can feature photos from your instagram.')
 
 @section('content')
 	<h1 class="pageTitle">Gallery</h1>
