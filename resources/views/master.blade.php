@@ -13,7 +13,7 @@
 <body>
 	<div class="container">
 		<div class="col-sm-12 text-center">
-			<img src="#" alt="Captured write logo">
+			<img src="images/logo/cplogo.png" alt="Captured write logo">
 		</div>
 
  		<nav class="navbar navbar-static-top" role="navigation">

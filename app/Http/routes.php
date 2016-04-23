@@ -19,10 +19,19 @@ Route::get('logout', 'Auth\AuthController@logout')->middleware('web');
 Route::get('login', 'Auth\AuthController@getLogin')->middleware('web');
 Route::post('login', 'Auth\AuthController@postLogin')->middleware('web');
 
+
+
 Route::get('about', 'AboutController@index')->middleware('web');
 
 Route::get('shop', 'ShopController@index')->middleware('web');
 Route::get('custom', 'ShopController@custom')->middleware('web');
+
+Route::get('print/{title}', 'ShopController@store')->middleware(['web', 'auth']);
+Route::post('print/create', 'ShopController@create')->middleware(['web', 'auth']);
+Route::post('print/{title}', 'ShopController@show')->middleware(['web', 'auth']);
+Route::post('print/edit', 'ShopController@edit')->middleware(['web', 'auth']);
+Route::put('print/update', 'ShopController@update')->middleware(['web', 'auth']);
+Route::delete('print/destroy', 'ShopController@destroy')->middleware(['web', 'auth']);
 
 Route::get('cart', 'ShopController@cart')->middleware('web');
 
