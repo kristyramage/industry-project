@@ -31,6 +31,7 @@ Route::post('print/create', 'ShopController@create')->middleware(['web', 'auth']
 Route::post('print/{title}', 'ShopController@show')->middleware(['web', 'auth']);
 Route::post('print/edit', 'ShopController@edit')->middleware(['web', 'auth']);
 Route::put('print/update', 'ShopController@update')->middleware(['web', 'auth']);
+Route::get('removeprint/{id}', 'ShopController@remove')->middleware(['web', 'auth']);
 Route::delete('print/destroy', 'ShopController@destroy')->middleware(['web', 'auth']);
 
 Route::get('cart', 'ShopController@cart')->middleware('web');

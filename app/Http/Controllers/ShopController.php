@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Intervention\Image\ImageManager;
+use App\Http\Requests;
 
 use App\Prints as Prints;
 use App\User as User;
+use Intervention\Image\ImageManager;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+// use App\Http\Controllers\Controller;
 
 class ShopController extends Controller
 {
@@ -20,60 +20,125 @@ class ShopController extends Controller
 
     public function create()
     {
-        // return view('{{viewPath}}{{crudName}}.create');
+        mustbeAdmin();
+        return view('print.create');
     }
 
-    public function show($id)
-    {
-       // ${{crudNameSingular}} = {{modelName}}::findOrFail($id);
+    // public function show($id)
+    // {
+    //    $print = Prints::findOrFail($id);
 
-       // return view('{{viewPath}}{{crudName}}.show', compact('{{crudNameSingular}}'));
-    }
+    //    return view('print.show', compact('print'));
+    // }
 
     public function store(Request $request)
     {
-        // validationRules
+        mustbeAdmin();
 
-        Prints::create($request->all());
+        // validationRules
+        $this->validate($request, [
+            'title' => 'required|max:120',
+            'price' => 'required|numeric',
+            'description' => 'required',
+            'poster' => 'required|image',
+            'quantity' => 'required|numeric',
+            ]);
+
+        // Adds page breaks into textarea
+        $description = nl2br(htmlspecialchars($_POST['description']));
+
+        $print = new Prints();
+
+        $print->title = $request->title;
+        $print->price = $request->price;
+        $print->description = $request->description;
+        $print->poster = $request->poster;
+        $print->quantity = $request->quantity;
+
+        $newFilename = preg_replace("/[^0-9a-zA-Z]/", "", $request->event_title);
+        $print->productImage = $newFilename;
 
         // Create Instance of Image Intervention
         $manager = new ImageManager();
-        $productImage = $manager->make($request->selectImage);
-        $productImage->resize(300, 400);
-        $productImage->save('img/products/'.$newFilename.'.jpg', 60);
+
+        $productImage = $manager->make($request->poster);
+
+        $productImage->resize(300, 300);
+        $productImage->save('images/products/'.$newFilename.'.jpg', 60);
+
+        $print->save()
 
         //Session::flash('flash_message', 'Print added!');
 
-        return redirect('print.{title}');
+        return redirect('print.index');
     }
 
     public function edit($id)
     {
-       // ${{crudNameSingular}} = {{modelName}}::findOrFail($id);
+        mustbeAdmin();
+        $print = Prints::findOrFail($id);
 
-       // return view('{{viewPath}}{{crudName}}.edit', compact('{{crudNameSingular}}'));
+       return view('print.edit', compact('print'));
     }
 
     public function update($id, Request $request)
     {
+        mustbeAdmin();
         // {{validationRules}}
-       //  ${{crudNameSingular}} = {{modelName}}::findOrFail($id);
-       // ${{crudNameSingular}}->update($request->all());
+        $this->validate($request, [
+            'title' => 'required|max:120',
+            'price' => 'required|numeric',
+            'description' => 'required',
+            'poster' => 'required|image',
+            'quantity' => 'required|numeric',
+            ]);
 
-        // Session::flash('flash_message', '{{modelName}} updated!');
+        $print = Prints::findOrFail($id);
+        $print->update($request->all());
 
-       // return redirect('{{routeGroup}}{{crudName}}');
+        // Create Instance of Image Intervention
+        $manager = new ImageManager();
+
+        $productImage = $manager->make($request->poster);
+
+        $productImage->resize(300, 300);
+        $productImage->save('images/products/'.$newFilename.'.jpg', 60);
+
+        $print->save()
+
+        // Session::flash('flash_message', 'Prints updated!');
+
+       return redirect('print/{title}');
+    }
+
+    public function remove($id){
+        mustbeAdmin();
+        $print = Prints::findOrFail($id);
+        return view('print.confirm_delete', compact('print'));
     }
 
     public function destroy($id)
     {
+        mustbeAdmin();
         Prints::destroy($id);
 
-       // Session::flash('flash_message', '{{modelName}} deleted!');
+        $print = Prints::findOrFail($id);
+        $print->delete();
+
+       // Session::flash('flash_message', 'Prints deleted!');
 
         return redirect('shop.index');
     }
 
+    public function getFormData($id = null){    
+        if(isset($_SESSION['create-print'])){
+            $item = $_SESSION['create-print'];
+            unset($_SESSION['create-print']);
+        } else {
+            $item = new Prints((int)$id);
+        }
+        return $item;
+    }
 
 	public function custom(){
 		return view('shop.custom');
