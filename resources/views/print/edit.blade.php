@@ -13,11 +13,11 @@
 
 				<form class="inline" action="print/edit" method="GET">
 					{!! csrf_field() !!}
-					<input name="id" type="hidden" value="{{ $Event->id }}">
-					<button class="btn btn-success"><i class="glyphicon glyphicon-pencil"></i> Edit Event</button>
+					<input name="id" type="hidden" value="{{ $print->id }}">
+					<button class="btn"><i class="glyphicon glyphicon-pencil"></i> Edit Print</button>
 				</form>
 					
-				<a href="/Remove-Event/{{ $Event->id }}" class="btn btn-danger" role="button"><i class="glyphicon glyphicon-remove"></i> Remove Event</a>
+				<a href="/Remove-Print/{{ $print->id }}" class="btn btn-danger" role="button"><i class="glyphicon glyphicon-remove"></i> Remove Print</a>
 
 			@endif()
 		@endif()
