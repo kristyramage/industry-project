@@ -12,7 +12,7 @@
 
 			<button class="go-btn">Continue Shopping</button> -->
 
-
+			@if($countUserCart > 0)
 			<p>You currently have X item(s) in your cart</p>
 
 			<table class="table">
@@ -26,14 +26,18 @@
 				</thead>
 
 				<tbody>
+							// $_SESSION['cart'] as $product : ?>
+					@foreach($userCart as $cartItem)
 					<tr>
 						<td><img src="http://placehold.it/100x100" alt="#"></td>
-						<td>Item Name</td>
-						<td>$18.00</td>
+						<td>{{ $print->title }}</td>
+						<td>{{ $print->price }}</td>
 						<td>-changable 1</td>
 						<td>$18.00</td>
 						<td><a href="#">X</a></td>
 					</tr>
+					@endforeach
+					
 				</tbody>
 
 				<tfoot>
@@ -43,8 +47,8 @@
 						<td></td>
 					</tr>
 				</tfoot>
-				
-			</table>
+			</table>		
+
 		<div class="pull-left go-btn">
 			<button class="btn"><span class="glyphicon glyphicon-chevron-left"></span> CONTINE SHOPPING</button>
 		</div>
@@ -52,5 +56,11 @@
 			<button class="btn"><span class="glyphicon glyphicon-refresh"></span> UPDATE CART</button>
 			<button class="btn">PROCEED TO CHECKOUT <span class="glyphicon glyphicon-chevron-right"></span></button>
 		</div>
+
+		@else
+			<h3>Your Shopping Cart is Empty</h3>
+			<button class="go-btn">Continue Shopping</button>
+		@endif
+
 	</div>
 @endsection

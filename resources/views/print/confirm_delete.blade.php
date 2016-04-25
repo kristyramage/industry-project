@@ -5,7 +5,7 @@
 
 @section('content')
 
-<h1 class="pageTitle">print</h1>
+<h1 class="pageTitle">Confirm Delete</h1>
 
 	<div class="row">
 
