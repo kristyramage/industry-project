@@ -6,6 +6,17 @@
 @section('content')
 	<h1 class="pageTitle">Prints</h1>
 
+
+	@if(\Auth::check())
+		@if(\Auth::user()->role === 'admin')
+
+			<div class="go-btn">
+		        <a class="btn" href="print/create">Add Print</a>	
+		    </div>
+		@endif()
+	@endif()
+
+
 	<div id="featproducts" class="row">
 		@foreach($allPrints as $print)
 		<div class="col-xs-12 col-sm-4">

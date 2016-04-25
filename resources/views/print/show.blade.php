@@ -8,7 +8,14 @@
 <h1 class="pageTitle">print title (print page)</h1>
 
 	<div class="row">
-		
+		@if(\Auth::check())
+			@if(\Auth::user()->role === 'admin')
+
+				<div class="go-btn">
+			        <a class="btn" href="print/edit">Edit Print</a>	
+			    </div>
+			@endif()
+		@endif()
 		<div class="col-xs-12 col-md-5 ">
 		    <?php if($print->poster !=""): ?>
 		      <a href="#"><img src="#" alt="<?= $print->title ?> poster"></a>

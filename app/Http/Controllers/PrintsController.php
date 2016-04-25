@@ -14,7 +14,13 @@ class PrintsController extends Controller
 
 	public function show() {
         $print = Prints::findOrFail($id);
-        return view('print.show', compact('Print'));
+        return view('print.show', compact('print'));
+    }
+
+    public function create()
+    {
+        mustbeAdmin();
+        return view('print.create');
     }
 
 }
