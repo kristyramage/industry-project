@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('title', 'Home')
-@section('meta-description', 'Welcome to Captured Write! We're here to encourage, inspire and share the love.')
+@section('meta-description', 'Welcome to Captured Write! We are here to encourage, inspire and share the love.')
 
 @section('content')
 	<!-- <h1>Home Page</h1> -->
@@ -70,9 +70,9 @@
 			$price</p>
 		</div>
 
-		<div class="col-xs-12 go-btn">
-			<button class="btn center-block">Go to Store</button>
-		</div>
+		<form class="col-xs-12 go-btn" method="get" action="/shop">
+		    <button class="btn center-block" type="submit">Go to store</button>
+		</form>
 
 	</div>
 
@@ -91,9 +91,9 @@
 			<img src="http://placehold.it/300x300" alt="..." class="col-xs-12">
 		</div>
 
-		<div class="col-xs-12 go-btn">
-			<button class="btn center-block">Go to Gallery</button>
-		</div>
+		<form class="col-xs-12 go-btn" method="get" action="/gallery">
+		    <button class="btn center-block" type="submit">Go to Gallery</button>
+		</form>
 
 	</div>
 

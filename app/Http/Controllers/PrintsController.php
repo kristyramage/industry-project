@@ -40,30 +40,30 @@ class PrintsController extends Controller
         // $print = Prints::where('id', '=', $_POST['print_id'])->firstOrFail();
         
 
-        // // validationRules
-        // $this->validate($request, [
-        //     'title' => 'required|max:120',
-        //     'price' => 'required|numeric',
-        //     'description' => 'required',
-        //     'poster' => 'required|image',
-        //     'quantity' => 'required|numeric',
-        //     ]);
+        // validationRules
+        $this->validate($request, [
+            'title' => 'required|max:120',
+            'price' => 'required|numeric',
+            'description' => 'required',
+            'poster' => 'required|image',
+            'quantity' => 'required|numeric',
+            ]);
 
-        // // Adds page breaks into textarea
-        // $description = nl2br(htmlspecialchars($_POST['description']));
+        // Adds page breaks into textarea
+        $description = nl2br(htmlspecialchars($_POST['description']));
 
-        // $print = new Prints();
+        $print = new Prints();
 
-        // $print->title = $request->title;
-        // $print->price = $request->price;
-        // $print->description = $request->description;
-        // $print->poster = $request->poster;
-        // $print->quantity = $request->quantity;
+        $print->title = $request->title;
+        $print->price = $request->price;
+        $print->description = $request->description;
+        $print->poster = $request->poster;
+        $print->quantity = $request->quantity;
 
-        // $newFilename = preg_replace("/[^0-9a-zA-Z]/", "", $request->event_title);
-        // $print->productImage = $newFilename;
+        $newFilename = preg_replace("/[^0-9a-zA-Z]/", "", $request->event_title);
+        $print->productImage = $newFilename;
 
-        // // Create Instance of Image Intervention
+        // Create Instance of Image Intervention
         $manager = new ImageManager();
 		$heroImage = $manager->make($request->image);
 		$heroImage->resize(300, 300);

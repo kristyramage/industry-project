@@ -26,16 +26,14 @@ Route::get('about', 'AboutController@index')->middleware('web');
 Route::get('shop', 'ShopController@index')->middleware('web');
 Route::get('custom', 'ShopController@custom')->middleware('web');
 
-Route::get('print/{{$print->title}}', 'PrintsController@show')->middleware(['web', 'auth']);
+Route::get('print/{title}', 'PrintsController@show')->middleware(['web', 'auth']);
 Route::post('print/create', 'PrintsController@create')->middleware(['web', 'auth']);
+// Route::get('print/{title}', 'PrintsController@store')->middleware(['web', 'auth']);
 
-// Route::get('print/{title}', 'ShopController@store')->middleware(['web', 'auth']);
-
-// Route::post('print/{title}', 'ShopController@show')->middleware(['web', 'auth']);
-// Route::post('print/edit', 'ShopController@edit')->middleware(['web', 'auth']);
-// Route::put('print/update', 'ShopController@update')->middleware(['web', 'auth']);
-// Route::get('removeprint/{id}', 'ShopController@remove')->middleware(['web', 'auth']);
-// Route::delete('print/destroy', 'ShopController@destroy')->middleware(['web', 'auth']);
+// Route::post('print/edit', 'PrintsController@edit')->middleware(['web', 'auth']);
+// Route::put('print/update', 'PrintsController@update')->middleware(['web', 'auth']);
+// Route::get('removeprint/{id}', 'PrintsController@remove')->middleware(['web', 'auth']);
+// Route::delete('print/destroy', 'PrintsController@destroy')->middleware(['web', 'auth']);
 
 Route::get('cart', 'ShopController@cart')->middleware('web');
 
