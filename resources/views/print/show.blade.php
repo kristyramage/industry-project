@@ -10,20 +10,20 @@
 	<div class="row">
 		
 		<div class="col-xs-12 col-md-5 ">
-		    <?php if($product->poster !=""): ?>
-		      <a href="#"><img src="./images/poster/300w/<?= $product->poster ?>" alt="<?= $product->title ?> poster"></a>
+		    <?php if($print->poster !=""): ?>
+		      <a href="#"><img src="#" alt="<?= $print->title ?> poster"></a>
 		    <?php else: ?>
 		      <p><small>No image found</small></p>
 		    <?php endif; ?>
 		  </div>
 		  <div class="col-xs-12 col-md-6">
-		  	<h4><?= $product->title; ?></h4>
-		  	<h4>&#36;<?= $product->price; ?></h4>
+		  	<h4><?= $print->title; ?></h4>
+		  	<h4>&#36;<?= $print->price; ?></h4>
 
 		  	<div class="form-group col-sm-6">
-		        <label for="email" class="control-label">Size</label>
+		        <label for="size" class="control-label">Size</label>
 		        <div>
-		          <select class="form-control" id="email" name="email"
+		          <select class="form-control" id="size" name="size"
 		            value=" ">
 		            <option>A5</option>
 		            <option>A4</option>
@@ -43,21 +43,13 @@
 		      </div>
 
 		    <p>DESCRIPTION</p>
-		    <p> <?= $product->description; ?> </p>
+		    <p> <?= $print->description; ?> </p>
 
 		    <a href="#" class="btn btn-default col-xs-12 space" role="button">
 		        <span class="glyphicon glyphicon-shopping-cart"></span> 
 		        ADD TO CART
 		    </a>
 
-		    <?php if(static::$auth->isAdmin()): ?>
-		    
-		        <p>
-			        <br>
-			        <a href="#>" class="btn btn-default">
-			        <span class="glyphicon glyphicon-pencil "></span> Edit Product</a>
-		        </p>
-		    <?php endif; ?>
 		</div>
 	</div>
 

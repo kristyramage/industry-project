@@ -22,8 +22,8 @@ class ShopController extends Controller
 
     public function create()
     {
-        mustbeAdmin();
-        return view('print.create');
+        // mustbeAdmin();
+        // return view('print.create');
     }
 
     // public function show($id)
