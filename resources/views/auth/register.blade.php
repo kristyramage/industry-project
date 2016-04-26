@@ -5,12 +5,14 @@
 	
 @section('content')
 
-<div class="container">
+    <div class="row col-xs-12">
+        <h1 class="pageTitle">Register</h1>
+        <hr>
+    </div>
+
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
-                <div class="panel-body">
+        <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
+
                     <form class="form-horizontal" role="form" method="POST" action="/register">
                         {!! csrf_field() !!}
 
@@ -99,13 +101,14 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <input type="submit" value="Register">
+                            <div class="col-md-6 col-md-offset-4 go-btn">
+                                <button type="submit" value="Register" class="btn">
+                                    Register
+                                </button>
                             </div>
                         </div>
+                        
                     </form>
-                </div>
-            </div>
         </div>
     </div>
 </div>
