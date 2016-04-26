@@ -5,15 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 
-use App\Prints as Prints;
+use App\Prints;
 // use App\User as User;
 use Intervention\Image\ImageManager;
 
 class PrintsController extends Controller
 {
 
-	public function show() {
-        $print = Prints::findOrFail($id);
+	public function show($id) {
+
+        $prints = Prints::all();
+       
         return view('print.show', compact('print'));
     }
 
@@ -28,6 +30,7 @@ class PrintsController extends Controller
     public function edit($id)
     {
         mustbeAdmin();
+        // $id = $_GET['id'];
         $print = Prints::findOrFail($id);
 
        return view('print.edit', compact('print'));
@@ -40,7 +43,7 @@ class PrintsController extends Controller
         // $print = Prints::where('id', '=', $_POST['print_id'])->firstOrFail();
         
 
-        // validationRules
+        //{{ validationRules }}
         $this->validate($request, [
             'title' => 'required|max:120',
             'price' => 'required|numeric',
@@ -62,6 +65,8 @@ class PrintsController extends Controller
 
         $newFilename = preg_replace("/[^0-9a-zA-Z]/", "", $request->event_title);
         $print->productImage = $newFilename;
+
+        $print->save();
 
         // Create Instance of Image Intervention
         $manager = new ImageManager();

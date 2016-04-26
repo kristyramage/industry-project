@@ -16,6 +16,8 @@
 			    </div>
 			@endif()
 		@endif()
+
+		@foreach($prints as $print)
 		<div class="col-xs-12 col-md-5 ">
 		    <?php if($print->poster !=""): ?>
 		      <a href="#"><img src="#" alt="<?= $print->title ?> poster"></a>
@@ -58,6 +60,7 @@
 		    </a>
 
 		</div>
+		@endforeach
 	</div>
 
 @endsection
