@@ -12,6 +12,8 @@
 
 	<div class="row">
 		<div class="col-xs-6" >
+			<p class="para-title" >Hi,</p>
+			
 		  	<h4>WE'D LOVE TO HEAR FROM YOU!</h4>
 		  	<p>
 		  		<strong>Phone</strong>	
@@ -20,6 +22,7 @@
 		</div>
 
 		<div class="col-xs-6" >
+			<p class="para-title" >Holla at me,</p>
 		  	<form role="form" id="contactForm" action=" ... " method="POST" class="form horizontal">
 		  		{!! csrf_field() !!}
 		      <div class="form-group">

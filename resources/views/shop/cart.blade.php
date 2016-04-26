@@ -12,7 +12,7 @@
 
 			<button class="go-btn">Continue Shopping</button> -->
 
-			@if($countUserCart > 0)
+			<!-- @if($countUserCart > 0)
 			<p>You currently have X item(s) in your cart</p>
 
 			<table class="table">
@@ -60,7 +60,7 @@
 		@else
 			<h3>Your Shopping Cart is Empty</h3>
 			<button class="go-btn">Continue Shopping</button>
-		@endif
+		@endif -->
 
 	</div>
 @endsection
