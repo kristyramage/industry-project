@@ -1,35 +1,35 @@
 @extends('master')
 
-@section('title', 'Prints')
-@section('meta-description', 'Single print view')
+@section('title', 'Print')
+@section('meta-description', 'Single print for purchse, add to cart from this page.')
 
 @section('content')
 
-<h1 class="pageTitle">print title (print page)</h1>
+<h1 class="pageTitle">{{ $prints->title }}</h1>
 <hr>
 	<div class="row">
-		@if(\Auth::check())
-			@if(\Auth::user()->role === 'admin')
+		<div class="col-xs-12 col-md-5">
 
-				<div class="go-btn">
-			        <a class="btn" href="print/edit">Edit Print</a>	
-			    </div>
-			@endif()
-		@endif()
-
-		@foreach($prints as $print)
-		<div class="col-xs-12 col-md-5 ">
-		    <?php if($print->poster !=""): ?>
-		      <a href="#"><img src="#" alt="<?= $print->title ?> poster"></a>
-		    <?php else: ?>
+			@if($prints->poster !="")
+		      <img src="/images/products/{{$prints->poster}}" alt="{{$prints->title}} poster">
+		    @else
 		      <p><small>No image found</small></p>
-		    <?php endif; ?>
-		  </div>
-		  <div class="col-xs-12 col-md-6">
-		  	<h4><?= $print->title; ?></h4>
-		  	<h4>&#36;<?= $print->price; ?></h4>
+		    @endif
 
-		  	<div class="form-group col-sm-6">
+		</div>
+		
+		<div class="col-xs-12 col-md-7">
+			<div class="col-xs-12">
+				<h4>{{ $prints->title }}</h4>
+				<h4>&#36;{{ $prints->price }}</h4>
+			</div>
+
+			<div class="col-xs-12">
+				<p>DESCRIPTION</p>
+			    <p>{{ $prints->descrition }}</p>
+			</div>
+
+			<div class="form-group col-sm-6">
 		        <label for="size" class="control-label">Size</label>
 		        <div>
 		          <select class="form-control" id="size" name="size"
@@ -41,26 +41,25 @@
 		          </select>
 		          <div class="help-block"></div>
 		        </div>
-		      </div>
-		        
-		      <div class="form-group col-sm-6">
+		    </div>
+
+		    <div class="form-group col-sm-6">
 		        <label type="checkbox" name="framed" value="framed">Framed</label>
 		        <div>
 		          <input type="checkbox" class="form-control" id="framed" name="framed">
 		          <div class="help-block"></div>
 		        </div>
-		      </div>
+		    </div>
 
-		    <p>DESCRIPTION</p>
-		    <p> <?= $print->description; ?> </p>
-
-		    <a href="#" class="btn btn-default col-xs-12 space" role="button">
-		        <span class="glyphicon glyphicon-shopping-cart"></span> 
-		        ADD TO CART
-		    </a>
+		    <div class="col-xs-12">
+		    	<a href="#" class="btn btn-default col-xs-12 space" role="button">
+			        <span class="glyphicon glyphicon-shopping-cart"></span> 
+			        ADD TO CART
+			    </a>
+		    </div>
 
 		</div>
-		@endforeach
+		
 	</div>
 
 @endsection

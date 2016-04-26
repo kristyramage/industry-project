@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 
-use App\Prints as Prints;
-use App\User as User;
+use App\Prints;
+use App\User;
 use Intervention\Image\ImageManager;
 
 // use App\Http\Controllers\Controller;

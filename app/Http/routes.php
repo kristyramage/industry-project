@@ -26,7 +26,7 @@ Route::get('about', 'AboutController@index')->middleware('web');
 Route::get('shop', 'ShopController@index')->middleware('web');
 Route::get('custom', 'ShopController@custom')->middleware('web');
 
-Route::get('print/{title}', 'PrintsController@show')->middleware(['web', 'auth']);
+Route::get('print/{title}', 'PrintsController@show')->middleware(['web']);
 Route::post('print/create', 'PrintsController@create')->middleware(['web', 'auth']);
 // Route::get('print/{title}', 'PrintsController@store')->middleware(['web', 'auth']);
 

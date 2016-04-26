@@ -14,10 +14,7 @@ class PrintsController extends Controller
 
 	public function show($title) {
         $prints = Prints::where('title', "=", $title)->firstOrFail();
-        // var_dump($print);
-        // $printInfo = $singleProduct->all();
-        // $print = Prints::all();
-        return view('print.index', compact('prints'));
+        return view('print.show', compact('prints'));
     }
 
     public function create()

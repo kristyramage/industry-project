@@ -31,16 +31,16 @@
 		        <div class="collapse navbar-collapse" id="collapse-1">
 		            <ul class="nav">
 		                <li><a href="/">home</a></li>
-						<li><a href="about">about</a></li>
-						<li type="button" data-toggle="dropdown" class="btn dropdown-toggle"><a href="shop">shop  <span class="caret"></span></a></li>
+						<li><a href="/about">about</a></li>
+						<li type="button" data-toggle="dropdown" class="btn dropdown-toggle">shop <span class="caret"></span></li>
 							<ul class="dropdown-menu">
-					            <li class="col-xs-12 col-sm-3"><a href='shop'>prints</a></li>
-					            <li class="col-xs-12 col-sm-3"><a href='gallery'>gallery</a></li>
-					            <li class="col-xs-12 col-sm-3"><a href='custom'>custom print</a></li>
-					            <li class="col-xs-12 col-sm-3"><a href='stockists'>stockists</a></li>
+					            <li class="col-xs-12 col-sm-3"><a href='/shop'>prints</a></li>
+					            <li class="col-xs-12 col-sm-3"><a href='/gallery'>gallery</a></li>
+					            <li class="col-xs-12 col-sm-3"><a href='/custom'>custom print</a></li>
+					            <li class="col-xs-12 col-sm-3"><a href='/stockists'>stockists</a></li>
 					         </ul>
-						<li><a href="contact">contact</a></li>
-						<li><a href="cart">cart</a></li>
+						<li><a href="/contact">contact</a></li>
+						<li><a href="/cart">cart</a></li>
 		            </ul>
 		        </div>
 		    </div>
@@ -58,19 +58,19 @@
 	        	<h4>NAV</h4>
 		        <ul>
 		            <li><a href="/">Home</a></li>
-		            <li><a href="about">About</a></li>
-		            <li><a href="shop">Shop</a></li>
-		            <li><a href="contact">Contact</a></li>
-		            <li><a href="cart">Cart</a></li>
+		            <li><a href="/about">About</a></li>
+		            <li><a href="/shop">Shop</a></li>
+		            <li><a href="/contact">Contact</a></li>
+		            <li><a href="/cart">Cart</a></li>
 		        </ul>
 	        </div>
 
 	        <div class="col-sm-3">
 	        	<h4>INFO</h4>
 		        <ul>
-		            <li><a href="stockists">Stockists</a></li>
-		            <li><a href="shipping">Shipping</a></li>
-		            <li><a href="tandc">Terms and Conditions</a></li>
+		            <li><a href="/stockists">Stockists</a></li>
+		            <li><a href="/shipping">Shipping</a></li>
+		            <li><a href="/tandc">Terms and Conditions</a></li>
 	          </ul>
 	        </div>
 
