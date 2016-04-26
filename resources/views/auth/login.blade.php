@@ -1,16 +1,18 @@
 @extends('master')
 
 @section('title', 'Login')
-@section('meta-description', 'Login to Twitter Clone')
+@section('meta-description', 'Login to Captured Write')
 	
 @section('content')
 
-<div class="container">
+    <div class="row col-xs-12">
+        <h1 class="pageTitle">Login</h1>
+        <hr>
+    </div>
+
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
-                <div class="panel-body">
+        <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
+ 
                     <form class="form-horizontal" role="form" method="POST" action="/login">
                         {!! csrf_field() !!}
 
@@ -53,8 +55,8 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                            <div class="col-md-6 col-md-offset-4 go-btn">
+                                <button type="submit" class="btn">
                                     <i class="fa fa-btn fa-sign-in"></i>Login
                                 </button>
 
@@ -62,8 +64,6 @@
                             </div>
                         </div>
                     </form>
-                </div>
-            </div>
         </div>
     </div>
 </div>
