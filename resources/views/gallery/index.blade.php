@@ -5,7 +5,7 @@
 
 @section('content')
 	<h1 class="pageTitle">Gallery</h1>
-
+	<hr>
 	<div id="featproducts" class="row">
 		<div class="col-xs-12 col-sm-4">
 			<a href="#">

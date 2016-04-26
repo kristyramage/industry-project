@@ -5,7 +5,7 @@
 
 @section('content')
 	<h1 class="pageTitle">Custom Prints</h1>
-
+	<hr>
 	<div class="row">
 		<div class="col-sm-6" >
 		  	<h4>ORDER YOUR OWN CUSTOM PRINT!</h4>

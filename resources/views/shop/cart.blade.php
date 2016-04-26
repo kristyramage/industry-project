@@ -5,9 +5,9 @@
 
 @section('content')
 	<h1 class="pageTitle">Shopping Cart</h1>
-
+	<hr>
 	<div>
-			<hr>
+			
 			<!-- <h3>Your Shopping Cart is Empty</h3>
 
 			<button class="go-btn">Continue Shopping</button> -->

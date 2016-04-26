@@ -6,7 +6,7 @@
 @section('content')
 
 <h1 class="pageTitle">print title (print page)</h1>
-
+<hr>
 	<div class="row">
 		@if(\Auth::check())
 			@if(\Auth::user()->role === 'admin')

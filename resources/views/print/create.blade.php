@@ -6,7 +6,7 @@
 @section('content')
 
 <h1 class="pageTitle">Create print</h1>
-
+<hr>
 	<div class="row">
 
 	</div>

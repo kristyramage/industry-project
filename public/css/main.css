@@ -3,7 +3,7 @@
     list-style: none;
     padding: 0;
     margin: 0;
-    font-family: 'Lato';
+    font-family: 'Lato', helvetica, sans-serif;
 }
 
 .container
@@ -12,6 +12,10 @@
 }
 .pageTitle {
 	text-align: center;
+}
+.para-title {
+	font-weight: bold;
+	font-size: 3em;
 }
 .logo {
 	width: 200px;

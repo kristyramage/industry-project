@@ -5,4 +5,8 @@
 
 @section('content')
 	<h1 class="pageTitle">Stockists page</h1>
+	<hr>
+	<div class="row">
+
+	</div>
 @endsection
