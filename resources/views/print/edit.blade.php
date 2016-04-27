@@ -7,21 +7,68 @@
 
 <h1 class="pageTitle">Edit print</h1>
 <hr>
-	<div class="row">
-		@if(\Auth::check())
-			@if(\Auth::user()->role === 'admin')
+	@if(\Auth::check())
+	@if(\Auth::user()->role === 'admin')
+		<div class="row">
+			<div class="col-xs-12">
+											<!-- is the method supposed to be POST? -->
+				<form role="form" id="edit" action="/print/edit" method="GET" class="form horizontal">
+		  		{!! csrf_field() !!}
+		      <div class="form-group col-sm-4">
+		        <label for="title" class="control-label">Print Title</label>
+		        <div>
+		          <input class="form-control" id="title" name="title" value=" ">
+		          {!! $errors->first('title','<span class="help-block">:message</span>') !!}
+		        </div>
+		      </div>
 
-				<form class="inline" action="print/edit" method="GET">
-					{!! csrf_field() !!}
-					<input name="id" type="hidden" value="{{ $print->id }}">
-					<button class="btn"><i class="glyphicon glyphicon-pencil"></i> Edit Print</button>
-				</form>
-					
-				<a href="/Remove-Print/{{ $print->id }}" class="btn btn-danger" role="button"><i class="glyphicon glyphicon-remove"></i> Remove Print</a>
+		      <div class="form-group col-sm-4">
+		        <label for="price" class="control-label">Print price</label>
+		        <div>
+		          <input type="number" class="form-control" id="price" name="price" value=" ">
+		          {!! $errors->first('price','<span class="help-block">:message</span>') !!}
+		        </div>
+		      </div>
 
-			@endif()
+		      <div class="form-group col-sm-4">
+		        <label for="quantity" class="control-label">Number of prints avaliable</label>
+		        <div>
+		          <input type="number" class="form-control" id="quantity" name="quantity" value=" ">
+		          {!! $errors->first('quantity','<span class="help-block">:message</span>') !!}
+		        </div>
+		      </div>
+
+		        <div class="form-group col-xs-12 col-md-4">
+					<label for="poster">Print Poster</label>
+					<input type="file" for="poster" name="poster">
+					{!! $errors->first('poster','<span class="help-block">:message</span>') !!}
+				</div>
+
+		      <div class="form-group col-xs-12 col-sm-8">
+		        <label for="description" class="control-label">Print Description</label>
+		        <div>
+		          <textarea class="form-control" rows="3" name="description" placeholder="Type a description of the print here"></textarea>
+		          {!! $errors->first('description','<span class="help-block">:message</span>') !!}
+		        </div>
+		      </div>
+			</div>
+
+			<div class="form-group col-sm-12">
+		        <div class="go-btn">
+		          <button type="submit" class="btn">Edit Print!</button>
+		        </div>
+		      </div>
+	    	</form>
+		
+			<a href="/Remove-Print/{{ $print->id }}" class="btn btn-danger" role="button">
+				<i class="glyphicon glyphicon-remove"></i> Remove Print
+			</a>
+
+			</div>
+		</div>
 		@endif()
+	@endif()
 
-	</div>
+	
 
 @endsection

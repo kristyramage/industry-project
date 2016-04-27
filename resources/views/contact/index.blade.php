@@ -29,7 +29,7 @@
 		        <label for="username" class="control-label">Name</label>
 		        <div>
 		          <input class="form-control" id="username" name="username" value=" ">
-		          <div class="help-block"></div>
+		          {!! $errors->first('username','<span class="help-block">:message</span>') !!}
 		        </div>
 		      </div>
 
@@ -38,7 +38,7 @@
 		        <div>
 		          <input class="form-control" id="email" name="email" placeholder="jon@example.com"
 		            value=" ">
-		          <div class="help-block"></div>
+		          {!! $errors->first('email','<span class="help-block">:message</span>') !!}
 		        </div>
 		      </div>
 		        
@@ -46,7 +46,7 @@
 		        <label for="text" class="control-label">Subject</label>
 		        <div>
 		          <input type="text" class="form-control" id="subject" name="subject">
-		          <div class="help-block"></div>
+		          {!! $errors->first('subject','<span class="help-block">:message</span>') !!}
 		        </div>
 		      </div>
 
@@ -54,7 +54,7 @@
 		        <label for="message" class="control-label">Message</label>
 		        <div>
 		          <textarea class="form-control" rows="3" name="message" placeholder="Type your message here"></textarea>
-		          <div class="help-block"></div>
+		          {!! $errors->first('message','<span class="help-block">:message</span>') !!}
 		        </div>
 		      </div>
 

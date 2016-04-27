@@ -10,7 +10,10 @@
 		<div class="col-sm-6" >
 		  	<h4>ORDER YOUR OWN CUSTOM PRINT!</h4>
 		  	<p>
-		  		Terms and conditions...
+		  		Terms and conditions... <br>
+		  		Please specify a size and if you would like the print framed? <br>
+		  		If you would like a print on a novelty item please specify and I'll will be in contact
+		  		if I can create the product. <br>
 		  	</p>	
 			
 		</div>
@@ -22,7 +25,7 @@
 		        <label for="customName" class="control-label">Your Name</label>
 		        <div>
 		          <input class="form-control" id="customName" name="customName" value=" ">
-		          <div class="help-block"></div>
+		          {!! $errors->first('customName','<span class="help-block">:message</span>') !!}
 		        </div>
 		      </div>
 
@@ -31,29 +34,7 @@
 		        <div>
 		          <input class="form-control" id="email" name="email" placeholder="jon@example.com"
 		            value=" ">
-		          <div class="help-block"></div>
-		        </div>
-		      </div>
-
-		      <div class="form-group col-sm-6">
-		        <label for="email" class="control-label">Size</label>
-		        <div>
-		          <select class="form-control" id="email" name="email"
-		            value=" ">
-		            <option>A5</option>
-		            <option>A4</option>
-		            <option>A3</option>
-		            <option>A2</option>
-		          </select>
-		          <div class="help-block"></div>
-		        </div>
-		      </div>
-		        
-		      <div class="form-group col-sm-6">
-		        <label type="checkbox" name="framed" value="framed">Framed</label>
-		        <div>
-		          <input type="checkbox" class="form-control" id="framed" name="framed">
-		          <div class="help-block"></div>
+		          {!! $errors->first('email','<span class="help-block">:message</span>') !!}
 		        </div>
 		      </div>
 
@@ -61,7 +42,7 @@
 		        <label for="description" class="control-label">Description</label>
 		        <div>
 		          <textarea class="form-control" rows="3" name="description" placeholder="Type your description here"></textarea>
-		          <div class="help-block"></div>
+		          {!! $errors->first('description','<span class="help-block">:message</span>') !!}
 		        </div>
 		      </div>
 
