@@ -34,7 +34,7 @@
 						<li><a href="/about">about</a></li>
 						<li type="button" data-toggle="dropdown" class="btn dropdown-toggle">shop  <span class="caret"></span></li>
 							<ul class="dropdown-menu">
-					            <li class="col-xs-12 col-sm-3"><a href='/shop'>prints</a></li>
+					            <li class="col-xs-12 col-sm-3"><a href='/prints'>prints</a></li>
 					            <li class="col-xs-12 col-sm-3"><a href='/gallery'>gallery</a></li>
 					            <li class="col-xs-12 col-sm-3"><a href='/custom'>custom print</a></li>
 					            <li class="col-xs-12 col-sm-3"><a href='/stockists'>stockists</a></li>

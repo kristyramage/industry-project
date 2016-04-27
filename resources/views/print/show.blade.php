@@ -7,6 +7,14 @@
 
 <h1 class="pageTitle">{{ $prints->title }}</h1>
 <hr>
+@if(\Auth::check())
+	@if(\Auth::user()->role === 'admin')
+
+		<div class="go-btn">
+	        <a class="btn" href="/print/edit">Edit Print</a>	
+	    </div>
+	@endif()
+@endif()
 	<div class="row">
 		<div class="col-xs-12 col-md-5">
 

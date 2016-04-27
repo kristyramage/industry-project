@@ -11,27 +11,33 @@ use Intervention\Image\ImageManager;
 
 class PrintsController extends Controller
 {
+    public function index(){
+        $allPrints = Prints::all();
+        return view('print.index', compact('allPrints'));
+    }
 
+
+// -------------------- CRUD ------------------------
 	public function show($title) {
+        // var_dump("show");
         $prints = Prints::where('title', "=", $title)->firstOrFail();
         return view('print.show', compact('prints'));
     }
 
     public function create()
     {
-        mustbeAdmin();
+        // var_dump("Create");
+        // mustbeAdmin();
         return view('print.create');
     }
 
     // store
 
-    public function edit($id)
+    public function edit()
     {
-        mustbeAdmin();
-        // $id = $_GET['id'];
-        $print = Prints::findOrFail($id);
+        // mustbeAdmin();
 
-       return view('print.edit', compact('print'));
+        return view('print.edit');
     }
 
 

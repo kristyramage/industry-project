@@ -1,65 +1,32 @@
 @extends('master')
 
-@section('title', '#')
-@section('meta-description', '#')
+@section('title', 'Prints')
+@section('meta-description', 'Buy everything... twice.')
 
 @section('content')
+	<h1 class="pageTitle">Prints</h1>
 
-<h1 class="pageTitle">{{ $prints->title }}</h1>
-<hr>
-	<div class="row">
-		<div class="col-xs-12 col-md-5">
+	<hr>
+	@if(\Auth::check())
+		@if(\Auth::user()->role === 'admin')
 
-			@if($prints->poster !="")
-		      <img src="/images/products/{{$prints->poster}}" alt="{{$prints->title}} poster">
-		    @else
-		      <p><small>No image found</small></p>
-		    @endif
+			<div class="go-btn">
+		        <a class="btn" href="prints/create">New Print</a>	
+		    </div>
+		@endif()
+	@endif()
 
+
+	<div id="featproducts" class="row">
+		@foreach($allPrints as $print)
+		<div class="col-xs-12 col-sm-4">
+			<a href="prints/{{$print->title}}">
+				<img src="http://placehold.it/300x300" alt=" {{ $print->description }} " class="col-xs-12">
+			</a>
+			<p class="text-center">{{ $print->title }} <br>
+			{{ $print->price }}</p>
 		</div>
-		
-		<div class="col-xs-12 col-md-7">
-			<div class="col-xs-12">
-				<h4>{{ $prints->title }}</h4>
-				<h4>&#36;{{ $prints->price }}</h4>
-			</div>
-
-			<div class="col-xs-12">
-				<p>DESCRIPTION</p>
-			    <p>{{ $prints->descrition }}</p>
-			</div>
-
-			<div class="form-group col-sm-6">
-		        <label for="size" class="control-label">Size</label>
-		        <div>
-		          <select class="form-control" id="size" name="size"
-		            value=" ">
-		            <option>A5</option>
-		            <option>A4</option>
-		            <option>A3</option>
-		            <option>A2</option>
-		          </select>
-		          <div class="help-block"></div>
-		        </div>
-		    </div>
-
-		    <div class="form-group col-sm-6">
-		        <label type="checkbox" name="framed" value="framed">Framed</label>
-		        <div>
-		          <input type="checkbox" class="form-control" id="framed" name="framed">
-		          <div class="help-block"></div>
-		        </div>
-		    </div>
-
-		    <div class="col-xs-12">
-		    	<a href="#" class="btn btn-default col-xs-12 space" role="button">
-			        <span class="glyphicon glyphicon-shopping-cart"></span> 
-			        ADD TO CART
-			    </a>
-		    </div>
-
-		</div>
-		
+		@endforeach
 	</div>
 
 @endsection
