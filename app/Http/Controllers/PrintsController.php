@@ -30,19 +30,9 @@ class PrintsController extends Controller
         return view('print.create');
     }
 
-    // store
-
-    public function edit()
+    public function save(Request $request)
     {
-        // mustbeAdmin();
-
-        return view('print.edit');
-    }
-
-
-     public function store(Request $request)
-    {
-    	mustbeAdmin();
+        mustbeAdmin();
         // $print = Prints::where('id', '=', $_POST['print_id'])->firstOrFail();
         
 
@@ -73,18 +63,28 @@ class PrintsController extends Controller
 
         // Create Instance of Image Intervention
         $manager = new ImageManager();
-		$heroImage = $manager->make($request->image);
-		$heroImage->resize(300, 300);
-		$heroImage->save('images/poducts/'.$newFilename.'.jpg', 60);
-		$heroImage->resize(300, null, function ($constraint) {
-		    $constraint->aspectRatio();
-		});
-		$heroImage->save('images/thumbnails/'.$newFilename.'.jpg', 60);
-		$heroImage->resize(100, null, function ($constraint) {
-		    $constraint->aspectRatio();
-		});
-		$heroImage->save('images/100w/'.$newFilename.'.jpg', 60);
+        $heroImage = $manager->make($request->image);
+        $heroImage->resize(300, 300);
+        $heroImage->save('images/poducts/'.$newFilename.'.jpg', 60);
+        $heroImage->resize(300, null, function ($constraint) {
+            $constraint->aspectRatio();
+        });
+        $heroImage->save('images/thumbnails/'.$newFilename.'.jpg', 60);
+        $heroImage->resize(100, null, function ($constraint) {
+            $constraint->aspectRatio();
+        });
+        $heroImage->save('images/100w/'.$newFilename.'.jpg', 60);
     }
+
+    public function edit()
+    {
+        // mustbeAdmin();
+
+        return view('print.edit');
+    }
+
+
+     
 
     
 

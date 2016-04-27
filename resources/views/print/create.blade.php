@@ -12,7 +12,7 @@
 	<div class="row">
 		<div class="col-xs-12">
 
-			<form role="form" id="contactForm" action=" ... " method="POST" class="form horizontal">
+			<form role="form" id="contactForm" action="save-print" method="POST" class="form horizontal">
 		  		{!! csrf_field() !!}
 		      <div class="form-group col-sm-4">
 		        <label for="title" class="control-label">Print Title</label>
@@ -38,7 +38,13 @@
 		        </div>
 		      </div>
 
-		      <div class="form-group col-sm-12">
+		        <div class="form-group col-xs-12 col-md-4 {{ $errors->has('poster') ? 'has-error' :'' }}">
+					<label for="poster">Print Poster</label>
+					<input type="file" for="poster" name="poster">
+					<div class="help-block"></div>
+				</div>
+
+		      <div class="form-group col-xs-12 col-sm-8">
 		        <label for="description" class="control-label">Print Description</label>
 		        <div>
 		          <textarea class="form-control" rows="3" name="description" placeholder="Type a description of the print here"></textarea>
