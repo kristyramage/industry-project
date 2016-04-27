@@ -32,7 +32,7 @@ class PrintsController extends Controller
 
     public function save(Request $request)
     {
-        mustbeAdmin();
+        // mustbeAdmin();
         // $print = Prints::where('id', '=', $_POST['print_id'])->firstOrFail();
         
 
@@ -43,37 +43,40 @@ class PrintsController extends Controller
             'description' => 'required',
             'poster' => 'required|image',
             'quantity' => 'required|numeric',
-            ]);
+        ]);
 
         // Adds page breaks into textarea
         $description = nl2br(htmlspecialchars($_POST['description']));
 
-        $print = new Prints();
+        $newPrint = new Prints();
 
-        $print->title = $request->title;
-        $print->price = $request->price;
-        $print->description = $request->description;
-        $print->poster = $request->poster;
-        $print->quantity = $request->quantity;
+        $newPrint->title = $request->title;
+        $newPrint->price = $request->price;
+        $newPrint->description = $request->description;
+        $newPrint->poster = $newFilename;
+        $newPrint->quantity = $request->quantity;
 
-        $newFilename = preg_replace("/[^0-9a-zA-Z]/", "", $request->event_title);
-        $print->productImage = $newFilename;
-
-        $print->save();
+        $newFilename = preg_replace("/[^0-9a-zA-Z]/", "", $request->title);
+        $newPrint->poster = $newFilename;
 
         // Create Instance of Image Intervention
         $manager = new ImageManager();
-        $heroImage = $manager->make($request->image);
-        $heroImage->resize(300, 300);
-        $heroImage->save('images/poducts/'.$newFilename.'.jpg', 60);
-        $heroImage->resize(300, null, function ($constraint) {
+
+        $printImage = $manager->make($request->poster);
+
+        // product image size
+        $printImage->resize(300, 300);
+        $printImage->save('images/products/'.$newFilename.'.jpg', 60);
+        // thumbnail size
+        $printImage->resize(100, null, function ($constraint) {
             $constraint->aspectRatio();
         });
-        $heroImage->save('images/thumbnails/'.$newFilename.'.jpg', 60);
-        $heroImage->resize(100, null, function ($constraint) {
-            $constraint->aspectRatio();
-        });
-        $heroImage->save('images/100w/'.$newFilename.'.jpg', 60);
+
+        $printImage->save('images/thumbnails/'.$newFilename.'.jpg', 60);
+
+        $newPrint->save();
+
+        return redirect('prints');
     }
 
     public function edit()

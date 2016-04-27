@@ -30,8 +30,8 @@ Route::get('custom', 'ShopController@custom')->middleware('web');
 Route::get('prints/create', 'PrintsController@create')->middleware(['web', 'auth']);
 Route::get('prints/{title}', 'PrintsController@show')->middleware(['web']);
 
-Route::get('save-print', 'EventsController@save')->middleware(['web', 'auth']);
-Route::post('save-print', 'EventsController@save')->middleware(['web', 'auth']);
+// Route::get('save-print', 'EventsController@save')->middleware(['web', 'auth']);
+Route::post('prints/save', 'PrintsController@save')->middleware(['web', 'auth']);
 
 // Route::get('prints/{title}', 'PrintsController@store')->middleware(['web', 'auth']);
 // Route::post('prints/edit', 'PrintsController@edit')->middleware(['web', 'auth']);
