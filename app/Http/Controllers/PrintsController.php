@@ -26,8 +26,7 @@ class PrintsController extends Controller
 
     public function create()
     {
-        // var_dump("Create");
-        // mustbeAdmin();
+        mustbeAdmin();
         return view('print.create');
     }
 
