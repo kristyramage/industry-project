@@ -7,13 +7,12 @@
 	<h1 class="pageTitle">Stockists page</h1>
 	<hr>
 	<div class="row">
-		<div class="col-xs-12 co-sm-4">
+		<div class="col-xs-12 col-sm-4">
 			<!-- map -->
-			<div id="map-container"></div>
-			<!-- <div id="locations-container"></div> -->
+			<div id="map"></div>
 		</div>
 
-		<div class="col-xs-12 co-sm-8">
+		<div class="col-xs-12 col-sm-8">
 			<p class="para-title" >Created Homewares,</p>
 			<p>
 				189 Main Street, 5018 Upper hutt <br>
@@ -27,9 +26,5 @@
 		</div>
 
 	</div>
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=geometry"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/gmaps.js/0.4.21/gmaps.min.js"></script>
-	<script src="/js/map.js"></script>
+	
 @endsection

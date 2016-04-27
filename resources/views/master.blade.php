@@ -32,7 +32,7 @@
 		            <ul class="nav">
 		                <li><a href="/">home</a></li>
 						<li><a href="/about">about</a></li>
-						<li type="button" data-toggle="dropdown" class="btn dropdown-toggle">shop <span class="caret"></span></li>
+						<li type="button" data-toggle="dropdown" class="btn dropdown-toggle">shop  <span class="caret"></span></li>
 							<ul class="dropdown-menu">
 					            <li class="col-xs-12 col-sm-3"><a href='/shop'>prints</a></li>
 					            <li class="col-xs-12 col-sm-3"><a href='/gallery'>gallery</a></li>
@@ -99,6 +99,8 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/menu.js"></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVebhaouYOuLGqNRVaC7HwfNhoyHyEhJI&callback=initMap"async defer></script>
+    <script src="/js/map.js"></script>
 </body>
 </html>
