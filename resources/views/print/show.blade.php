@@ -34,7 +34,7 @@
 
 			<div class="col-xs-12">
 				<p>DESCRIPTION</p>
-			    <p>{{ $prints->descrition }}</p>
+			    <p>{{ $prints->description }}</p>
 			</div>
 
 			<div class="form-group col-sm-6">

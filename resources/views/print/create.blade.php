@@ -12,7 +12,7 @@
 	<div class="row">
 		<div class="col-xs-12">
 
-			<form role="form" id="create" action="/prints/save" method="POST" class="form horizontal">
+			<form role="form" id="create" action="/prints/store" method="POST" class="form horizontal">
 		  		{!! csrf_field() !!}
 		      <div class="form-group col-sm-4">
 		        <label for="title" class="control-label">Print Title</label>

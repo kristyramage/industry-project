@@ -30,19 +30,18 @@ class PrintsController extends Controller
         return view('print.create');
     }
 
-    public function save(Request $request)
+    public function store(Request $request)
     {
-        // mustbeAdmin();
-        // $print = Prints::where('id', '=', $_POST['print_id'])->firstOrFail();
-        
-
+        mustbeAdmin();
+        var_dump('here');
+        die();
         //{{ validationRules }}
-        $this->validate($request, [
-            'title' => 'required|max:120',
-            'price' => 'required|numeric',
-            'description' => 'required',
-            'poster' => 'required|image',
-            'quantity' => 'required|numeric',
+        $this->validate($request,[
+            'title'         => 'required|max:120',
+            'price'         => 'required|numeric',
+            'description'   => 'required',
+            'poster'        => 'required|image',
+            'quantity'      => 'required|numeric',
         ]);
 
         // Adds page breaks into textarea
@@ -50,11 +49,11 @@ class PrintsController extends Controller
 
         $newPrint = new Prints();
 
-        $newPrint->title = $request->title;
-        $newPrint->price = $request->price;
-        $newPrint->description = $request->description;
-        $newPrint->poster = $newFilename;
-        $newPrint->quantity = $request->quantity;
+        $newPrint->title        = $request->title;
+        $newPrint->price        = $request->price;
+        $newPrint->description  = $request->description;
+        $newPrint->poster       = $newFilename;
+        $newPrint->quantity     = $request->quantity;
 
         $newFilename = preg_replace("/[^0-9a-zA-Z]/", "", $request->title);
         $newPrint->poster = $newFilename;
@@ -76,7 +75,7 @@ class PrintsController extends Controller
 
         $newPrint->save();
 
-        return redirect('prints');
+        return redirect('/prints');
     }
 
     public function edit()
