@@ -36,10 +36,7 @@ Route::get('prints/{title}', 'PrintsController@show')->middleware(['web']);
 Route::post('prints/store', 'PrintsController@store')->middleware(['web', 'auth']);
 Route::get('prints/edit/{id}', 'PrintsController@edit')->middleware(['web', 'auth']);
 
-// Route::get('prints/update', 'PrintsController@update')->middleware(['web', 'auth']);
-
-
-
+Route::get('prints/update', 'PrintsController@update')->middleware(['web', 'auth']);
 
 // Route::get('removeprint/{id}', 'PrintsController@remove')->middleware(['web', 'auth']);
 // Route::delete('prints/destroy', 'PrintsController@destroy')->middleware(['web', 'auth']);

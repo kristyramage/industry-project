@@ -35,13 +35,13 @@ class PrintsController extends Controller
         mustbeAdmin();
 
         // validationRules
-        // $this->validate($request,[
-        //     'title'         => 'required|max:120',
-        //     'price'         => 'required|numeric',
-        //     'description'   => 'required',
-        //     'poster'        => 'required|image',
-        //     'quantity'      => 'required|numeric',
-        // ]);
+        $this->validate($request,[
+            'title'         => 'required|max:120',
+            'price'         => 'required|numeric',
+            'description'   => 'required',
+            'poster'        => 'required|image',
+            'quantity'      => 'required|numeric',
+        ]);
 
 
         // Adds page breaks into textarea
@@ -86,7 +86,6 @@ class PrintsController extends Controller
         mustbeAdmin();
         
         $prints = Prints::where('id', '=', $id)->firstOrFail();
-        // $id = $_GET['id'];
         return view('print.edit', compact('prints'));
     }
 

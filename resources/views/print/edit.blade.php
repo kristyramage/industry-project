@@ -1,7 +1,7 @@
 @extends('master')
 
-@section('title', '#')
-@section('meta-description', '#')
+@section('title', 'Edit')
+@section('meta-description', 'Edit existing prints in the database')
 
 @section('content')
 
@@ -12,7 +12,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 											<!-- is the method supposed to be POST? -->
-				<form role="form" id="edit" action="/prints/edit" method="GET" class="form horizontal">
+				<form role="form" id="edit" action="/prints/update" method="GET" class="form horizontal">
 		  		{!! csrf_field() !!}
 		      <div class="form-group col-sm-4">
 		        <label for="title" class="control-label">Print Title</label>
@@ -51,7 +51,6 @@
 		          {!! $errors->first('description','<span class="help-block">:message</span>') !!}
 		        </div>
 		      </div>
-			</div>
 
 			<div class="form-group col-sm-12">
 		        <div class="go-btn">

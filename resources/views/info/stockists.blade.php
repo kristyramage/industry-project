@@ -17,8 +17,8 @@
 				<p class="para-title" >Created Homewares,</p>
 				<p>
 					189 Main Street, 5018 Upper hutt <br>
-					<a href="https://createdhomewares.com/">website</a> <br>
-					<a href="https://www.facebook.com/createsomethingnz/">facebook</a> <br>
+					<a href="https://createdhomewares.com/" target="_blank">website</a> <br>
+					<a href="https://www.facebook.com/createsomethingnz/" target="_blank">facebook</a> <br>
 					Hours <br>
 					Tues-Fri: 09:30 - 17:30 <br>
 					Sat: 10:00 - 16:00 <br>

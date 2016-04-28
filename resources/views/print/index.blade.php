@@ -24,7 +24,7 @@
 				<img src="http://placehold.it/300x300" alt=" {{ $print->description }} " class="col-xs-12">
 			</a>
 			<p class="text-center">{{ $print->title }} <br>
-			{{ $print->price }}</p>
+			&#36;{{ $print->price }}</p>
 		</div>
 		@endforeach
 	</div>
