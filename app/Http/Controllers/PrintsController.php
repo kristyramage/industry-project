@@ -59,18 +59,18 @@ class PrintsController extends Controller
         $newFilename = preg_replace("/[^0-9a-zA-Z]/", "", $request->title);
         $newPrint->poster = $newFilename;
 
-        // Create Instance of Image Intervention
-        $manager = new ImageManager();
+            // Create Instance of Image Intervention
+            $manager = new ImageManager();
 
-        $printImage = $manager->make($request->poster);
+            $printImage = $manager->make($request->poster);
 
-        // product image size
-        $printImage->resize(300, 300);
-        $printImage->save('images/products/'.$newFilename.'.jpg', 60);
-        // thumbnail size
-        $printImage->resize(100, null, function ($constraint) {
-            $constraint->aspectRatio();
-        });
+            // product image size
+            $printImage->resize(300, 300);
+            $printImage->save('images/products/'.$newFilename.'.jpg', 60);
+            // thumbnail size
+            $printImage->resize(100, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
 
         $printImage->save('images/thumbnails/'.$newFilename.'.jpg', 60);
 
