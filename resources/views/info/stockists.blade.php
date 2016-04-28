@@ -4,7 +4,7 @@
 @section('meta-description', 'Here is where you can get directions to purchase Captured Write prints instore')
 
 @section('content')
-	<h1 class="pageTitle">Stockists page</h1>
+	<h1 class="pageTitle">Stockists</h1>
 	<hr>
 	<div class="row">
 		<div class="col-xs-12 col-sm-4">
@@ -27,4 +27,9 @@
 
 	</div>
 	
+@endsection
+
+@section('scripts')
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVebhaouYOuLGqNRVaC7HwfNhoyHyEhJI&callback=initMap"async defer></script>
+    <script src="/js/map.js"></script>
 @endsection
