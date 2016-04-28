@@ -11,7 +11,7 @@
 	@if(\Auth::user()->role === 'admin')
 
 		<div class="go-btn">
-	        <a class="btn" href="/print/edit">Edit Print</a>	
+	        <a class="btn" href="/prints/edit/{{$prints->id}}">Edit Print</a>	
 	    </div>
 	@endif()
 @endif()

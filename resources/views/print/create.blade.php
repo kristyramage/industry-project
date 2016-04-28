@@ -12,7 +12,7 @@
 	<div class="row">
 		<div class="col-xs-12">
 
-			<form role="form" id="create" action="/prints/store" method="POST" class="form horizontal">
+			<form role="form" id="create" action="store" method="POST" class="form horizontal">
 		  		{!! csrf_field() !!}
 		      <div class="form-group col-sm-4">
 		        <label for="title" class="control-label">Print Title</label>
@@ -38,12 +38,6 @@
 		        </div>
 		      </div>
 
-		        <div class="form-group col-xs-12 col-md-4">
-					<label for="poster">Print Poster</label>
-					<input type="file" for="poster" name="poster">
-					{!! $errors->first('poster','<span class="help-block">:message</span>') !!}
-				</div>
-
 		      <div class="form-group col-xs-12 col-sm-8">
 		        <label for="description" class="control-label">Print Description</label>
 		        <div>
@@ -51,6 +45,14 @@
 		          {!! $errors->first('description','<span class="help-block">:message</span>') !!}
 		        </div>
 		      </div>
+		      
+		        <div class="form-group col-xs-12 col-md-4">
+					<label for="poster">Print Poster</label>
+					<input type="file" for="poster" name="poster">
+					{!! $errors->first('poster','<span class="help-block">:message</span>') !!}
+				</div>
+
+		      
 
 
 		      <div class="form-group col-sm-12">

@@ -30,11 +30,12 @@ Route::get('custom', 'ShopController@custom')->middleware('web');
 Route::get('prints/create', 'PrintsController@create')->middleware(['web', 'auth']);
 Route::get('prints/{title}', 'PrintsController@show')->middleware(['web']);
 
-Route::get('prints/store', 'PrintsController@store')->middleware(['web', 'auth']);
-Route::post('prints/store', 'PrintsController@store')->middleware(['web', 'auth']);
 
-// Route::get('prints/{title}', 'PrintsController@store')->middleware(['web', 'auth']);
-// Route::post('prints/edit', 'PrintsController@edit')->middleware(['web', 'auth']);
+
+// Route::get('prints/store', 'PrintsController@store')->middleware(['web', 'auth']);
+Route::post('prints/store', 'PrintsController@store')->middleware(['web', 'auth']);
+Route::get('prints/edit/{id}', 'PrintsController@edit')->middleware(['web', 'auth']);
+
 // Route::get('prints/update', 'PrintsController@update')->middleware(['web', 'auth']);
 
 

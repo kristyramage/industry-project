@@ -33,16 +33,16 @@ class PrintsController extends Controller
     public function store(Request $request)
     {
         mustbeAdmin();
-        var_dump('here');
-        die();
-        //{{ validationRules }}
-        $this->validate($request,[
-            'title'         => 'required|max:120',
-            'price'         => 'required|numeric',
-            'description'   => 'required',
-            'poster'        => 'required|image',
-            'quantity'      => 'required|numeric',
-        ]);
+
+        // validationRules
+        // $this->validate($request,[
+        //     'title'         => 'required|max:120',
+        //     'price'         => 'required|numeric',
+        //     'description'   => 'required',
+        //     'poster'        => 'required|image',
+        //     'quantity'      => 'required|numeric',
+        // ]);
+
 
         // Adds page breaks into textarea
         $description = nl2br(htmlspecialchars($_POST['description']));
@@ -52,17 +52,19 @@ class PrintsController extends Controller
         $newPrint->title        = $request->title;
         $newPrint->price        = $request->price;
         $newPrint->description  = $request->description;
-        $newPrint->poster       = $newFilename;
+        $newPrint->poster       = $request->poster;
         $newPrint->quantity     = $request->quantity;
 
         $newFilename = preg_replace("/[^0-9a-zA-Z]/", "", $request->title);
-        $newPrint->poster = $newFilename;
 
+        // $newPrint->poster = $newFilename;
+        
             // Create Instance of Image Intervention
             $manager = new ImageManager();
 
             $printImage = $manager->make($request->poster);
-
+            // $printImage = Image::make($request->poster);
+            
             // product image size
             $printImage->resize(300, 300);
             $printImage->save('images/products/'.$newFilename.'.jpg', 60);
@@ -70,19 +72,22 @@ class PrintsController extends Controller
             $printImage->resize(100, null, function ($constraint) {
                 $constraint->aspectRatio();
             });
+            $printImage->save('images/thumbnails/'.$newFilename.'.jpg', 60);
 
-        $printImage->save('images/thumbnails/'.$newFilename.'.jpg', 60);
-
+        var_dump('here');
+        die();
         $newPrint->save();
 
         return redirect('/prints');
     }
 
-    public function edit()
+    public function edit($id)
     {
-        // mustbeAdmin();
-
-        return view('print.edit');
+        mustbeAdmin();
+        
+        $prints = Prints::where('id', '=', $id)->firstOrFail();
+        // $id = $_GET['id'];
+        return view('print.edit', compact('prints'));
     }
 
 
