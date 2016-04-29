@@ -20,7 +20,7 @@
 	<div id="featproducts" class="row">
 		@foreach($allPrints as $print)
 		<div class="col-xs-12 col-sm-4">
-			<a href="prints/{{$print->title}}">
+			<a href="/prints/{{$print->title}}">
 				<img src="http://placehold.it/300x300" alt=" {{ $print->description }} " class="col-xs-12">
 			</a>
 			<p class="text-center">{{ $print->title }} <br>
