@@ -12,8 +12,10 @@
 		<div class="row">
 			<div class="col-xs-12">
 											<!-- is the method supposed to be POST? -->
-				<form role="form" id="edit" action="/prints/update" method="GET" class="form horizontal">
+				<form role="form" id="edit" action="/prints/update" method="POST" class="form horizontal" enctype="multipart/form-data">
 		  		{!! csrf_field() !!}
+		  		 <input type="hidden" name="id" value="{{$prints->id}}">
+
 		      <div class="form-group col-sm-4">
 		        <label for="title" class="control-label">Print Title</label>
 		        <div>

@@ -92,39 +92,64 @@ class PrintsController extends Controller
         return view('print.edit', compact('prints'));
     }
 
-
-     
-
-    
-
-    public function update($id, Request $request)
+    public function update(Request $request)
     {
-        // mustbeAdmin();
-        // // {{validationRules}}
-        // $this->validate($request, [
-        //     'title' => 'required|max:120',
-        //     'price' => 'required|numeric',
-        //     'description' => 'required',
-        //     'poster' => 'required|image',
-        //     'quantity' => 'required|numeric',
-        //     ]);
+        mustbeAdmin();
+        // {{validationRules}}
+        $this->validate($request, [
+            'title' => 'required|max:120',
+            'price' => 'required|numeric',
+            'description' => 'required',
+            'poster' => 'image',
+            'quantity' => 'required|numeric',
+            ]);
 
-        // $print = Prints::findOrFail($id);
+        $id = $_POST['id'];
+        $editPrint = Prints::findOrFail($id);
+
+        $editPrint->title = $request->title;
+        $editPrint->price = $request->price;
+        $editPrint->description = $request->description;
+        $editPrint->quantity = $request->quantity;
         // $print->update($request->all());
 
-        // // Create Instance of Image Intervention
-        // $manager = new ImageManager();
+        if(!isset($_FILES['poster']) || $_FILES['poster']['error'] == UPLOAD_ERR_NO_FILE) {
 
-        // $productImage = $manager->make($request->poster);
+            $posterName = $editPrint['poster'];
+            $editPrint->poster = $posterName;
+        
+        } else {
+            $oldFilename = $editPrint['poster'];
+            // remove old image
+            unlink('images/products/'.$oldFilename.'.jpg');
+            unlink('images/thumbnails/'.$oldFilename.'.jpg');
+            // add new image
+            $newFilename = preg_replace("/[^0-9a-zA-Z]/", "", $request->title);
 
-        // $productImage->resize(300, 300);
-        // $productImage->save('images/products/'.$newFilename.'.jpg', 60);
+            $editPrint->poster = $newFilename;
+        
+            // Create Instance of Image Intervention
+            $manager = new ImageManager();
 
-        // $print->save()
+            $printImage = $manager->make($request->poster);
+            
+            // product image size
+            $printImage->resize(300, 300);
+            $printImage->save('images/products/'.$newFilename.'.jpg', 60);
+            // thumbnail size
+            $printImage->resize(100, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            $printImage->save('images/thumbnails/'.$newFilename.'.jpg', 60);
+
+        }
+        
+
+        $editPrint->save();
 
         // Session::flash('flash_message', 'Prints updated!');
 
-       // return redirect('print/{title}');
+       return redirect('prints/'.$_POST['title']);
     }
 
     public function remove($id){

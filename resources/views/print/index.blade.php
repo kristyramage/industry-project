@@ -21,7 +21,7 @@
 		@foreach($allPrints as $print)
 		<div class="col-xs-12 col-sm-4">
 			<a href="/prints/{{$print->title}}">
-				<img src="http://placehold.it/300x300" alt=" {{ $print->description }} " class="col-xs-12">
+				<img src="images/products/{{ $print->poster }}.jpg" alt=" {{ $print->description }} " class="col-xs-12">
 			</a>
 			<p class="text-center">{{ $print->title }} <br>
 			&#36;{{ $print->price }}</p>
