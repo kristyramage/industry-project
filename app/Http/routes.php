@@ -11,48 +11,51 @@
 |
 */
 
-Route::get('/', 'HomeController@index')->middleware('web');
+Route::get('/', 'HomeController@index');
 
-Route::get('register', 'Auth\AuthController@getRegister')->middleware('web');
-Route::post('register', 'Auth\AuthController@postRegister')->middleware('web');
-Route::get('logout', 'Auth\AuthController@logout')->middleware('web');
-Route::get('login', 'Auth\AuthController@getLogin')->middleware('web');
-Route::post('login', 'Auth\AuthController@postLogin')->middleware('web');
-
-
-Route::get('about', 'AboutController@index')->middleware('web');
+Route::get('register', 'Auth\AuthController@getRegister');
+Route::post('register', 'Auth\AuthController@postRegister');
+Route::get('logout', 'Auth\AuthController@logout');
+Route::get('login', 'Auth\AuthController@getLogin');
+Route::post('login', 'Auth\AuthController@postLogin');
 
 
-Route::get('prints', 'PrintsController@index')->middleware('web');
-Route::get('custom', 'ShopController@custom')->middleware('web');
+Route::get('about', 'AboutController@index');
+
+
+Route::get('prints', 'PrintsController@index');
+Route::get('custom', 'ShopController@custom');
 
  // routes must be listed this way
-Route::get('prints/create', 'PrintsController@create')->middleware(['web', 'auth']);
-Route::get('prints/{title}', 'PrintsController@show')->middleware(['web']);
+Route::get('prints/create', 'PrintsController@create')->middleware(['auth']);
+Route::get('prints/{title}', 'PrintsController@show');
 
 
 
-// Route::get('prints/store', 'PrintsController@store')->middleware(['web', 'auth']);
-Route::post('prints/store', 'PrintsController@store')->middleware(['web', 'auth']);
-Route::get('prints/edit/{id}', 'PrintsController@edit')->middleware(['web', 'auth']);
-
-Route::get('prints/update', 'PrintsController@update')->middleware(['web', 'auth']);
-
-// Route::get('removeprint/{id}', 'PrintsController@remove')->middleware(['web', 'auth']);
-// Route::delete('prints/destroy', 'PrintsController@destroy')->middleware(['web', 'auth']);
-
-Route::get('cart', 'ShopController@cart')->middleware('web');
-
-Route::get('gallery', 'GalleryController@index')->middleware('web');
-
-Route::get('stockists', 'InfoController@stockists')->middleware('web');
-Route::get('shipping', 'InfoController@shipping')->middleware('web');
-Route::get('tandc', 'InfoController@tandc')->middleware('web');
-
-Route::get('contact', 'ContactController@index')->middleware('web');
+// Route::get('prints/store', 'PrintsController@store')->middleware(['', 'auth']);
+Route::get('store', 'PrintsController@store')->middleware(['auth']);
+Route::post('store', 'PrintsController@store')->middleware(['auth']);
 
 
+Route::get('prints/edit/{id}', 'PrintsController@edit')->middleware(['auth']);
 
-Route::group(['middleware' => ['web']], function () {
-	//
-});
+Route::get('prints/update', 'PrintsController@update')->middleware(['auth']);
+
+// Route::get('removeprint/{id}', 'PrintsController@remove')->middleware(['auth']);
+// Route::delete('prints/destroy', 'PrintsController@destroy')->middleware(['auth']);
+
+Route::get('cart', 'ShopController@cart');
+
+Route::get('gallery', 'GalleryController@index');
+
+Route::get('stockists', 'InfoController@stockists');
+Route::get('shipping', 'InfoController@shipping');
+Route::get('tandc', 'InfoController@tandc');
+
+Route::get('contact', 'ContactController@index');
+
+
+
+// Route::group(['middleware' => ['web']], function () {
+// 	//
+// });
