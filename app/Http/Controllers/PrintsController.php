@@ -44,7 +44,7 @@ class PrintsController extends Controller
             'title'=>'required|max:50',
             'price'=>'required|numeric',     
             'description'=>'required',        
-            'poster'=>'image',      
+            'poster'=>'required|image',      
             'quantity'=>'required|numeric',
         ]);
 

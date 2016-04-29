@@ -19,7 +19,7 @@
 		<div class="col-xs-12 col-md-5">
 
 			@if($prints->poster !="")
-		      <img src="/images/products/{{$prints->poster}}" alt="{{$prints->title}} poster">
+		      <img src="../images/products/{{ $prints->poster }}.jpg" alt=" {{ $prints->description }} ">
 		    @else
 		      <p><small>No image found</small></p>
 		    @endif
