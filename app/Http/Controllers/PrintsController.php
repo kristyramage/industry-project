@@ -153,22 +153,27 @@ class PrintsController extends Controller
     }
 
     public function remove($id){
-        // mustbeAdmin();
-        // $print = Prints::findOrFail($id);
-        // return view('print.confirm_delete', compact('print'));
+        mustbeAdmin();
+        var_dump("here1");
+        
+        $prints = Prints::firstOrFail($id);
+        // $prints = Prints::where('id', '=', $id)->firstOrFail();
+
+        var_dump("here2");
+        return view('print.deleteMsg', compact('prints'));
     }
 
     public function destroy($id)
     {
-        // mustbeAdmin();
-        // Prints::destroy($id);
+        mustbeAdmin();
+        Prints::destroy($id);
 
-        // $print = Prints::findOrFail($id);
-        // $print->delete();
+        $print = Prints::findOrFail($id);
+        $print->delete();
 
        // Session::flash('flash_message', 'Prints deleted!');
 
-        // return redirect('shop.index');
+        return redirect('prints.index');
     }
 
     public function getFormData($id = null){    

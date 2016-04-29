@@ -63,7 +63,7 @@
 			
 			<div class="form-group col-sm-12">
 		        <div class="go-btn">
-					<a href="/Remove-Print/{{ $prints->id }}" class="btn btn-danger" role="button">
+					<a href="/prints/removeprint/{{$prints->id}}" class="btn btn-danger" role="button">
 						<i class="glyphicon glyphicon-remove"></i> Remove Print
 					</a>
 				</div>

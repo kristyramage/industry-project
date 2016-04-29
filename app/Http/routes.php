@@ -30,18 +30,13 @@ Route::get('custom', 'ShopController@custom');
 Route::get('prints/create', 'PrintsController@create')->middleware(['auth']);
 Route::get('prints/{title}', 'PrintsController@show');
 
-
-
-// Route::get('prints/store', 'PrintsController@store')->middleware(['', 'auth']);
 Route::get('store', 'PrintsController@store')->middleware(['auth']);
 Route::post('store', 'PrintsController@store')->middleware(['auth']);
 
-
 Route::get('prints/edit/{id}', 'PrintsController@edit')->middleware(['auth']);
-
 Route::post('prints/update', 'PrintsController@update')->middleware(['auth']);
 
-// Route::get('removeprint/{id}', 'PrintsController@remove')->middleware(['auth']);
+Route::get('prints/removeprint/{id}', 'PrintsController@remove')->middleware(['auth']);
 // Route::delete('prints/destroy', 'PrintsController@destroy')->middleware(['auth']);
 
 Route::get('cart', 'ShopController@cart');
