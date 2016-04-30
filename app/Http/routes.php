@@ -26,7 +26,7 @@ Route::get('about', 'AboutController@index');
 Route::get('prints', 'PrintsController@index');
 Route::get('custom', 'ShopController@custom');
 
- // routes must be listed this way
+ // CRUD
 Route::get('prints/create', 'PrintsController@create')->middleware(['auth']);
 Route::get('prints/{title}', 'PrintsController@show');
 
@@ -37,9 +37,12 @@ Route::get('prints/edit/{id}', 'PrintsController@edit')->middleware(['auth']);
 Route::post('prints/update', 'PrintsController@update')->middleware(['auth']);
 
 Route::get('prints/removeprint/{id}', 'PrintsController@remove')->middleware(['auth']);
-// Route::delete('prints/destroy/{id}', 'PrintsController@destroy')->middleware(['auth']);
 
-Route::get('cart', 'ShopController@cart');
+
+
+Route::get('cart', 'CartController@index');
+
+
 
 Route::get('gallery', 'GalleryController@index');
 
@@ -50,7 +53,3 @@ Route::get('tandc', 'InfoController@tandc');
 Route::get('contact', 'ContactController@index');
 
 
-
-// Route::group(['middleware' => ['web']], function () {
-// 	//
-// });
