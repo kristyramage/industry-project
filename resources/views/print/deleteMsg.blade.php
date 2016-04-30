@@ -13,7 +13,7 @@
 			Are you sure you want to delete
 		</h2>
 		<p class="para-title">
-			{{ $prints->title }}
+			{{ $removePrint->title }}
 		</p>
 		<div class="form-group col-sm-12">
 		        <div class="go-btn">

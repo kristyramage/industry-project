@@ -7,8 +7,6 @@
 
 <h1 class="pageTitle">Edit print</h1>
 <hr>
-	@if(\Auth::check())
-	@if(\Auth::user()->role === 'admin')
 		<div class="row">
 			<div class="col-xs-12">
 											<!-- is the method supposed to be POST? -->
@@ -71,9 +69,6 @@
 
 			</div>
 		</div>
-		@endif()
-	@endif()
-
 	
 
 @endsection

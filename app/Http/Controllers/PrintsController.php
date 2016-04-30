@@ -6,9 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\Prints;
-// use App\User as User;
 use Intervention\Image\ImageManager;
-// use Image;
+use Session;
 
 class PrintsController extends Controller
 {
@@ -154,26 +153,10 @@ class PrintsController extends Controller
 
     public function remove($id){
         mustbeAdmin();
-        var_dump("here1");
-        
-        $prints = Prints::firstOrFail($id);
-        // $prints = Prints::where('id', '=', $id)->firstOrFail();
-
-        var_dump("here2");
-        return view('print.deleteMsg', compact('prints'));
-    }
-
-    public function destroy($id)
-    {
-        mustbeAdmin();
-        Prints::destroy($id);
-
-        $print = Prints::findOrFail($id);
-        $print->delete();
-
-       // Session::flash('flash_message', 'Prints deleted!');
-
-        return redirect('prints.index');
+        $singleProduct = Prints::findOrFail($id);
+        $singleProduct->delete();
+        Session::flash('success', 'You have deleted a print!');
+        return redirect('prints');
     }
 
     public function getFormData($id = null){    

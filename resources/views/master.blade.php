@@ -12,6 +12,7 @@
 </head>
 <body>
 	<div class="container">
+
 		<div class="col-sm-12 text-center">
 			<img src="/images/logo/cplogo.png" alt="Captured write logo" class="logo">
 		</div>
@@ -47,6 +48,7 @@
 		</nav> 
 
 
+		@include('partials._messages')
 		
 		<div class="content row">
 			@yield('content')
