@@ -142,13 +142,12 @@ class PrintsController extends Controller
             $printImage->save('images/thumbnails/'.$newFilename.'.jpg', 60);
 
         }
-        
 
         $editPrint->save();
 
-        // Session::flash('flash_message', 'Prints updated!');
+        Session::flash('success', 'You have updated a print!');
 
-       return redirect('prints/'.$_POST['title']);
+        return redirect('prints/'.$_POST['title']);
     }
 
     public function remove($id){
