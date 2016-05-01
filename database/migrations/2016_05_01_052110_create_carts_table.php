@@ -18,11 +18,15 @@ class CreateCartsTable extends Migration
             $table->integer('print_id')->unsigned();
             $table->foreign('print_id')->references('id')->on('prints') // ->onDelete('cascade')->onUpdate('cascade');
 
-            $table->enum('size', array('A5', 'A4', 'A3'))->default('A4'); // new table ??? price comes from the size
-            $table->boolean('framed'); // new table ??? additional cost depends on size
+            $table->integer('size_id')->unsigned();
+            $table->foreign('size_id')->references('id')->on('print_sizes') // ->onDelete('cascade')->onUpdate('cascade');
+
+            $table->integer('frame_id')->unsigned();
+            $table->foreign('frame_id')->references('id')->on('frames_sizes') // ->onDelete('cascade')->onUpdate('cascade');
 
             $table->smallInteger('quantity');
-            $table->decimal('priceAtPurchase', 6, 2);
+            // $table->decimal('priceAtPurchase', 6, 2);
+            // $table->decimal('subtotal', 6, 2); // quantity * priceAtPurchace  // maybe not
             $table->timestamps();
         };
     }

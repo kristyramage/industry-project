@@ -37,36 +37,48 @@
 			    <p>{{ $prints->description }}</p>
 			</div>
 
-			<div class="form-group col-sm-6">
-		        <label for="size" class="control-label">Size</label>
-		        <div>
-		          <select class="form-control" id="size" name="size"
-		            value=" ">
-		            <option>A5</option>
-		            <option>A4</option>
-		            <option>A3</option>
-		            <option>A2</option>
-		          </select>
-		          <div class="help-block"></div>
+
+			<form role="form" id="addtocart" action="/addtocart" method="POST" class="form horizontal" enctype="multipart/form-data">
+		  		{!! csrf_field() !!}
+		  		 <input type="hidden" name="id" value="{{$prints->id}}">
+
+		      	<div class="form-group col-sm-4">
+			      	<label for="size" class="control-label">Size</label>
+			        <div>
+			          <select class="form-control" id="size" name="size"
+			            value=" ">
+			            <option>A5</option>
+			            <option selected="selected">A4</option>
+			            <option>A3</option>
+			            <option>A2</option>
+			          </select>
+			          {!! $errors->first('size','<span class="help-block">:message</span>') !!}
+			        </div>
 		        </div>
-		    </div>
 
-		    <div class="form-group col-sm-6">
-		        <label type="checkbox" name="framed" value="framed">Framed</label>
-		        <div>
-		          <input type="checkbox" class="form-control" id="framed" name="framed">
-		          <div class="help-block"></div>
+		        <div class="form-group col-sm-4">
+			        <label for="print_quantity" class="control-label">Quantity</label>
+			        <div>
+			          <input type="number" class="form-control" id="print_quantity" name="print_quantity" value="1">
+			          {!! $errors->first('print_quantity','<span class="help-block">:message</span>') !!}
+			        </div>
 		        </div>
-		    </div>
 
-		    <form id="addToCart" action="/addtocart" method="POST" class="col-xs-12" enctype="multipart/form-data">
-		    	{!! csrf_field() !!}
+		        <div class="form-group col-sm-4">
+			        <label type="checkbox" name="framed" value="framed">Framed</label>
+			        <div>
+			          <input type="checkbox" class="form-control" id="framed" name="framed">
+			        </div>
+		    	</div>
 
-		    	<button type="submit" name="addtocart" class="btn btn-default col-xs-12 space">
-		    		<span class="glyphicon glyphicon-shopping-cart"></span>  ADD TO CART
-		    	</button>
-		    	
-		    </form>
+		    	<div class="col-xs-12">
+			    	<button type="submit" name="addtocart" class="btn btn-default col-xs-12">
+			    		<span class="glyphicon glyphicon-shopping-cart"></span>  ADD TO CART
+			    	</button>
+			    </div>
+
+		  	</form>
+
 
 		</div>
 		

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Prints;
+// use App\Cart;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -17,8 +18,64 @@ class CartController extends Controller {
 	}
 
 	public function add() {
-
+		// include all Models from the database
+		$Print = Prints::where('id', '=', $_POST['print_id'])->firstOrFail();
+		// $Size = Sizes::where('id', '=', $_POST['size_id'])->firstOrFail();	// deciding on creation
+		// $Frame = Frames::where('id', '=', $_POST['frame_id'])->firstOrFail();	// deciding on creation
 		
+		// Validation
+		$this->validate($request,[
+				'size'=>'required',
+				'print_quantity'=>'required|min:1|numeric',
+			]);
+
+		// Calculate totals
+		// $SubtotalPrice = $Print['print_price'] * $_POST['print_quantity'];
+		$TotalPrice = $Print['price'] * $_POST['print_quantity'];
+
+		// the cart is already set! need to add more
+		if(isset($_POST['addtocart'])){
+			$PrintFound = false;
+			$addPrintID = $Print['id'];
+			$cart = Cart::all();
+
+			foreach($cart as &$item) {
+					if (($item['print_id'] == $addPrintID){
+						$PrintFound = true;
+					}
+			}
+
+			// if($PrintFound == true){
+			// 		//	Goes over each of the items in the cart and if there is a match with the cartID and printID 
+			// 		//	it will update the cart item instead of creating a new one
+			// 		foreach($cart as &$item) {
+			// 			 if (($item['print_id'] == $addPrintID) & ($item['cart_id'] == $cartID)) {
+			// 				$Print->quantity = $Print['quantity'] - $_POST['print_quantity'];
+			// 				$Print->save();
+			// 				$updateCart = Cart::where('print_id', '=', $addPrintID)->firstOrFail();
+			// 				$updateCart->print_id = $item['print_id'];
+			// 				$updateCart->quantity = $item['quantity'] + $_POST['print_quantity'];
+			// 				$updateCart->subtotal = $item['subtotal'] + $TotalTicketPrice;
+			// 				break;
+			// 			}
+			// 		} 
+			// 		$updateCart->save();
+			// } else if ($PrintFound == false){
+			// 		//Update Available tickets for the print
+			// 		$Print->tickets_available = $Print['tickets_available'] - $request->print_quantity;
+			// 		$Print->save();
+			// 		//Adding Print to the users cart
+			// 		$newCart = new Cart();
+			// 		$newCart->user_id = \Auth::user()->id;
+			// 		$newCart->print_id = $request->print_id;
+			// 		$newCart->price = $Print['ticket_price'];
+			// 		$newCart->quantity = $request->print_quantity;
+			// 		$newCart->subtotal = $TotalTicketPrice;
+			// 		$newCart->save();
+			// }
+
+
+		}
 
 	}
 
