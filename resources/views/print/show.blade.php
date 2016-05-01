@@ -59,12 +59,14 @@
 		        </div>
 		    </div>
 
-		    <div class="col-xs-12">
-		    	<a href="#" class="btn btn-default col-xs-12 space" role="button">
-			        <span class="glyphicon glyphicon-shopping-cart"></span> 
-			        ADD TO CART
-			    </a>
-		    </div>
+		    <form id="addToCart" action="/addtocart" method="POST" class="col-xs-12" enctype="multipart/form-data">
+		    	{!! csrf_field() !!}
+
+		    	<button type="submit" name="addtocart" class="btn btn-default col-xs-12 space">
+		    		<span class="glyphicon glyphicon-shopping-cart"></span>  ADD TO CART
+		    	</button>
+		    	
+		    </form>
 
 		</div>
 		

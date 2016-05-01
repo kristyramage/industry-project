@@ -41,7 +41,7 @@ Route::get('prints/removeprint/{id}', 'PrintsController@remove')->middleware(['a
 
 
 Route::get('cart', 'CartController@index');
-
+Route::post('addtocart', 'CartController@add');
 
 
 Route::get('gallery', 'GalleryController@index');
