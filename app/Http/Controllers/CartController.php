@@ -19,88 +19,93 @@ class CartController extends Controller {
 		return view('cart.index');
 	}
 
-	public function add() {
+	public function add(Request $request) {
+		
+		// include all Models from the database
+		$Print = Prints::where('id', '=', $_POST['id'])->firstOrFail();
+		$Size = PrintSizes::where('id', '=', $_POST['id'])->firstOrFail();
+		$Frame = Frames::where('id', '=', $_POST['id'])->firstOrFail();
 
+		// Validation
+		$this->validate($request,[
+				'size'=>'required',
+				'print_quantity'=>'required|min:1|numeric',
+			]);
+
+		// Create a session_id
 		if(! Session::has('Cart')){
+			// Create a session_id
 			Session::put('Cart', $array = []);
 			Session::push('Cart', $array = [
-				'session_id' => substr(str_shuffle(MD5(microtime())), 0, 10),
-			    		
+				'session_id' => substr(str_shuffle(MD5(microtime())), 0, 10),		
 			]);
+
 		}
-		
 
-		// Session::forget('Cart');
+		if(isset($_POST['framed'])){
+			$size = $_POST['size'];
+			$frame = Frames::where('size', '=', $size);
 
-		// var_dump($_POST);
-		
-		// var_dump($size);
-		// if(isset($_POST['framed'])){
-		// 	$size = $_POST['size'];
-		// 	$frame = Frame::where('size', '=', $size);
-
-		// 	// $cart->frame_id = $frame['id'];
-		// } else {
-		// 	// $cart->frame_id = 0;
+			$Cart->frame_id = $frame['id'];
+		 } // else {
+		// 	$Cart->frame_id = 0;
 		// }
-		// include all Models from the database
-		// $Print = Prints::where('id', '=', $_POST['id'])->firstOrFail();
-		// $Size = Sizes::where('id', '=', $_POST['size_id'])->firstOrFail();	// deciding on creation
-		// $Frame = Frames::where('id', '=', $_POST['frame_id'])->firstOrFail();	// deciding on creation
-		
-		// // Validation
-		// $this->validate($request,[
-		// 		'size'=>'required',
-		// 		'print_quantity'=>'required|min:1|numeric',
-		// 	]);
+
 
 		// Calculate totals
-		// $SubtotalPrice = $Print['print_price'] * $_POST['print_quantity'];
-		// $TotalPrice = $Print['price'] * $_POST['print_quantity'];
+		$subtotalPrice = ($Size['size_price'] + $Print['price'] + $Frame['size-price']) * $_POST['print_quantity'];
 
 		// the cart is already set! need to add more
-		// if(isset($_POST['addtocart'])){
-		// 	$PrintFound = false;
-		// 	$addPrintID = $Print['id'];
-		// 	$cart = Cart::all();
+		if(isset($_POST['addtocart'])){
+			$PrintFound = false;
+			$addPrintID = $Print['id'];
+			$Cart_Session = Session::get('Cart', array['session_id']);
+			var_dump($Cart_Session);
+			die();
+			// $Cart_SeshID = $Cart_Session[$array['session_id']];
+			$Cart = Cart::all();
 
-		// 	foreach($cart as &$item) {
-		// 			if (($item['print_id'] == $addPrintID){
-		// 				$PrintFound = true;
-		// 			}
-		// 	}
+			foreach($Cart as &$item) {
+				if (($item['print_id'] == $addPrintID) & ($item['session_id'] == $Cart_SeshID)) {
+					$PrintFound = true;
+				}
+			}
 
-			// if($PrintFound == true){
-			// 		//	Goes over each of the items in the cart and if there is a match with the cartID and printID 
-			// 		//	it will update the cart item instead of creating a new one
-			// 		foreach($cart as &$item) {
-			// 			 if (($item['print_id'] == $addPrintID) & ($item['cart_id'] == $cartID)) {
-			// 				$Print->quantity = $Print['quantity'] - $_POST['print_quantity'];
-			// 				$Print->save();
-			// 				$updateCart = Cart::where('print_id', '=', $addPrintID)->firstOrFail();
-			// 				$updateCart->print_id = $item['print_id'];
-			// 				$updateCart->quantity = $item['quantity'] + $_POST['print_quantity'];
-			// 				$updateCart->subtotal = $item['subtotal'] + $TotalTicketPrice;
-			// 				break;
-			// 			}
-			// 		} 
-			// 		$updateCart->save();
-			// } else if ($PrintFound == false){
-			// 		//Update Available tickets for the print
-			// 		$Print->tickets_available = $Print['tickets_available'] - $request->print_quantity;
-			// 		$Print->save();
-			// 		//Adding Print to the users cart
-			// 		$newCart = new Cart();
-			// 		$newCart->user_id = \Auth::user()->id;
-			// 		$newCart->print_id = $request->print_id;
-			// 		$newCart->price = $Print['ticket_price'];
-			// 		$newCart->quantity = $request->print_quantity;
-			// 		$newCart->subtotal = $TotalTicketPrice;
-			// 		$newCart->save();
-			// }
+			if($PrintFound == true){
+					//	Goes over each of the items in the cart and if there is a match with the cartID and printID 
+					//	it will update the cart item instead of creating a new one
+					foreach($Cart as &$item) {
+						 if (($item['print_id'] == $addPrintID) & ($item['cart_id'] == $cartID)) {
+							$Print->quantity = $Print['quantity'] - $_POST['print_quantity'];
+							$Print->save();
+
+							$updateCart = Cart::where('print_id', '=', $addPrintID)->firstOrFail();
+							$updateCart->print_id = $item['print_id'];
+							$updateCart->size_id = $item['size_id'];
+							$updateCart->frame_id = $item['frame_id'];
+							$updateCart->quantity = $item['quantity'] + $_POST['print_quantity'];
+							$updateCart->subtotal = $item['subtotal'] + $TotalTicketPrice;
+							break;
+						}
+					} 
+					$updateCart->save();
+			} else if ($PrintFound == false){
+					//Update Available prints for the prin
+					$Print->quantity = $Print['quantity'] - $request->quantity;
+					$Print->save();
+					//Adding Print to the users cart
+					$newCart = new Cart();
+					$newCart->session_id = $Cart_SeshID;
+					$newCart->print_id = $Print->id;
+					$newCart->size_id = $Size->id;
+					$newCart->frame_id = $Frame->id;
+					$newCart->quantity = $request->quantity;
+					$newCart->subtotal = $subtotalPrice;
+					$newCart->save();
+			}
 
 
-		// }
+		}
 
 		// return redirect('cart');
 	}
