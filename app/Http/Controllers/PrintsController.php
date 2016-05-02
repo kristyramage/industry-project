@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\Prints;
+use App\PrintSizes;
 use Intervention\Image\ImageManager;
 use Session;
 
@@ -22,7 +23,8 @@ class PrintsController extends Controller
         // var_dump("show");
         // die();
         $prints = Prints::where('title', "=", $title)->firstOrFail();
-        return view('print.show', compact('prints'));
+        $sizes = PrintSizes::all();
+        return view('print.show', compact('prints', 'sizes'));
     }
 
     public function create()

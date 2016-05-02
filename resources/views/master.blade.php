@@ -11,6 +11,9 @@
 	<link rel="stylesheet" type="text/css" href="/css/main.css">
 </head>
 <body>
+	@include('partials._cart')
+
+
 	<div class="container">
 
 		<div class="col-sm-12 text-center">

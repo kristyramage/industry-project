@@ -47,10 +47,9 @@
 			        <div>
 			          <select class="form-control" id="size" name="size"
 			            value=" ">
-			            <option>A5</option>
-			            <option selected="selected">A4</option>
-			            <option>A3</option>
-			            <option>A2</option>
+			            @foreach($sizes as $size) 
+			            	<option>{{ $size->size}}</option>
+			            @endforeach
 			          </select>
 			          {!! $errors->first('size','<span class="help-block">:message</span>') !!}
 			        </div>
