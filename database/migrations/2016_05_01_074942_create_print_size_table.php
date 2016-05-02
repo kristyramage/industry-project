@@ -14,15 +14,13 @@ class CreatePrintSizeTable extends Migration
     {
         Schema::create('print_sizes', function (Blueprint $table) {
             $table->increments('id')->unsigned();
-
-            $table->enum('size', array('A5', 'A4', 'A3', 'A2')); 
+            $table->string('size', 4); 
             $table->decimal('size_price', 6, 2);
             $table->decimal('paper_weight_grams', 6, 2);
             $table->decimal('paper_hight_mm', 6, 2);
             $table->decimal('paper_width_mm', 6, 2);
-
             $table->timestamps();
-        };
+        });
     }
 
     /**

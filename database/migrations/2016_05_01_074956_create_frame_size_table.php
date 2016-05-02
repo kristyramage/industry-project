@@ -14,16 +14,14 @@ class CreateFrameSizeTable extends Migration
     {
         Schema::create('frame_sizes', function (Blueprint $table) {
             $table->increments('id')->unsigned();
-            
-            $table->enum('size', array('none', 'A5', 'A4', 'A3', 'A2')); 
+            $table->string('size', 8); 
             $table->decimal('size_price', 6, 2);
             $table->decimal('frame_weight_grams', 6, 2);
             $table->decimal('frame_hight_mm', 6, 2);
             $table->decimal('frame_width_mm', 6, 2);
             $table->decimal('frame_depth_mm', 6, 2);
-
             $table->timestamps();
-        };
+        });
     }
 
     /**
