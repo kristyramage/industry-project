@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCartsTable extends Migration
+class CreateCrartsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -17,18 +17,18 @@ class CreateCartsTable extends Migration
             $table->integer('session_id');
 
             $table->integer('print_id')->unsigned();
-            $table->foreign('print_id')->references('id')->on('prints')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('print_id')->references('id')->on('prints')->onDelete('cascade');
 
             $table->integer('size_id')->unsigned();
-            $table->foreign('size_id')->references('id')->on('print_sizes')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('size_id')->references('id')->on('print_sizes')->onDelete('cascade');
 
             $table->integer('frame_id')->unsigned();
-            $table->foreign('frame_id')->references('id')->on('frames_sizes')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('frame_id')->references('id')->on('frame_sizes')->onDelete('cascade');
 
             $table->smallInteger('quantity');
             $table->decimal('subtotal', 6, 2); 
             $table->timestamps();
-        };
+        });
     }
 
     /**
