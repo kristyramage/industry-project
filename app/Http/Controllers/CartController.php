@@ -37,19 +37,18 @@ class CartController extends Controller {
 			// Create a session_id
 			Session::put('Cart', $array = []);
 			Session::push('Cart', $array = [
+								// creates a random string of numbers and letters
 				'session_id' => substr(str_shuffle(MD5(microtime())), 0, 10),		
 			]);
-
 		}
+		// Putting session id into a variable
+		$get_Session = Session::get('Cart');
+		$flatten_Session = array_flatten($get_Session);
+		$Cart_Session = $flatten_Session[0];
+		var_dump($Cart_Session);
 
-		if(isset($_POST['framed'])){
-			$size = $_POST['size'];
-			$frame = Frames::where('size', '=', $size);
 
-			$Cart->frame_id = $frame['id'];
-		 } // else {
-		// 	$Cart->frame_id = 0;
-		// }
+
 
 
 		// Calculate totals
@@ -59,51 +58,76 @@ class CartController extends Controller {
 		if(isset($_POST['addtocart'])){
 			$PrintFound = false;
 			$addPrintID = $Print['id'];
-			$Cart_Session = Session::get('Cart', array['session_id']);
-			var_dump($Cart_Session);
-			die();
-			// $Cart_SeshID = $Cart_Session[$array['session_id']];
+			$addSizeID = $Size['id'];
+			$addFrameID = $Frame['id'];
 			$Cart = Cart::all();
 
+
+			if(isset($_POST['framed'])){
+				$size = $_POST['size'];
+				$frame = Frames::where('size', '=', $size);
+
+				// $Cart->frame_id = $frame['id'];
+				echo "framed";
+			} else {
+				// $Cart->frame_id = $frame['id']['1'];
+				echo "not framed";
+			}
+			
+
 			foreach($Cart as &$item) {
-				if (($item['print_id'] == $addPrintID) & ($item['session_id'] == $Cart_SeshID)) {
+				if (($item['print_id'] == $addPrintID) & ($item['session_id'] == $Cart_Session) & ($item['size_id'] == $addSizeID) & ($item['frame_id'] == $addFrameID)) {
 					$PrintFound = true;
 				}
 			}
-
+	echo " 1 here - after foreach loop.";
 			if($PrintFound == true){
-					//	Goes over each of the items in the cart and if there is a match with the cartID and printID 
+					//	Goes over each of the items in the cart and if there is a match with the Cart_Session and print_id
 					//	it will update the cart item instead of creating a new one
 					foreach($Cart as &$item) {
-						 if (($item['print_id'] == $addPrintID) & ($item['cart_id'] == $cartID)) {
+						 if (($item['print_id'] == $addPrintID) & ($item['session_id'] == $Cart_Session)) {
 							$Print->quantity = $Print['quantity'] - $_POST['print_quantity'];
 							$Print->save();
 
 							$updateCart = Cart::where('print_id', '=', $addPrintID)->firstOrFail();
-							$updateCart->print_id = $item['print_id'];
-							$updateCart->size_id = $item['size_id'];
-							$updateCart->frame_id = $item['frame_id'];
-							$updateCart->quantity = $item['quantity'] + $_POST['print_quantity'];
-							$updateCart->subtotal = $item['subtotal'] + $TotalTicketPrice;
+							
+							$updateCart->print_id 	= $item['print_id'];
+							$updateCart->size_id 	= $item['size_id'];
+							$updateCart->frame_id 	= $item['frame_id'];
+							$updateCart->quantity 	= $_POST['print_quantity'];
+							$updateCart->subtotal 	= $item['subtotal'] + $subtotalPrice;
 							break;
-						}
-					} 
+		 				}
+		 			}
+	echo " 2 here - after if statement.";
+	var_dump($updateCart); 
 					$updateCart->save();
+					
+
 			} else if ($PrintFound == false){
-					//Update Available prints for the prin
+					// //Update Available prints 
 					$Print->quantity = $Print['quantity'] - $request->quantity;
 					$Print->save();
 					//Adding Print to the users cart
 					$newCart = new Cart();
-					$newCart->session_id = $Cart_SeshID;
-					$newCart->print_id = $Print->id;
-					$newCart->size_id = $Size->id;
-					$newCart->frame_id = $Frame->id;
-					$newCart->quantity = $request->quantity;
-					$newCart->subtotal = $subtotalPrice;
-					$newCart->save();
-			}
 
+					$newCart->session_id 	= $Cart_Session;
+					$newCart->print_id 		= $Print['id'];
+					$newCart->size_id 		= $Size['id'];
+					$newCart->frame_id 		= $Frame['id'];
+					$newCart->quantity 		= $request->quantity;
+					$newCart->subtotal 		= $subtotalPrice;
+					$newCart->save();
+
+					// $newCart->session_id 	= $Cart_Session;
+					// $newCart->print_id 		= $Print->id;
+					// $newCart->size_id 		= $Size->id;
+					// $newCart->frame_id 		= $Frame->id;
+					// $newCart->quantity 		= $request->quantity;
+					// $newCart->subtotal 		= $subtotalPrice;
+					// $newCart->save();
+			}
+		echo " 3 here - after else if statement.";
 
 		}
 

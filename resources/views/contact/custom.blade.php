@@ -19,8 +19,8 @@
 		</div>
 
 		<div class="col-sm-6" >
-		  	<form role="form" id="customPrintForm" action=" ... " method="POST" class="form horizontal">
-
+		  	<form role="form" id="customPrintForm" action="/contact/custom" method="POST" class="form horizontal">
+		  		{!! csrf_field() !!}
 		      <div class="form-group col-sm-12">
 		        <label for="customName" class="control-label">Your Name</label>
 		        <div>

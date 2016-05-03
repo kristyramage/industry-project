@@ -24,8 +24,6 @@ Route::get('about', 'AboutController@index');
 
 
 Route::get('prints', 'PrintsController@index');
-Route::get('custom', 'ShopController@custom');
-
  // CRUD
 Route::get('prints/create', 'PrintsController@create')->middleware(['auth']);
 Route::get('prints/{title}', 'PrintsController@show');
@@ -51,5 +49,8 @@ Route::get('shipping', 'InfoController@shipping');
 Route::get('tandc', 'InfoController@tandc');
 
 Route::get('contact', 'ContactController@index');
+Route::post('contact/message', 'ContactController@send');
+Route::get('custom', 'ContactController@custom');
+Route::post('contact/custom', 'ContactController@query');
 
 

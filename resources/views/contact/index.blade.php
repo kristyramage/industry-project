@@ -23,7 +23,7 @@
 
 		<div class="col-xs-6" >
 			<p class="para-title" >Holla at me,</p>
-		  	<form role="form" id="contactForm" action=" ... " method="POST" class="form horizontal">
+		  	<form role="form" id="contactForm" action="/contact/message" method="POST" class="form horizontal">
 		  		{!! csrf_field() !!}
 		      <div class="form-group">
 		        <label for="username" class="control-label">Name</label>
