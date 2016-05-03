@@ -17,23 +17,25 @@
 	  <!-- Wrapper for slides -->
 	  <div class="carousel-inner" role="listbox">
 	    <div class="item active">
-	      <img src="http://placehold.it/1200x500" alt="...">
+	      <img src="/images/carousel/bettertogether.jpg" alt="...">
 	      <div class="carousel-caption">
-	        
+	        <h3>Life is better togther!</h3>
 	      </div>
 	    </div>
 
 	    <div class="item">
-	      <img src="http://placehold.it/1200x500" alt="...">
+	      <img src="/images/carousel/custom_print.jpg" alt="...">
 	      <div class="carousel-caption">
-	        
+	      	<h3>Custom prints!</h3>
+	        <p>Get your very own exclusive print designed just for you!</p>
 	      </div>
 	    </div>
 	    
 	    <div class="item">
-	      <img src="http://placehold.it/1200x500" alt="...">
+	      <img src="/images/carousel/coffee.jpg" alt="...">
 	      <div class="carousel-caption">
-	        
+	      	<h3>Holla at me,</h3>
+	        <p>I'd love to hear from you!</p>
 	      </div>
 	    </div>
 	  </div>
