@@ -17,7 +17,9 @@
 	<div class="container">
 
 		<div class="col-sm-12 text-center">
-			<img src="/images/logo/cplogo.png" alt="Captured write logo" class="logo">
+			<a href="/">
+				<img src="/images/logo/cplogo.png" alt="Captured write logo" class="logo">
+			</a>
 		</div>
 
  		<nav class="navbar navbar-static-top" role="navigation">
@@ -38,10 +40,26 @@
 						<li><a href="/about">about</a></li>
 						<li type="button" data-toggle="dropdown" class="btn dropdown-toggle">shop  <span class="caret"></span></li>
 							<ul class="dropdown-menu">
-					            <li class="col-xs-12 col-sm-3"><a href='/prints'>prints</a></li>
-					            <li class="col-xs-12 col-sm-3"><a href='/gallery'>gallery</a></li>
-					            <li class="col-xs-12 col-sm-3"><a href='/custom'>custom print</a></li>
-					            <li class="col-xs-12 col-sm-3"><a href='/stockists'>stockists</a></li>
+					            <li class="col-xs-12 col-sm-3">
+					            	<a href='/prints'>prints</a>
+					            	<hr> <small>Check out our catalogue.</small>
+					            </li>
+
+					            <li class="col-xs-12 col-sm-3">
+					            	<a href='/gallery'>gallery</a>
+					            	<hr> <small>All the latest stright from instagram!</small>
+					            </li>
+
+					            <li class="col-xs-12 col-sm-3">
+					            	<a href='/custom'>custom print</a>
+					            	<hr> <small>Get your very own custom print designed exclusively for you.</small>
+					            </li>
+
+					            <li class="col-xs-12 col-sm-3">
+					            	<a href='/stockists'>stockists</a>
+					            	<hr> <small>Find Captured Write in a store near you!</small>
+					            </li>
+
 					         </ul>
 						<li><a href="/contact">contact</a></li>
 						<li><a href="/cart">cart</a></li>
@@ -64,7 +82,7 @@
 		        <ul>
 		            <li><a href="/">Home</a></li>
 		            <li><a href="/about">About</a></li>
-		            <li><a href="/shop">Shop</a></li>
+		            <li><a href="/prints">Shop</a></li>
 		            <li><a href="/contact">Contact</a></li>
 		            <li><a href="/cart">Cart</a></li>
 		        </ul>
@@ -91,7 +109,7 @@
 	        <div class="col-sm-3">
 	        	<h4>HOLLA AT ME</h4>
 		        <ul>
-		            <li><a href="#">Email</a></li>
+		            <li><a href="/contact">Email</a></li>
 		        </ul>
 	        </div>
 

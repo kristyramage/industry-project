@@ -17,14 +17,14 @@
 	  <!-- Wrapper for slides -->
 	  <div class="carousel-inner" role="listbox">
 	    <div class="item active">
-	      <img src="/images/carousel/bettertogether.jpg" alt="...">
+	      <img src="/images/carousel/bettertogether.jpg" alt="Photo of and man and a womans feet. Together.">
 	      <div class="carousel-caption">
 	        <h3>Life is better togther!</h3>
 	      </div>
 	    </div>
 
 	    <div class="item">
-	      <img src="/images/carousel/custom_print.jpg" alt="...">
+	      <img src="/images/carousel/custom_print.jpg" alt="Photo of an empty notebook and cup of coffee.">
 	      <div class="carousel-caption">
 	      	<h3>Custom prints!</h3>
 	        <p>Get your very own exclusive print designed just for you!</p>
@@ -32,7 +32,7 @@
 	    </div>
 	    
 	    <div class="item">
-	      <img src="/images/carousel/coffee.jpg" alt="...">
+	      <img src="/images/carousel/coffee.jpg" alt="Photo of a milky cup of coffee">
 	      <div class="carousel-caption">
 	      	<h3>Holla at me,</h3>
 	        <p>I'd love to hear from you!</p>
@@ -72,7 +72,7 @@
 			$price</p>
 		</div>
 
-		<form class="col-xs-12 go-btn" method="get" action="/shop">
+		<form class="col-xs-12 go-btn" method="get" action="/prints">
 		    <button class="btn center-block" type="submit">Go to store</button>
 		</form>
 

@@ -48,7 +48,7 @@ class ContactController extends Controller
 	public function query(Request $request) {
 
 		$this->validate($request, [
-				'customName'=>'required|min:2',
+				'name'=>'required|min:2',
 				'email'=>'required|email',
 				'subject'=>'required|min:2',
 				'description'=>'required|min:20',

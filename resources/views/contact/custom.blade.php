@@ -13,7 +13,11 @@
 		  		Terms and conditions... <br>
 		  		Please specify a size and if you would like the print framed? <br>
 		  		If you would like a print on a novelty item please specify and I'll will be in contact
-		  		if I can create the product. <br>
+		  		if I can create the product.
+		  		<br><br>
+		  		Much Love,
+		  		<br>
+		  		Captured Write xx	
 		  	</p>	
 			
 		</div>
@@ -22,10 +26,10 @@
 		  	<form role="form" id="customPrintForm" action="/contact/custom" method="POST" class="form horizontal">
 		  		{!! csrf_field() !!}
 		      <div class="form-group col-sm-12">
-		        <label for="customName" class="control-label">Your Name</label>
+		        <label for="name" class="control-label">Your Name</label>
 		        <div>
-		          <input class="form-control" id="customName" name="customName" value=" ">
-		          {!! $errors->first('customName','<span class="help-block">:message</span>') !!}
+		          <input class="form-control" id="name" name="name" value=" ">
+		          {!! $errors->first('name','<span class="help-block">:message</span>') !!}
 		        </div>
 		      </div>
 

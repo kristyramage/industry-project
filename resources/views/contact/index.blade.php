@@ -16,8 +16,15 @@
 			
 		  	<h4>WE'D LOVE TO HEAR FROM YOU!</h4>
 		  	<p>
-		  		<strong>Phone</strong>	
-			<br><strong>Email</strong> 	
+		  		We value every comment and suggestion, and are committed to taking your feedback to heart.
+		  		<br> <br>
+		  		Our team can be reached 7 days a week, 8am - 8pm.
+		  		<br> <br>
+		  		Fill out the contact from and we'll get back to you ASAP.
+		  		<br><br>
+		  		Much Love,
+		  		<br>
+		  		Captured Write xx	
 			
 		</div>
 

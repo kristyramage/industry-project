@@ -28,16 +28,14 @@
 		.navbar ul li {
 		    display: inline-block;
 		    padding: 5px 10px;
-		    /*width: 100%;*/
+
 		}
 
 					.dropdown-menu {
 						text-align: center;
 						position: static;
 						float: none;
-		    			/*width: 100%;*/
-		    			/*border-top: 0.2em solid #EDA08C;*/
-		    			/*border-bottom: 0.2em solid #EDA08C;*/
+						padding: 10px 0 15px 0;
 		    			border-left: none;
 		    			border-right: none;
 
@@ -57,8 +55,8 @@
 }
 
 
-footer hr{
-	border-top: 0.2em solid #EDA08C;
+hr{
+	border-top: 0.2em solid #FFD8D8;
 }
 
 /* --------------------------------------- btn css --------------------------------------- */
@@ -70,7 +68,7 @@ footer hr{
 }*/
 .go-btn button
 {
-	border: 0.2em solid #EDA08C;
+	border: 0.2em solid #FFD8D8;
 	border-radius: 0px;
 	background-color: transparent;
 	font-weight: bold;

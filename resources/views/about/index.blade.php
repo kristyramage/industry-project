@@ -11,17 +11,18 @@
     </div>
 
 	<div class="row">
-		<img src="http://placehold.it/400x400" alt="..." class="col-sm-5">
+		<img src="/images/details/about.jpg" alt="..." class="col-sm-5">
 
 		<div class="col-sm-7">
 			<p class="para-title" >Hi,</p>
 			<p>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				Lover of lettering from Wellington, NZ 
+				<br>
+				Capturing moments, memories and inspiration through letters.
+				<br><br>
+		  		Much Love,
+		  		<br>
+		  		Captured Write xx	
 			</p>
 		</div>
 	</div>
