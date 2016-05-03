@@ -26,10 +26,10 @@
 		  	<form role="form" id="contactForm" action="/contact/message" method="POST" class="form horizontal">
 		  		{!! csrf_field() !!}
 		      <div class="form-group">
-		        <label for="username" class="control-label">Name</label>
+		        <label for="name" class="control-label">Name</label>
 		        <div>
-		          <input class="form-control" id="username" name="username" value=" ">
-		          {!! $errors->first('username','<span class="help-block">:message</span>') !!}
+		          <input class="form-control" id="name" name="name" value="{{old('name')}}">
+		          {!! $errors->first('name','<span class="help-block">:message</span>') !!}
 		        </div>
 		      </div>
 
@@ -37,7 +37,7 @@
 		        <label for="email" class="control-label">Email</label>
 		        <div>
 		          <input class="form-control" id="email" name="email" placeholder="jon@example.com"
-		            value=" ">
+		            value="{{old('email')}}">
 		          {!! $errors->first('email','<span class="help-block">:message</span>') !!}
 		        </div>
 		      </div>
@@ -45,7 +45,7 @@
 		      <div class="form-group">
 		        <label for="text" class="control-label">Subject</label>
 		        <div>
-		          <input type="text" class="form-control" id="subject" name="subject">
+		          <input type="text" class="form-control" id="subject" name="subject" value="{{old('subject')}}">
 		          {!! $errors->first('subject','<span class="help-block">:message</span>') !!}
 		        </div>
 		      </div>
@@ -53,7 +53,7 @@
 		      <div class="form-group">
 		        <label for="message" class="control-label">Message</label>
 		        <div>
-		          <textarea class="form-control" rows="3" name="message" placeholder="Type your message here"></textarea>
+		          <textarea class="form-control" rows="3" name="message" placeholder="Type your message here">{{old('message')}}</textarea>
 		          {!! $errors->first('message','<span class="help-block">:message</span>') !!}
 		        </div>
 		      </div>
