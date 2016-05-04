@@ -14,7 +14,7 @@ class CreateCrartsTable extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->increments('id')->unsigned();
-            $table->integer('session_id');
+            $table->string('session_id');
 
             $table->integer('print_id')->unsigned();
             $table->foreign('print_id')->references('id')->on('prints')->onDelete('cascade');

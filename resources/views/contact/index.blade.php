@@ -22,6 +22,8 @@
 		  		<br> <br>
 		  		Fill out the contact from and we'll get back to you ASAP.
 		  		<br><br>
+		  		For any wholesale orders please contact us 3 days in advance.
+		  		<br><br>
 		  		Much Love,
 		  		<br>
 		  		Captured Write xx	
