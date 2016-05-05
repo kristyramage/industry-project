@@ -20,8 +20,6 @@ class PrintsController extends Controller
 
 // -------------------- CRUD ------------------------
 	public function show($title) {
-        // var_dump("show");
-        // die();
         $prints = Prints::where('title', "=", $title)->firstOrFail();
         $sizes = PrintSizes::all();
         return view('print.show', compact('prints', 'sizes'));

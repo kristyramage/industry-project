@@ -13,15 +13,22 @@ use App\Http\Controllers\Controller;
 
 
 class CartController extends Controller {
-	
-	
+
 	public function index() {
-		return view('cart.index');
+		$get_Session = Session::get('Cart');
+		$flatten_Session = array_flatten($get_Session);
+		$Cart_Session = $flatten_Session[0];
+
+		$cart = Cart::where('session_id', '=', $Cart_Session)->get();
+
+		$CountCart = $cart->count();
+
+		return view('cart.index', compact('cart', 'CountCart'));
 	}
 
 	public function add(Request $request) {
 
-		// include all Models from the database
+		// include all Tables from the database
 		$Print = Prints::where('id', '=', $_POST['id'])->firstOrFail();
 		$Size = PrintSizes::where('size', '=', $_POST['size'])->firstOrFail();
 
@@ -53,7 +60,8 @@ class CartController extends Controller {
 		$Cart_Session = $flatten_Session[0];
 
 		// Calculate totals
-		$subtotalPrice = ($Size['size_price'] + $Print['price'] + $Frame['size_price']) * $_POST['print_quantity'];
+		$singlePrice = $Size['size_price'] + $Print['price'] + $Frame['size_price'];
+		$subtotalPrice = $singlePrice * $_POST['print_quantity'];
 
 		if(isset($_POST['addtocart'])){
 			$PrintFound = false;

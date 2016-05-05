@@ -58,7 +58,7 @@
 		        <div class="form-group col-sm-4">
 			        <label for="print_quantity" class="control-label">Quantity</label>
 			        <div>
-			          <input type="number" class="form-control" id="print_quantity" name="print_quantity" value="1">
+			          <input type="number" class="form-control" id="print_quantity" name="print_quantity" value="1" min="1" max="{{ $prints->quantity }}">
 			          {!! $errors->first('print_quantity','<span class="help-block">:message</span>') !!}
 			        </div>
 		        </div>

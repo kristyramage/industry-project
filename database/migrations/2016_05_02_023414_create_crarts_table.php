@@ -26,6 +26,7 @@ class CreateCrartsTable extends Migration
             $table->foreign('frame_id')->references('id')->on('frame_sizes')->onDelete('cascade');
 
             $table->smallInteger('quantity');
+            $table->decimal('single_price', 6, 2); 
             $table->decimal('subtotal', 6, 2); 
             $table->timestamps();
         });
