@@ -106,7 +106,7 @@ class CartController extends Controller {
 
 		} else {
 
-			// Adding Print to the guests cart
+			// Adding Print to the guest cart
 			$newCart = new Cart();
 			$newCart->session_id 	= $Cart_Session;
 			$newCart->print_id 		= $Print['id'];
@@ -122,11 +122,44 @@ class CartController extends Controller {
 		return redirect('cart');
 	}
 
-	public function update() {
+	public function update($id) {
+		$refreshCartItem = $_POST;
+		$cartItem = Cart::where('id', '=', $id)->firstOrFail();
 
+		// define the right print
+		$printID = $_POST['print_id'];
+		$print = Prints::where('id', '=', $printID)->firstOrFail();
+
+		// update cart and database
+		if($refreshCartItem['quantity'] > $cartItem['quantity']){
+
+			// adding to cart
+			// input number - old number = new number?
+			$morePrints = $refreshCartItem['quantity'] - $cartItem['quantity'];
+			// removing from database
+			$print->quantity = $print['quantity'] - $morePrints;
+
+
+		} else if($refreshCartItem['quantity'] < $cartItem['quantity']){
+
+			// removing from cart
+			$lessPrints = $cartItem['quantity'] - $refreshCartItem['quantity'];
+			// adding to database
+			$print->quantity = $print['quantity'] + $lessPrints;
+
+		}
+		$print->save();
+
+		// update totals
+		$cartItem->quantity = $refreshCartItem['quantity'];
+		$cartItem->subtotal = $refreshCartItem['quantity'] * $cartItem['price'];
+		$cartItem->save();
+
+		return redirect('cart');
 	}
 
 	public function remove($id){
+        
         $cartItem = Cart::where('id', '=', $id)->firstOrFail();
         $cartItem->delete();
 

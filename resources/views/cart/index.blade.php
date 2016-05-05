@@ -34,12 +34,20 @@
 			 						</ul>
 			 					</td>
 			 					<td class="text-right">&#36;{{ $cartItem->single_price }}</td>
-			 					<td class="text-right">{{ $cartItem->quantity }}</td>
-			 					<td class="text-right">&#36;{{ $cartItem->subtotal }}</td>
-			 					{{-- <td class="text-right"><a href="\removefromcart\{{$cartItem->id}}">X</a> --}}
+
+			 					<form action="/updatecart/{{$cartItem->id}}" method="POST" id="refresh">
+									{!! csrf_field() !!}
+										<td data-th="Quantity" class="text-right">
+											<input type="number" id="quantity" name="quantity" min="1" max="10" value="{{ $cartItem->quantity }}">
+										</td>
+										<td data-th="Subtotal" class="text-right">{{ $cartItem->subtotal }}</td>
+										<td class="actions" data-th="">			
+										<input type="hidden" name="print_id" value="{{ $cartItem->print_id }}">
+									
+								</form>
 
 			 					<td>
-			 						<form action="removefromcart\{{$cartItem->id}}" method="POST" class="x-btn">
+			 						<form action="removefromcart\{{$cartItem->id}}" method="POST" class="x-btn text-right">
 										{!! csrf_field() !!}
 										<input type="hidden" name="cartItem" value="{{$cartItem->event_id}}">
 										<button title="Remove From Cart" id="remove-btn" class="go-btn"><i class="glyphicon glyphicon-remove"></i></button>
@@ -60,9 +68,23 @@
 		 				</tr>
 					</tfoot>				
 				</table>
+
+				<div class="row">
+					<div class="btn-boarder col-xs-12 col-sm-6">
+						<a href="/prints" class="pull-left"><i class="glyphicon glyphicon-chevron-left"></i>  Continue Shopping</a>
+					</div>
+					<div class="col-xs-12 col-sm-6">
+						<div class="btn-boarder">
+							<a href="#" class="pull-right btn">Proceed to checkout  <i class="glyphicon glyphicon-chevron-right"></i></a>
+						</div>
+						<div class="go-btn">
+							<button form="refresh" class="btn pull-right"><i class="glyphicon glyphicon-refresh"></i>  Update Cart</button>
+						</div>
+					</div>
+				</div>
 			@else
 				<p>Your Shopping Cart is Empty!!</p>
-				<div class="go-btn">
+				<div class="btn-boarder">
 					<p><a href="/prints" class=""><i class="glyphicon glyphicon-menu-left"></i>Continue Shopping</a></p>
 				</div>
 			@endif

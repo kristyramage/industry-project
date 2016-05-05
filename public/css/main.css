@@ -72,17 +72,26 @@ hr{
 	border-radius: 0px;
 	background-color: transparent;
 	font-weight: bold;
-	/*margin: 5px;*/
-	/*text-align: center;*/
 }
 
 .x-btn button
 {
 	border: none;
 	background-color: transparent;
-	color: #A60000;
-	
+	color: #A60000;	
 }
+
+.btn-boarder a {
+	font-weight: bold;
+	border: 0.2em solid #FFD8D8;
+	border-radius: 0px;
+	padding: 6px 10px;
+	margin: 0px 10px;
+	color: #000;
+}
+	.btn-boarder a:hover {
+		text-decoration: none;
+	}
 /* --------------------------------------- home css --------------------------------------- */
 
 #featproducts .col-xs-12.col-sm-4,

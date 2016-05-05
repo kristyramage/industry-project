@@ -22,9 +22,9 @@ Route::post('login', 'Auth\AuthController@postLogin');
 
 Route::get('about', 'AboutController@index');
 
-
+// Prints CRUD
 Route::get('prints', 'PrintsController@index');
- // CRUD
+ 
 Route::get('prints/create', 'PrintsController@create')->middleware(['auth']);
 Route::get('prints/{title}', 'PrintsController@show');
 
@@ -33,14 +33,13 @@ Route::post('store', 'PrintsController@store')->middleware(['auth']);
 
 Route::get('prints/edit/{id}', 'PrintsController@edit')->middleware(['auth']);
 Route::post('prints/update', 'PrintsController@update')->middleware(['auth']);
-
 Route::get('prints/removeprint/{id}', 'PrintsController@remove')->middleware(['auth']);
 
-
-
+// Cart CRUD
 Route::get('cart', 'CartController@index');
 Route::post('addtocart', 'CartController@add');
 Route::post('removefromcart/{id}', 'CartController@remove');
+Route::post('updatecart/{id}', 'CartController@update');
 
 
 Route::get('gallery', 'GalleryController@index');
