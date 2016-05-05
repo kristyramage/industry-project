@@ -109,6 +109,7 @@ class CartController extends Controller {
 			$newCart->size_id 		= $Size['id'];
 			$newCart->frame_id 		= $Frame['id'];
 			$newCart->quantity 		= $request->print_quantity;
+			$newCart->single_price	= $singlePrice;
 			$newCart->subtotal 		= $subtotalPrice;
 
 			$newCart->save();	

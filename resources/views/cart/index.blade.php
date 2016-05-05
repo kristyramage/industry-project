@@ -12,31 +12,48 @@
 			@if($CountCart > 0) 
 				<table id="cart" class="table table-hover table-condensed">
 					<thead>
-						<tr>
-							<th style="width:50%">Print</th>
-							<th style="width:10%">Price (NZD)</th>
-							<th style="width:8%">Quantity</th>
-							<th style="width:22%">Subtotal (NZD)</th>
-							<th style="width:10%"></th>
-						</tr>
+			 				<tr class="cart_menu">
+			 					<th>Item</th>
+			 					<th><!-- Description --></th>
+			 					<th class="text-right">Price</th>
+			 					<th class="text-right">Quantity</th>
+			 					<th class="text-right">Total</th>
+			 					<th></th>
+			 				</tr>
 					</thead>
 					<tbody>
 						@foreach($cart as $cartItem)
 							<tr>
-								<td>{{ $cartItem->prints->title }}</td>
-								<td>{{ $cartItem->print_sizes->size }}</td>
-								<td> {{ $cartItem->frame_sizes->size }}</td>
-							</tr>
+			 					<td><img src="../images/thumbnails/<?=  preg_replace("/[^0-9a-zA-Z]/", "", $cartItem->prints->title ); ?>.jpg" alt="{{ $cartItem->prints->title }} image"></td>
+			 					<td>
+			 						<ul>
+			 						   	<li>{{ $cartItem->prints->title }}</li>
+			 						   	<li> @if($cartItem->frame_sizes->id !== 1) Framed @endif</li>
+			 						   	<li>{{ $cartItem->print_sizes->size }}</li>
+			 						   	<li>Printed area -size</li>
+			 						</ul>
+			 					</td>
+			 					<td class="text-right">$number</td>
+			 					<td class="text-right">{{ $cartItem->quantity }}</td>
+			 					<td class="text-right">$number</td>
+			 					<td class="text-right">X</td>
+			 				</tr>
 						@endforeach
-						
 					</tbody>
 					<tfoot>
-						
+						<tr>
+		 					<td></td>
+		 					<td></td>
+		 					<td></td>
+		 					<td class="text-right"><strong>Total</strong>> </td>
+		 					<td class="text-right"><strong>$number</strong></td>
+		 					<td></td>
+		 				</tr>
 					</tfoot>				
 				</table>
 			@else
-				<p>Your Basket is Empty!!</p>
-				<p><a href="/prints" class="btn btn-warning"><i class="glyphicon glyphicon-menu-left"></i> Go to prints Page</a></p>
+				<p>Your Shopping Cart is Empty!!</p>
+				<p><a href="/prints" class="go-btn"><i class="glyphicon glyphicon-menu-left"></i>Continue Shopping</a></p>
 			@endif
 		</div>
 
