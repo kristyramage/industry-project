@@ -30,13 +30,22 @@
 			 						   	<li>{{ $cartItem->prints->title }}</li>
 			 						   	<li> @if($cartItem->frame_sizes->id !== 1) Framed @endif</li>
 			 						   	<li>{{ $cartItem->print_sizes->size }}</li>
-			 						   	<li>Printed area -size</li>
+			 						   	<li>{{ $cartItem->prints->description }}</li>
 			 						</ul>
 			 					</td>
-			 					<td class="text-right">$number</td>
+			 					<td class="text-right">&#36;{{ $cartItem->single_price }}</td>
 			 					<td class="text-right">{{ $cartItem->quantity }}</td>
-			 					<td class="text-right">$number</td>
-			 					<td class="text-right">X</td>
+			 					<td class="text-right">&#36;{{ $cartItem->subtotal }}</td>
+			 					{{-- <td class="text-right"><a href="\removefromcart\{{$cartItem->id}}">X</a> --}}
+
+			 					<td>
+			 						<form action="removefromcart\{{$cartItem->id}}" method="POST" class="x-btn">
+										{!! csrf_field() !!}
+										<input type="hidden" name="cartItem" value="{{$cartItem->event_id}}">
+										<button title="Remove From Cart" id="remove-btn" class="go-btn"><i class="glyphicon glyphicon-remove"></i></button>
+									</form>
+
+			 					</td>
 			 				</tr>
 						@endforeach
 					</tbody>
@@ -45,15 +54,17 @@
 		 					<td></td>
 		 					<td></td>
 		 					<td></td>
-		 					<td class="text-right"><strong>Total</strong>> </td>
-		 					<td class="text-right"><strong>$number</strong></td>
+		 					<td class="text-right"><strong>Total</strong></td>
+		 					<td class="text-right"><strong>&#36;{{$grandtotal}}.00</strong></td>
 		 					<td></td>
 		 				</tr>
 					</tfoot>				
 				</table>
 			@else
 				<p>Your Shopping Cart is Empty!!</p>
-				<p><a href="/prints" class="go-btn"><i class="glyphicon glyphicon-menu-left"></i>Continue Shopping</a></p>
+				<div class="go-btn">
+					<p><a href="/prints" class=""><i class="glyphicon glyphicon-menu-left"></i>Continue Shopping</a></p>
+				</div>
 			@endif
 		</div>
 

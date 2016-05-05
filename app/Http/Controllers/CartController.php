@@ -22,12 +22,16 @@ class CartController extends Controller {
 		$cart = Cart::where('session_id', '=', $Cart_Session)->get();
 
 		$CountCart = $cart->count();
+		$grandtotal = 0;		
+		foreach ($cart as $cartitem) {
+			$grandtotal += $cartitem->subtotal;
+		}
+		
 
-		return view('cart.index', compact('cart', 'CountCart'));
+		return view('cart.index', compact('cart', 'CountCart', 'grandtotal'));
 	}
 
 	public function add(Request $request) {
-
 		// include all Tables from the database
 		$Print = Prints::where('id', '=', $_POST['id'])->firstOrFail();
 		$Size = PrintSizes::where('size', '=', $_POST['size'])->firstOrFail();
@@ -122,9 +126,12 @@ class CartController extends Controller {
 
 	}
 
-	public function remove() {
+	public function remove($id){
+        $cartItem = Cart::where('id', '=', $id)->firstOrFail();
+        $cartItem->delete();
 
-	}
+        return redirect('cart');
+    }
 
 
 
