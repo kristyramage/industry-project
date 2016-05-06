@@ -36,22 +36,22 @@
 			 					</td>
 			 					<td class="text-right">&#36;{{ $cartItem->single_price }}</td>
 
-			 					<form action="/updatecart/{{$cartItem->id}}" method="POST" id="refresh">
+			 					<form action="/updatecart/{{$cartItem->id}}" method="POST" id="refresh{{$cartItem->id}}">
 									{!! csrf_field() !!}
-										<td data-th="Quantity" class="text-right">
-											<input type="number" id="quantity" name="quantity" min="1" max="10" value="{{ $cartItem->quantity }}">
+										<td data-th="Quantity" class="text-right r-btn">
+											<input type="number" id="quantity" name="quantity" min="1" max="{{ $cartItem->prints->quantity }}" value="{{ $cartItem->quantity }}">
+											<button form="refresh{{$cartItem->id}}"><i class="glyphicon glyphicon-refresh"></i></button>
 										</td>
 										<td data-th="Subtotal" class="text-right">{{ $cartItem->subtotal }}</td>
 										<td class="actions" data-th="">			
 										<input type="hidden" name="print_id" value="{{ $cartItem->print_id }}">
-									
 								</form>
 
 			 					<td>
-			 						<form action="removefromcart\{{$cartItem->id}}" method="POST" class="x-btn text-right">
+			 						<form action="/removefromcart/{{$cartItem->id}}" method="POST" class="x-btn text-right">
 										{!! csrf_field() !!}
 										<input type="hidden" name="cartItem" value="{{$cartItem->event_id}}">
-										<button title="Remove From Cart" id="remove-btn" class="go-btn"><i class="glyphicon glyphicon-remove"></i></button>
+										<button title="Remove From Cart" id="remove-btn" class=" go-btn"><i class="glyphicon glyphicon-remove"></i></button>
 									</form>
 
 			 					</td>
@@ -79,7 +79,7 @@
 							<a href="#" class="pull-right btn">Proceed to checkout  <i class="glyphicon glyphicon-chevron-right"></i></a>
 						</div>
 						<div class="go-btn">
-							<button form="refresh" class="btn pull-right"><i class="glyphicon glyphicon-refresh"></i>  Update Cart</button>
+							
 						</div>
 					</div>
 				</div>

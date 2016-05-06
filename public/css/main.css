@@ -60,12 +60,6 @@ hr{
 }
 
 /* --------------------------------------- btn css --------------------------------------- */
-/*.go-text
-{
-	btn-align: center;
-	margin-top: 5px;
-	margin-bottom: 10px;
-}*/
 .go-btn button
 {
 	border: 0.2em solid #FFD8D8;
@@ -78,7 +72,15 @@ hr{
 {
 	border: none;
 	background-color: transparent;
-	color: #A60000;	
+	color: #A64646;	
+	padding: 0 5px;
+}
+.r-btn button
+{
+	border: none;
+	background-color: transparent;
+	color: #388538;	
+	padding: 0 10px;
 }
 
 .btn-boarder a {

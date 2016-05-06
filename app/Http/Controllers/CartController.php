@@ -142,34 +142,25 @@ class CartController extends Controller {
 
 		// update cart and database
 		if($refreshCartItem['quantity'] > $cartItem['quantity']){
-
-			// adding to cart
-			// input number - old number = new number?
-			$morePrints = $refreshCartItem['quantity'] - $cartItem['quantity'];
 			// removing from database
-			$print->quantity = $print['quantity'] - $morePrints;
-
+			$print->quantity = $print['quantity'] - $refreshCartItem['quantity'];
 
 		} else if($refreshCartItem['quantity'] < $cartItem['quantity']){
-
-			// removing from cart
-			$lessPrints = $cartItem['quantity'] - $refreshCartItem['quantity'];
 			// adding to database
-			$print->quantity = $print['quantity'] + $lessPrints;
-
+			$print->quantity = $print['quantity'] + $refreshCartItem['quantity'];
 		}
 		$print->save();
 
 		// update totals
 		$cartItem->quantity = $refreshCartItem['quantity'];
-		$cartItem->subtotal = $refreshCartItem['quantity'] * $cartItem['price'];
+		$cartItem->subtotal = $refreshCartItem['quantity'] * $cartItem['single_price'];
 		$cartItem->save();
 
 		return redirect('cart');
 	}
 
 	public function remove($id){
-        
+
         $cartItem = Cart::where('id', '=', $id)->firstOrFail();
         $cartItem->delete();
 

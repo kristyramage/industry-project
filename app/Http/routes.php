@@ -38,8 +38,8 @@ Route::get('prints/removeprint/{id}', 'PrintsController@remove')->middleware(['a
 // Cart CRUD
 Route::get('cart', 'CartController@index');
 Route::post('addtocart', 'CartController@add');
-Route::post('removefromcart/{id}', 'CartController@remove');
 Route::post('updatecart/{id}', 'CartController@update');
+Route::post('removefromcart/{id}', 'CartController@remove');
 
 
 Route::get('gallery', 'GalleryController@index');
