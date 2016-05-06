@@ -76,16 +76,13 @@
 					</div>
 					<div class="col-xs-12 col-sm-6">
 						<div class="btn-boarder">
-							<a href="#" class="pull-right btn">Proceed to checkout  <i class="glyphicon glyphicon-chevron-right"></i></a>
-						</div>
-						<div class="go-btn">
-							
+							<a href="/cart/shipping" class="pull-right btn">Proceed to checkout  <i class="glyphicon glyphicon-chevron-right"></i></a>
 						</div>
 					</div>
 				</div>
 			@else
-				<p>Your Shopping Cart is Empty!!</p>
-				<div class="btn-boarder">
+				<h3 class="text-center">Your Shopping Cart is Empty!!</h3>
+				<div class="row btn-boarder">
 					<p><a href="/prints" class=""><i class="glyphicon glyphicon-menu-left"></i>Continue Shopping</a></p>
 				</div>
 			@endif

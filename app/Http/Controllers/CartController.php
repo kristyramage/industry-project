@@ -167,7 +167,23 @@ class CartController extends Controller {
         return redirect('cart');
     }
 
+// -------------------------- transaction process ------------------------------ //
 
+    public function shipping(){
+		return view('cart.shipping');
+	}
+
+	public function orderreview(){
+		return view('cart.orderReview');
+	}
+
+	public function transaction(){
+		return view('cart.transaction');
+	}
+
+	public function receipt(){
+		return view('cart.receipt');
+	}
 
 
 }
