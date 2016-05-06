@@ -10,10 +10,11 @@
 
 		<div class="col-xs-12">
 			@if($CountCart > 0) 
+				
 				<table id="cart" class="table table-hover table-condensed">
 					<thead>
 			 				<tr class="cart_menu">
-			 					<th>Item</th>
+			 					<th class="tnail-cart ">Item</th>
 			 					<th><!-- Description --></th>
 			 					<th class="text-right">Price</th>
 			 					<th class="text-right">Quantity</th>
