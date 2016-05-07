@@ -7,6 +7,9 @@ use App\PrintSizes;
 use App\Frames;
 use App\Cart;
 use Session;
+
+use App\Shipping;
+
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -169,12 +172,113 @@ class CartController extends Controller {
 
 // -------------------------- transaction process ------------------------------ //
 
-    public function shipping(){
-		return view('cart.shipping');
+    public function shipping(Request $request){
+
+		if(! Session::has('Shipping')){
+			return view('cart.shipping');
+		} else {
+			return redirect('/cart/orderreview');	
+		}
 	}
 
+	public function submitShipping(Request $request){
+		// Create a session_id
+		if(! Session::has('Shipping')){
+			// Create a session_id
+			Session::put('Shipping', $array = []);
+			Session::push('Shipping', $array = [
+				// creates a random string of numbers and letters
+				'session_id' => substr(str_shuffle(MD5(microtime())), 0, 10),		
+			]);			
+		}
+		// put session in string
+		$get_Session = Session::get('Shipping');
+		$flatten_Session = array_flatten($get_Session);
+		$Shipping_Session = $flatten_Session[0];
+		
+		// New Address
+		// validate shipping form
+		$this->validate($request, [
+			'name'=>'required|min:2',
+			'email'=>'required|email',
+			'phone'=>'required|min:8|numeric',
+			'message'=>'required|max:500',
+			'street'=>'required|min:2|max:200',
+			'country'=>'required|min:2|max:45',
+			'state'=>'required|min:2|max:20',
+			'city'=>'required|min:1|max:153',
+			'postcode'=>'required|min:4|numeric',
+
+		]);
+
+		$data['messageLines'] = explode("\n", $request->get('message'));
+
+
+		// save shipping details to database
+		$newAddress = new Shipping();
+
+		$newAddress->session_id 	= $Shipping_Session;
+		$newAddress->name        	= $request->name;
+		$newAddress->email        	= $request->email;
+		$newAddress->phone  		= $request->phone;
+		$newAddress->message     	= $request->message;
+		$newAddress->country        = $request->country;
+		$newAddress->state        	= $request->state;
+		$newAddress->city  			= $request->city;
+		$newAddress->street        	= $request->street;
+		$newAddress->postcode       = $request->postcode;
+
+		$newAddress->save();
+
+		return redirect('/cart/orderreview');
+	}
+
+
 	public function orderreview(){
-		return view('cart.orderReview');
+		// Create a session_id if there is none
+		if(! Session::has('Shipping')){
+			// Create a session_id
+			Session::put('Shipping', $array = []);
+			Session::push('Shipping', $array = [
+								// creates a random string of numbers and letters
+				'session_id' => substr(str_shuffle(MD5(microtime())), 0, 10),		
+			]);
+		}
+
+		$get_Session = Session::get('Shipping');
+		$flatten_Session = array_flatten($get_Session);
+		$Shipping_Session = $flatten_Session[0];
+
+
+		$Shipping = Shipping::where('session_id', '=', $Shipping_Session)->get();
+
+
+		// Create a session_id if there is none
+		if(! Session::has('Cart')){
+			// Create a session_id
+			Session::put('Cart', $array = []);
+			Session::push('Cart', $array = [
+								// creates a random string of numbers and letters
+				'session_id' => substr(str_shuffle(MD5(microtime())), 0, 10),		
+			]);
+		}
+
+		$get_Session = Session::get('Cart');
+		$flatten_Session = array_flatten($get_Session);
+		$Cart_Session = $flatten_Session[0];
+
+		$cart = Cart::where('session_id', '=', $Cart_Session)->get();
+
+		$CountCart = $cart->count();
+		$grandtotal = 0;		
+		foreach ($cart as $cartitem) {
+			$grandtotal += $cartitem->subtotal;
+		}
+		// flat rate shipping cost
+		$shippingCost = 10;
+		$grandtotal += $shippingCost;		
+
+		return view('cart.orderReview', compact('Shipping', 'cart', 'CountCart', 'shippingCost', 'grandtotal'));
 	}
 
 	public function transaction(){
@@ -185,7 +289,21 @@ class CartController extends Controller {
 		return view('cart.receipt');
 	}
 
-
+	// public function SessionString($sessionVar) {
+	// 	// Create a session_id if there is none
+	// 	if(! Session::has('$sessionVar')){
+	// 		// Create a session_id
+	// 		Session::put('$sessionVar', $array = []);
+	// 		Session::push('$sessionVar', $array = [
+	// 		// creates a random string of numbers and letters
+	// 		'session_id' => substr(str_shuffle(MD5(microtime())), 0, 10),		
+	// 			]);
+	// 	}
+			
+	// 	$get_Session = Session::get('$sessionVar');
+	// 	$flatten_Session = array_flatten($get_Session);
+	// 	return $sessionVar_Session = $flatten_Session[0];
+	// } call ??? $this->SessionString('Shipping');
 }
 
 

@@ -10,7 +10,7 @@
 	<div class="row">
 		<div class="col-sm-offset-2 col-sm-8">
 			<p>
-				name <br>
+				{{ $Shipping }} <br>
 				email <br>
 				message <br>
 				<br>
@@ -38,20 +38,22 @@
 
 				<tbody>
 
-						<tr>
-							<td><img src="http://placehold.it/100x100" alt="image"></td>
-							<td>
-						 		<ul>
-						 			<li>title</li>
-						 			<li>Framed?</li>
-						 			<li>size</li>
-						 			<li>description</li>
-						 		</ul>
-						 	</td>
-						 	<td class="text-right">&#36;single_price</td>
-						 	<td class="text-right">quantity</td>
-						 	<td class="text-right">&#36;subtotal</td>
-						</tr>
+					@foreach($cart as $cartItem)
+			            <tr>
+			              <td><img src="../images/thumbnails/<?=  preg_replace("/[^0-9a-zA-Z]/", "", $cartItem->prints->title ); ?>.jpg" alt="{{ $cartItem->prints->title }} image"></td>
+			              <td>
+			                <ul>
+			                  <li>{{ $cartItem->prints->title }}</li>
+			                  <li> @if($cartItem->frame_sizes->id !== 1) Framed @endif</li>
+			                  <li>{{ $cartItem->print_sizes->size }}</li>
+			                  <li>{{ $cartItem->prints->description }}</li>
+			                </ul>
+			              </td>
+			              <td class="text-right">&#36;{{ $cartItem->single_price }}</td>
+			              <td class="text-right">{{ $cartItem->quantity }}</td>
+			              <td class="text-right">&#36;{{$cartItem->subtotal}}</td>
+			            </tr>
+			        @endforeach
 					
 				</tbody>
 
@@ -61,7 +63,7 @@
 				 		<td></td>
 				 		<td></td>
 				 		<td class="text-right"><strong>Shipping</strong></td>
-				 		<td class="text-right"><strong>&#36;shipping.00</strong></td>
+				 		<td class="text-right"><strong>&#36;{{$shippingCost}}.00</strong></td>
 				 		<td></td>
 				 	</tr>
 					<tr>
@@ -69,25 +71,25 @@
 				 		<td></td>
 				 		<td></td>
 				 		<td class="text-right"><strong>Total</strong></td>
-				 		<td class="text-right"><strong>&#36;grandtotal.00</strong></td>
+				 		<td class="text-right"><strong>&#36;{{$grandtotal}}.00</strong></td>
 				 		<td></td>
 				 	</tr>
 				</tfoot>
 
 			</table>
 		</div>
+	</div>
 
 
-		<div class="row">
-			<div class="btn-boarder col-xs-12 col-sm-6">
-				<a href="/cart/shipping" class="pull-left"><i class="glyphicon glyphicon-chevron-left"></i>  Back to Shipping</a>
-			</div>
-			<div class="col-xs-12 col-sm-6">
-				<div class="btn-boarder">
-					<a href="/cart/transaction" class="pull-right btn">Proceed to payment  <i class="glyphicon glyphicon-chevron-right"></i></a>
-				</div>
+	<div class="row">
+		<div class="btn-boarder col-xs-12 col-sm-6">
+			<a href="/cart" class="pull-left"><i class="glyphicon glyphicon-chevron-left"></i>  Back to Cart</a>
+		</div>
+		<div class="col-xs-12 col-sm-6">
+			<div class="btn-boarder">
+				<a href="/cart/transaction" class="pull-right btn">Proceed to payment  <i class="glyphicon glyphicon-chevron-right"></i></a>
 			</div>
 		</div>
-
 	</div>
+
 @endsection
