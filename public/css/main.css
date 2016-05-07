@@ -20,6 +20,9 @@
 .logo {
 	width: 200px;
 }
+.top-space {
+	margin-top: 20px;
+}
 /* --------------------------------------- nav and footer css --------------------------------------- */
 
 .navbar {
@@ -88,7 +91,6 @@ hr{
 	border: 0.2em solid #FFD8D8;
 	border-radius: 0px;
 	padding: 6px 10px;
-	margin: 0px 10px;
 	color: #000;
 }
 	.btn-boarder a:hover {

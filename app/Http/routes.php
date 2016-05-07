@@ -42,7 +42,7 @@ Route::post('updatecart/{id}', 'CartController@update');
 Route::post('removefromcart/{id}', 'CartController@remove');
 // Cart payment
 Route::get('cart/shipping', 'CartController@shipping');
-Route::get('cart/orderreview', 'CartController@orderreview');
+Route::post('cart/orderreview', 'CartController@orderreview');
 Route::get('cart/transaction', 'CartController@transaction');
 Route::get('cart/ordersummary', 'CartController@receipt');
 
