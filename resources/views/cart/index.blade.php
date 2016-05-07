@@ -50,8 +50,8 @@
 			 					<td>
 			 						<form action="/removefromcart/{{$cartItem->id}}" method="POST" class="x-btn text-right">
 										{!! csrf_field() !!}
-										<input type="hidden" name="cartItem" value="{{$cartItem->event_id}}">
-										<button title="Remove From Cart" id="remove-btn" class=" go-btn"><i class="glyphicon glyphicon-remove"></i></button>
+										<input type="hidden" name="cartItem" value="{{$cartItem->print_id}}">
+										<button title="Remove From Cart" id="remove-btn" class="go-btn"><i class="glyphicon glyphicon-remove"></i></button>
 									</form>
 
 			 					</td>
