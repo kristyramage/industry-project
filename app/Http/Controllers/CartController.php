@@ -330,19 +330,35 @@ class CartController extends Controller {
 
 	public function transaction(){
 
-		$nonce = $_POST["payment_method_nonce"];
+		// musthaveCart();
+		// Create a session_id if there is none
+		if(! Session::has('Cart')){
+			// Create a session_id
+			Session::put('Cart', $array = []);
+			Session::push('Cart', $array = [
+								// creates a random string of numbers and letters
+				'session_id' => substr(str_shuffle(MD5(microtime())), 0, 10),		
+			]);
+		}
+
+		$get_Session = Session::get('Cart');
+		$flatten_Session = array_flatten($get_Session);
+		$Cart_Session = $flatten_Session[0];
+
+		$cart = Cart::where('session_id', '=', $Cart_Session)->get();
+
+		$CountCart = $cart->count();
+		$grandtotal = 0;		
+		foreach ($cart as $cartitem) {
+			$grandtotal += $cartitem->subtotal;
+		}
+		
 		Braintree_Configuration::environment('sandbox');
 		Braintree_Configuration::merchantId(env('BRAINTREE_MERCHANT_ID'));
 		Braintree_Configuration::publicKey(env('BRAINTREE_PUBLIC_KEY'));
 		Braintree_Configuration::privateKey(env('BRAINTREE_PRIVATE_KEY'));
-		$result = Braintree_Transaction::sale([
-				'amount' => "1000",
-				'paymentMethodNonce' => 'fake-valid-nonce',
-				'options' => [
-				'submitForSettlement' => False
-			]
-		]);
-		
+  		$clientToken = Braintree_ClientToken::generate();
+
 		return view('cart.transaction');
 	}
 
