@@ -170,15 +170,19 @@ class CartController extends Controller {
         return redirect('cart');
     }
 
+
+
 // -------------------------- transaction process ------------------------------ //
+
+
 
     public function shipping(Request $request){
 
-		if(! Session::has('Shipping')){
+		// if(! Session::has('Shipping')){
 			return view('cart.shipping');
-		} else {
-			return redirect('/cart/orderreview');	
-		}
+		// } else {
+		// 	return redirect('/cart/orderreview');	
+		// }
 	}
 
 	public function submitShipping(Request $request){
@@ -195,6 +199,8 @@ class CartController extends Controller {
 		$get_Session = Session::get('Shipping');
 		$flatten_Session = array_flatten($get_Session);
 		$Shipping_Session = $flatten_Session[0];
+
+
 		
 		// New Address
 		// validate shipping form
@@ -213,24 +219,65 @@ class CartController extends Controller {
 
 		$data['messageLines'] = explode("\n", $request->get('message'));
 
+// ------------------------   ------------------------
 
-		// save shipping details to database
-		$newAddress = new Shipping();
+				// save shipping details to database
+				$newAddress = new Shipping();
 
-		$newAddress->session_id 	= $Shipping_Session;
-		$newAddress->name        	= $request->name;
-		$newAddress->email        	= $request->email;
-		$newAddress->phone  		= $request->phone;
-		$newAddress->message     	= $request->message;
-		$newAddress->country        = $request->country;
-		$newAddress->state        	= $request->state;
-		$newAddress->city  			= $request->city;
-		$newAddress->street        	= $request->street;
-		$newAddress->postcode       = $request->postcode;
+				$newAddress->session_id 	= $Shipping_Session;
+				$newAddress->name        	= $request->name;
+				$newAddress->email        	= $request->email;
+				$newAddress->phone  		= $request->phone;
+				$newAddress->message     	= $request->message;
+				$newAddress->country        = $request->country;
+				$newAddress->state        	= $request->state;
+				$newAddress->city  			= $request->city;
+				$newAddress->street        	= $request->street;
+				$newAddress->postcode       = $request->postcode;
 
-		$newAddress->save();
+				$newAddress->save();
+	
+
+		// 	$AddressFound = false;
+		// 	$Shipping = Shipping::all();
+		// 	$addShippingID = $Shipping['id'];
+
+		// 	foreach($Shipping as &$item) {
+		// 		// Check for a match
+		// 		if (($item['id'] == $addShippingID) & ($item['session_id'] == $Shipping_Session)) {
+		// 			$AddressFound = true;
+		// 		}
+		// 	}
+
+		// 	foreach($Shipping as &$item) {
+		// 		// Find match in database
+		// 		if (($item['id'] == $addShippingID) & ($item['session_id'] == $Shipping_Session)) {
+		// 			$matchThese = [	'session_id'	=> $Shipping_Session, 
+		// 							'id' 			=> $addShippingID,
+		// 						  ];
+
+		// 			$updateAddress = Shipping::where($matchThese)->firstOrFail();
+					
+		// 			// Values that need to be updated
+		// 			$updateAddress->session_id 	= $Shipping_Session;
+		// 			$updateAddress->name        = $request->name;
+		// 			$updateAddress->email       = $request->email;
+		// 			$updateAddress->phone  		= $request->phone;
+		// 			$updateAddress->message     = $request->message;
+		// 			$updateAddress->country     = $request->country;
+		// 			$updateAddress->state       = $request->state;
+		// 			$updateAddress->city  		= $request->city;
+		// 			$updateAddress->street      = $request->street;
+		// 			$updateAddress->postcode    = $request->postcode;
+		// 			break;
+		// 		}
+
+		// 	}
+		// 	$updateAddress->save();
+
 
 		return redirect('/cart/orderreview');
+	
 	}
 
 
@@ -282,6 +329,20 @@ class CartController extends Controller {
 	}
 
 	public function transaction(){
+
+		$nonce = $_POST["payment_method_nonce"];
+		Braintree_Configuration::environment('sandbox');
+		Braintree_Configuration::merchantId(env('BRAINTREE_MERCHANT_ID'));
+		Braintree_Configuration::publicKey(env('BRAINTREE_PUBLIC_KEY'));
+		Braintree_Configuration::privateKey(env('BRAINTREE_PRIVATE_KEY'));
+		$result = Braintree_Transaction::sale([
+				'amount' => "1000",
+				'paymentMethodNonce' => 'fake-valid-nonce',
+				'options' => [
+				'submitForSettlement' => False
+			]
+		]);
+		
 		return view('cart.transaction');
 	}
 

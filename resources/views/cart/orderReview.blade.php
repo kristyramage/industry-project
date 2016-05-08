@@ -63,7 +63,7 @@
 				 		<td></td>
 				 		<td></td>
 				 		<td class="text-right"><strong>Shipping</strong></td>
-				 		<td class="text-right"><strong>&#36;{{$shippingCost}}.00</strong></td>
+				 		<td class="text-right"><strong>&#36;{{ number_format($shippingCost, 2)}}</strong></td>
 				 		<td></td>
 				 	</tr>
 					<tr>
@@ -71,7 +71,7 @@
 				 		<td></td>
 				 		<td></td>
 				 		<td class="text-right"><strong>Total</strong></td>
-				 		<td class="text-right"><strong>&#36;{{$grandtotal}}.00</strong></td>
+				 		<td class="text-right"><strong>&#36;{{ number_format($grandtotal, 2) }}</strong></td>
 				 		<td></td>
 				 	</tr>
 				</tfoot>
@@ -83,7 +83,7 @@
 
 	<div class="row">
 		<div class="btn-boarder col-xs-12 col-sm-6">
-			<a href="/cart" class="pull-left"><i class="glyphicon glyphicon-chevron-left"></i>  Back to Cart</a>
+			<a href="/cart/shipping" class="pull-left"><i class="glyphicon glyphicon-chevron-left"></i>  Back to Shipping</a>
 		</div>
 		<div class="col-xs-12 col-sm-6">
 			<div class="btn-boarder">
