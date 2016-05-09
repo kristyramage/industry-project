@@ -14,23 +14,16 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use Braintree_Configuration;
+use Braintree_ClientToken;
+use Braintree_Transaction;
+
 
 class CartController extends Controller {
 
 	public function index() {
 		// Create a session_id if there is none
-		if(! Session::has('Cart')){
-			// Create a session_id
-			Session::put('Cart', $array = []);
-			Session::push('Cart', $array = [
-								// creates a random string of numbers and letters
-				'session_id' => substr(str_shuffle(MD5(microtime())), 0, 10),		
-			]);
-		}
-
-		$get_Session = Session::get('Cart');
-		$flatten_Session = array_flatten($get_Session);
-		$Cart_Session = $flatten_Session[0];
+		$Cart_Session = SessionString('Cart');
 
 		$cart = Cart::where('session_id', '=', $Cart_Session)->get();
 
@@ -63,18 +56,7 @@ class CartController extends Controller {
 			]);
 
 		// Create a session_id
-		if(! Session::has('Cart')){
-			// Create a session_id
-			Session::put('Cart', $array = []);
-			Session::push('Cart', $array = [
-								// creates a random string of numbers and letters
-				'session_id' => substr(str_shuffle(MD5(microtime())), 0, 10),		
-			]);
-		}
-		// Putting session id into a variable
-		$get_Session = Session::get('Cart');
-		$flatten_Session = array_flatten($get_Session);
-		$Cart_Session = $flatten_Session[0];
+		$Cart_Session = SessionString('Cart');
 
 		// Calculate totals
 		$singlePrice = $Size['size_price'] + $Print['price'] + $Frame['size_price'];
@@ -187,20 +169,7 @@ class CartController extends Controller {
 
 	public function submitShipping(Request $request){
 		// Create a session_id
-		if(! Session::has('Shipping')){
-			// Create a session_id
-			Session::put('Shipping', $array = []);
-			Session::push('Shipping', $array = [
-				// creates a random string of numbers and letters
-				'session_id' => substr(str_shuffle(MD5(microtime())), 0, 10),		
-			]);			
-		}
-		// put session in string
-		$get_Session = Session::get('Shipping');
-		$flatten_Session = array_flatten($get_Session);
-		$Shipping_Session = $flatten_Session[0];
-
-
+		$Shipping_Session = SessionString('shipping');
 		
 		// New Address
 		// validate shipping form
@@ -283,22 +252,9 @@ class CartController extends Controller {
 
 	public function orderreview(){
 		// Create a session_id if there is none
-		if(! Session::has('Shipping')){
-			// Create a session_id
-			Session::put('Shipping', $array = []);
-			Session::push('Shipping', $array = [
-								// creates a random string of numbers and letters
-				'session_id' => substr(str_shuffle(MD5(microtime())), 0, 10),		
-			]);
-		}
-
-		$get_Session = Session::get('Shipping');
-		$flatten_Session = array_flatten($get_Session);
-		$Shipping_Session = $flatten_Session[0];
-
+		$Shipping_Session = SessionString('Shipping');
 
 		$Shipping = Shipping::where('session_id', '=', $Shipping_Session)->get();
-
 
 		// Create a session_id if there is none
 		if(! Session::has('Cart')){
@@ -331,19 +287,8 @@ class CartController extends Controller {
 	public function transaction(){
 
 		// musthaveCart();
-		// Create a session_id if there is none
-		if(! Session::has('Cart')){
-			// Create a session_id
-			Session::put('Cart', $array = []);
-			Session::push('Cart', $array = [
-								// creates a random string of numbers and letters
-				'session_id' => substr(str_shuffle(MD5(microtime())), 0, 10),		
-			]);
-		}
-
-		$get_Session = Session::get('Cart');
-		$flatten_Session = array_flatten($get_Session);
-		$Cart_Session = $flatten_Session[0];
+		// Create a session_id if there is none	
+		$Cart_Session = SessionString('Cart');
 
 		$cart = Cart::where('session_id', '=', $Cart_Session)->get();
 
@@ -359,28 +304,14 @@ class CartController extends Controller {
 		Braintree_Configuration::privateKey(env('BRAINTREE_PRIVATE_KEY'));
   		$clientToken = Braintree_ClientToken::generate();
 
-		return view('cart.transaction');
+		return view('cart.transaction', compact('cart', 'CountCart', 'grandtotal'));
 	}
 
 	public function receipt(){
 		return view('cart.receipt');
 	}
 
-	// public function SessionString($sessionVar) {
-	// 	// Create a session_id if there is none
-	// 	if(! Session::has('$sessionVar')){
-	// 		// Create a session_id
-	// 		Session::put('$sessionVar', $array = []);
-	// 		Session::push('$sessionVar', $array = [
-	// 		// creates a random string of numbers and letters
-	// 		'session_id' => substr(str_shuffle(MD5(microtime())), 0, 10),		
-	// 			]);
-	// 	}
-			
-	// 	$get_Session = Session::get('$sessionVar');
-	// 	$flatten_Session = array_flatten($get_Session);
-	// 	return $sessionVar_Session = $flatten_Session[0];
-	// } call ??? $this->SessionString('Shipping');
+	
 }
 
 
