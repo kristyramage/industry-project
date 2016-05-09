@@ -187,13 +187,39 @@ class TransactionController extends Controller {
 			$order->status = 'approved';
 
 			$order->save();
-		}
 
-		return view('cart.receipt');
+			Session::flash('success', 'Your order is now complete.');
+		
+		} else {
+
+			Session::flash('Warning', 'Error! Something has gone wrong with your payment, please try again');
+			return Redirect::back();
+			
+		} 
+
+		return redirect('cart/ordersummary');
 	}
 
+
 	public function receipt(){
-		return view('cart.receipt');
+		// Create a session_id if there is none
+		$Shipping_Session = SessionString('Shipping');
+		$Shipping = Shipping::where('session_id', '=', $Shipping_Session)->firstOrFail();
+
+		// Create a session_id if there is none
+		$Cart_Session = SessionString('Cart');
+		$cart = Cart::where('session_id', '=', $Cart_Session)->get();
+
+		$CountCart = $cart->count();
+		$grandtotal = 0;		
+		foreach ($cart as $cartitem) {
+			$grandtotal += $cartitem->subtotal;
+		}
+		// flat rate shipping cost
+		$shippingCost = 10;
+		$grandtotal += $shippingCost;	
+
+		return view('cart.receipt', compact('Shipping', 'cart', 'CountCart', 'shippingCost', 'grandtotal'));
 	}
 
 }
