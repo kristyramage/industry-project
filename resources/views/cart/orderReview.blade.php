@@ -10,14 +10,14 @@
 	<div class="row">
 		<div class="col-sm-offset-2 col-sm-8">
 			<p>
-				{{ $Shipping }} <br>
-				Email: <br>
-				Message:<br>
+				{{ $Shipping['name'] }} <br>
+				{{ $Shipping['email'] }}<br>
+				Message: {{ $Shipping['message'] }}<br>
 				<br>
-				address1 address2 <br>
-				city postcode <br>
-				state <br>
-				country
+				{{ $Shipping['street'] }}<br>
+				{{ $Shipping['city'] }} {{ $Shipping['postcode'] }} <br>
+				{{ $Shipping['state'] }} <br>
+				{{ $Shipping['country'] }}
 			</p>
 		</div>
 		

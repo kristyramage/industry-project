@@ -40,13 +40,14 @@ Route::get('cart', 'CartController@index');
 Route::post('addtocart', 'CartController@add');
 Route::post('updatecart/{id}', 'CartController@update');
 Route::post('removefromcart/{id}', 'CartController@remove');
+
 // Cart payment
-Route::get('cart/shipping', 'CartController@shipping');
-Route::post('cart/submitshipping', 'CartController@submitShipping');
-Route::get('cart/orderreview', 'CartController@orderreview');
-Route::get('cart/transaction', 'CartController@transaction');
-Route::post('checkout', 'CartController@checkout');
-Route::get('cart/ordersummary', 'CartController@receipt');
+Route::get('cart/shipping', 'TransactionController@shipping');
+Route::post('cart/submitshipping', 'TransactionController@submitShipping');
+Route::get('cart/orderreview', 'TransactionController@orderreview');
+Route::get('cart/transaction', 'TransactionController@transaction');
+Route::post('checkout', 'TransactionController@checkout');
+Route::get('cart/ordersummary', 'TransactionController@receipt');
 
 Route::get('gallery', 'GalleryController@index');
 
