@@ -45,6 +45,7 @@ Route::get('cart/shipping', 'CartController@shipping');
 Route::post('cart/submitshipping', 'CartController@submitShipping');
 Route::get('cart/orderreview', 'CartController@orderreview');
 Route::get('cart/transaction', 'CartController@transaction');
+Route::post('checkout', 'CartController@checkout');
 Route::get('cart/ordersummary', 'CartController@receipt');
 
 Route::get('gallery', 'GalleryController@index');

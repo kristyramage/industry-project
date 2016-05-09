@@ -13,7 +13,7 @@
 
 	<hr>
 
-	<form role="form" id="shipping" action="/cart/submitshipping" method="POST" class="form horizontal" enctype="multipart/form-data">
+	<form role="form" id="shipping" name="shipping" action="/cart/submitshipping" method="POST" class="form horizontal" enctype="multipart/form-data">
 		{!! csrf_field() !!}
 		
 		<div class="row">

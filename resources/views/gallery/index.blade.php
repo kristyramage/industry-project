@@ -8,6 +8,9 @@
 	<hr>
 	<div id="featproducts" class="row">
 		<div class="col-xs-12 col-sm-4">
+
+			<div id="selector"></div>
+
 			<a href="#">
 				<img src="http://placehold.it/300x300" alt="..." class="col-xs-12">
 			</a>
@@ -27,3 +30,23 @@
 
 	</div>
 @endsection
+
+{{-- @section('scripts')
+
+	<script type="text/javascript">
+
+		$(document).ready(function () {
+
+		  $('#selector').pongstgrm({
+		  	accessId: '232888369',
+		    accessToken:     '3d94efba41ba405abfd577e8178dd71d',
+		  });
+
+		  $('#selector').pongstgrm({ show: 'recent' });
+		   $('#selector').pongstgrm({ show: 'feed' });
+
+		});
+
+	</script>
+
+@endsection --}}

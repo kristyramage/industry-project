@@ -17,13 +17,13 @@ class CreateCrartsTable extends Migration
             $table->string('session_id');
 
             $table->integer('print_id')->unsigned();
-            $table->foreign('print_id')->references('id')->onUpdate('prints')->onDelete('cascade');
+            $table->foreign('print_id')->references('id')->on('prints')->onUpdate('cascade')->onDelete('cascade');
 
             $table->integer('size_id')->unsigned();
-            $table->foreign('size_id')->references('id')->onUpdate('print_sizes')->onDelete('cascade');
+            $table->foreign('size_id')->references('id')->on('print_sizes')->onUpdate('cascade')->onDelete('cascade');
 
             $table->integer('frame_id')->unsigned();
-            $table->foreign('frame_id')->references('id')->onUpdate('frame_sizes')->onDelete('cascade');
+            $table->foreign('frame_id')->references('id')->on('frame_sizes')->onUpdate('cascade')->onDelete('cascade');
 
             $table->smallInteger('quantity');
             $table->decimal('single_price', 6, 2); 

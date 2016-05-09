@@ -11,8 +11,8 @@
 		<div class="col-sm-offset-2 col-sm-8">
 			<p>
 				{{ $Shipping }} <br>
-				email <br>
-				message <br>
+				Email: <br>
+				Message:<br>
 				<br>
 				address1 address2 <br>
 				city postcode <br>
@@ -37,8 +37,9 @@
 				</thead>
 
 				<tbody>
-
 					@foreach($cart as $cartItem)
+						
+
 			            <tr>
 			              <td><img src="../images/thumbnails/<?=  preg_replace("/[^0-9a-zA-Z]/", "", $cartItem->prints->title ); ?>.jpg" alt="{{ $cartItem->prints->title }} image"></td>
 			              <td>

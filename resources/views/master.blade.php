@@ -7,6 +7,7 @@
 
 	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 	<!-- <link rel="stylesheet" type="text/css" href="/css/menu.css"> -->
+	<link rel="stylesheet" type="text/css" href="/css/pongstagr.am.css">
 	<link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="/css/main.css">
 </head>
@@ -122,6 +123,7 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
+    {{-- <script type="text/javascript" src="/js/pongstgrm/source/pongstgrm.am.js"></script> --}}
 
     @yield('scripts')
 

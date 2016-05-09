@@ -81,9 +81,11 @@
 					</div>
 				</div>
 			@else
-				<h3 class="text-center">Your Shopping Cart is Empty!!</h3>
-				<div class="row btn-boarder">
-					<p><a href="/prints" class=""><i class="glyphicon glyphicon-menu-left"></i>Continue Shopping</a></p>
+				<div class="col-xs-12">
+					<h3 class="text-center">Your Shopping Cart is Empty!!</h3>
+					<div class="row btn-boarder">
+						<p><a href="/prints" class=""><i class="glyphicon glyphicon-menu-left"></i>Continue Shopping</a></p>
+					</div>
 				</div>
 			@endif
 		</div>

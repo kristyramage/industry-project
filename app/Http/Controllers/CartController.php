@@ -6,6 +6,7 @@ use App\Prints;
 use App\PrintSizes;
 use App\Frames;
 use App\Cart;
+use App\Order;
 use Session;
 
 use App\Shipping;
@@ -170,8 +171,7 @@ class CartController extends Controller {
 	public function submitShipping(Request $request){
 		// Create a session_id
 		$Shipping_Session = SessionString('shipping');
-		
-		// New Address
+
 		// validate shipping form
 		$this->validate($request, [
 			'name'=>'required|min:2',
@@ -186,9 +186,36 @@ class CartController extends Controller {
 
 		]);
 
-		$data['messageLines'] = explode("\n", $request->get('message'));
+		if(Session::has('Shipping')){
+// ----------- // Update Address
+			if(isset($_POST)){
+	        
+	        $Shipping = Shipping::where('session_id', '=', $Shipping_Session)->firstOrFail();
+			$addShippingID = $Shipping['id'];
+			}
+					
+				$matchThese = [	'session_id'	=> $Shipping_Session, 
+									'id' 		=> $addShippingID,
+							  ];
 
-// ------------------------   ------------------------
+				$updateAddress = Shipping::where($matchThese)->firstOrFail();
+					
+				// Values that need to be updated
+				$updateAddress->name        = $request->name;
+				$updateAddress->email       = $request->email;
+				$updateAddress->phone  		= $request->phone;
+				$updateAddress->message     = $request->message;
+				$updateAddress->country     = $request->country;
+				$updateAddress->state       = $request->state;
+				$updateAddress->city  		= $request->city;
+				$updateAddress->street      = $request->street;
+				$updateAddress->postcode    = $request->postcode;
+
+			$updateAddress->save();
+
+	} else {
+// ----------- // New Address
+		$data['messageLines'] = explode("\n", $request->get('message'));
 
 				// save shipping details to database
 				$newAddress = new Shipping();
@@ -205,48 +232,10 @@ class CartController extends Controller {
 				$newAddress->postcode       = $request->postcode;
 
 				$newAddress->save();
-	
 
-		// 	$AddressFound = false;
-		// 	$Shipping = Shipping::all();
-		// 	$addShippingID = $Shipping['id'];
-
-		// 	foreach($Shipping as &$item) {
-		// 		// Check for a match
-		// 		if (($item['id'] == $addShippingID) & ($item['session_id'] == $Shipping_Session)) {
-		// 			$AddressFound = true;
-		// 		}
-		// 	}
-
-		// 	foreach($Shipping as &$item) {
-		// 		// Find match in database
-		// 		if (($item['id'] == $addShippingID) & ($item['session_id'] == $Shipping_Session)) {
-		// 			$matchThese = [	'session_id'	=> $Shipping_Session, 
-		// 							'id' 			=> $addShippingID,
-		// 						  ];
-
-		// 			$updateAddress = Shipping::where($matchThese)->firstOrFail();
-					
-		// 			// Values that need to be updated
-		// 			$updateAddress->session_id 	= $Shipping_Session;
-		// 			$updateAddress->name        = $request->name;
-		// 			$updateAddress->email       = $request->email;
-		// 			$updateAddress->phone  		= $request->phone;
-		// 			$updateAddress->message     = $request->message;
-		// 			$updateAddress->country     = $request->country;
-		// 			$updateAddress->state       = $request->state;
-		// 			$updateAddress->city  		= $request->city;
-		// 			$updateAddress->street      = $request->street;
-		// 			$updateAddress->postcode    = $request->postcode;
-		// 			break;
-		// 		}
-
-		// 	}
-		// 	$updateAddress->save();
-
+		}
 
 		return redirect('/cart/orderreview');
-	
 	}
 
 
@@ -284,7 +273,7 @@ class CartController extends Controller {
 		return view('cart.orderReview', compact('Shipping', 'cart', 'CountCart', 'shippingCost', 'grandtotal'));
 	}
 
-	public function transaction(){
+	public function transaction($id){
 
 		// musthaveCart();
 		// Create a session_id if there is none	
@@ -297,6 +286,9 @@ class CartController extends Controller {
 		foreach ($cart as $cartitem) {
 			$grandtotal += $cartitem->subtotal;
 		}
+		// flat rate shipping cost
+		$shippingCost = 10;
+		$grandtotal += $shippingCost;	
 		
 		Braintree_Configuration::environment('sandbox');
 		Braintree_Configuration::merchantId(env('BRAINTREE_MERCHANT_ID'));
@@ -307,13 +299,16 @@ class CartController extends Controller {
 		return view('cart.transaction', compact('cart', 'CountCart', 'grandtotal'));
 	}
 
-	public function checkout() {
+	public function checkout(Request $request) {
 		// musthaveCart();
 		// Create a session_id if there is none	
 		$Cart_Session = SessionString('Cart');
+		$Shipping_Session = SessionString('Shipping');
 
 		$cart = Cart::where('session_id', '=', $Cart_Session)->get();
+		$shipping = Shipping::where('session_id', '=', $Shipping_Session)->firstOrFail();
 
+		// var_dump($shipping);
 		$CountCart = $cart->count();
 		$grandtotal = 0;		
 		foreach ($cart as $cartitem) {
@@ -324,7 +319,7 @@ class CartController extends Controller {
 		Braintree_Configuration::merchantId(env('BRAINTREE_MERCHANT_ID'));
 		Braintree_Configuration::publicKey(env('BRAINTREE_PUBLIC_KEY'));
 		Braintree_Configuration::privateKey(env('BRAINTREE_PRIVATE_KEY'));
-		
+
   		$result = Braintree_Transaction::sale([
 				'amount' => "1000",
 				'paymentMethodNonce' => 'fake-valid-nonce',
@@ -332,6 +327,21 @@ class CartController extends Controller {
 				'submitForSettlement' => False
 			]
 		]);
+
+		if($result->success === true){
+
+			// var_dump($cart);
+			//Adds to Order Table
+			$order = new Order();
+			$order->cart_id = $cart->id;
+			$order->shipping_id = $shipping->id;
+			$order->grandTotal = $grandtotal;
+			$order->status = 'approved';
+			
+			$order->save();
+		}
+
+		return view('cart.receipt');
 	}
 
 	public function receipt(){
