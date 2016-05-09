@@ -307,6 +307,33 @@ class CartController extends Controller {
 		return view('cart.transaction', compact('cart', 'CountCart', 'grandtotal'));
 	}
 
+	public function checkout() {
+		// musthaveCart();
+		// Create a session_id if there is none	
+		$Cart_Session = SessionString('Cart');
+
+		$cart = Cart::where('session_id', '=', $Cart_Session)->get();
+
+		$CountCart = $cart->count();
+		$grandtotal = 0;		
+		foreach ($cart as $cartitem) {
+			$grandtotal += $cartitem->subtotal;
+		}
+		
+		Braintree_Configuration::environment('sandbox');
+		Braintree_Configuration::merchantId(env('BRAINTREE_MERCHANT_ID'));
+		Braintree_Configuration::publicKey(env('BRAINTREE_PUBLIC_KEY'));
+		Braintree_Configuration::privateKey(env('BRAINTREE_PRIVATE_KEY'));
+		
+  		$result = Braintree_Transaction::sale([
+				'amount' => "1000",
+				'paymentMethodNonce' => 'fake-valid-nonce',
+				'options' => [
+				'submitForSettlement' => False
+			]
+		]);
+	}
+
 	public function receipt(){
 		return view('cart.receipt');
 	}

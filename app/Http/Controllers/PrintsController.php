@@ -14,7 +14,10 @@ class PrintsController extends Controller
 {
     public function index(){
         $allPrints = Prints::all();
-        return view('print.index', compact('allPrints'));
+
+        $page = Prints::paginate(15);
+
+        return view('print.index', compact('allPrints', 'page'));
     }
 
 

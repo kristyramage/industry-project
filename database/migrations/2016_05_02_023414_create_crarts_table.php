@@ -27,7 +27,9 @@ class CreateCrartsTable extends Migration
 
             $table->smallInteger('quantity');
             $table->decimal('single_price', 6, 2); 
-            $table->decimal('subtotal', 6, 2); 
+            $table->decimal('subtotal', 6, 2);
+
+            $table->enum('status', array('refunded','shipped','approved','expired','declined','timeout','pending'))->default('pending');
             $table->timestamps();
         });
     }

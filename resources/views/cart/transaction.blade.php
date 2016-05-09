@@ -6,12 +6,12 @@
 @section('content')
 	<h1 class="pageTitle">Payment</h1>
 	<hr>
-	<div class="row">
+	{{-- <div class="row"> --}}
 
 
 		<form id="checkout" method="post" action="/checkout">
 			{!! csrf_field() !!}
-		    <div id="id="payment-form""></div>
+		    <div id="payment-form"></div>
 
 		    <button type="submit" class="btn btn-success pull-right btn-lg">
 				Pay Now <i class="glyphicon glyphicon glyphicon-menu-right"></i>
@@ -28,7 +28,7 @@
 			</div> --}}
 		</div>
 
-	</div>
+	{{-- </div> --}}
 
 	
 @endsection
