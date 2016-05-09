@@ -18,6 +18,8 @@ class CreateOrdersTable extends Migration
             $table->integer('cart_id')->unsigned();
             $table->foreign('cart_id')->references('id')->on('carts')->onUpdate('cascade')->onDelete('cascade');
 
+            $table->string('cart_session_id');
+
             $table->integer('shipping_id')->unsigned();
             $table->foreign('shipping_id')->references('id')->on('shipping')->onUpdate('cascade')->onDelete('cascade');
 

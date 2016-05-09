@@ -7,9 +7,8 @@ use App\PrintSizes;
 use App\Frames;
 use App\Cart;
 use App\Order;
-use Session;
-
 use App\Shipping;
+use Session;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -147,7 +146,7 @@ class TransactionController extends Controller {
 		return view('cart.transaction', compact('cart', 'CountCart', 'grandtotal'));
 	}
 
-	public function checkout(Request $request) {
+	public function checkout() {
 		// musthaveCart();
 		// Create a session_id if there is none	
 		$Cart_Session = SessionString('Cart');
@@ -155,8 +154,8 @@ class TransactionController extends Controller {
 
 		$cart = Cart::where('session_id', '=', $Cart_Session)->get();
 		$shipping = Shipping::where('session_id', '=', $Shipping_Session)->firstOrFail();
+		$db_cartadd = Cart::where('session_id', '=', $Cart_Session)->firstOrFail();
 
-		// var_dump($shipping);
 		$CountCart = $cart->count();
 		$grandtotal = 0;		
 		foreach ($cart as $cartitem) {
@@ -178,14 +177,15 @@ class TransactionController extends Controller {
 
 		if($result->success === true){
 
-			// var_dump($cart);
 			//Adds to Order Table
 			$order = new Order();
-			$order->cart_id = $cart->id;
+
+			$order->cart_id = $db_cartadd->id;
+			$order->cart_session_id = $Cart_Session;
 			$order->shipping_id = $shipping->id;
-			$order->grandTotal = $grandtotal;
+			$order->grand_total = $grandtotal;
 			$order->status = 'approved';
-			
+
 			$order->save();
 		}
 
