@@ -16,6 +16,7 @@
 		@endif()
 	@endif()
 
+	{!! $page->links() !!}
 
 	<div id="featproducts" class="row">
 		@foreach($allPrints as $print)
