@@ -24,6 +24,12 @@
 		  		<br>
 		  		Captured Write xx	
 			</p>
+			<div class="col-lg-12 text-center ">
+          		<ul class="list-inline">
+            		<li><a href="https://www.facebook.com/captured.write/"><span class="facebook"></span></a></li>
+		            <li><a href="https://www.instagram.com/capturedwrite/"> <span class="instagram"></span></a></li>
+		        </ul>
+	        </div>
 		</div>
 	</div>
 

@@ -117,6 +117,44 @@ hr{
 	margin: 20px 0;
 }
 
+/* --------------------------------------- social media css --------------------------------------- */
+
+.facebook, .instagram, .twitter
+{
+	background-image: url(../images/sprite.png);
+	background-repeat: no-repeat;
+	display: inline-block;
+}
+.facebook {
+	width: 30px;
+	height: 30px;
+	background-position: 0 0;
+}
+	.facebook:hover {
+		width: 30px;
+		height: 30px;
+		background-position: 0 -30px;
+	}
+.instagram {
+	width: 30px;
+	height: 30px;
+	background-position: -30px 0;
+}
+	.instagram:hover {
+		width: 30px;
+		height: 30px;
+		background-position: -30px -30px;
+	}
+.twitter {
+	width: 30px;
+	height: 30px;
+	background-position: -60px 0;
+}
+	.twitter:hover {
+		width: 30px;
+		height: 30px;
+		background-position: -60px -30px;
+	}
 /* --------------------------------------- stockists page --------------------------------------- */
 
 #map {
