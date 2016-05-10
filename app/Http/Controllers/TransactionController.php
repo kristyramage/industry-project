@@ -22,8 +22,9 @@ use Braintree_Transaction;
 class TransactionController extends Controller {
 
 	public function shipping(Request $request){
+		musthaveCart();
 
-			return view('cart.shipping');
+		return view('cart.shipping');
 	}
 
 
@@ -48,8 +49,6 @@ class TransactionController extends Controller {
 		if(Session::has('Shipping')){
 // ----------- // Update Address
 				if(isset($_POST)){
-	        
-					var_dump("here 1");
 
 	        $Shipping = Shipping::where('session_id', '=', $Shipping_Session)->firstOrFail();
 			$addShippingID = $Shipping['id'];
@@ -75,7 +74,6 @@ class TransactionController extends Controller {
 			$updateAddress->save();
 
 	} else {
-			var_dump("here 2");
 // ----------- // New Address
 		$data['messageLines'] = explode("\n", $request->get('message'));
 
@@ -102,6 +100,8 @@ class TransactionController extends Controller {
 
 
 	public function orderreview(){
+		musthaveCart();
+
 		// Create a session_id if there is none
 		$Shipping_Session = SessionString('Shipping');
 		$Shipping = Shipping::where('session_id', '=', $Shipping_Session)->firstOrFail();
@@ -125,7 +125,7 @@ class TransactionController extends Controller {
 
 	public function transaction(){
 
-		// musthaveCart();
+		musthaveCart();
 		// Create a session_id if there is none	
 		$Cart_Session = SessionString('Cart');
 
@@ -140,17 +140,18 @@ class TransactionController extends Controller {
 		$shippingCost = 10;
 		$grandtotal += $shippingCost;	
 		
-		Braintree_Configuration::environment('sandbox');
-		Braintree_Configuration::merchantId(env('BRAINTREE_MERCHANT_ID'));
-		Braintree_Configuration::publicKey(env('BRAINTREE_PUBLIC_KEY'));
-		Braintree_Configuration::privateKey(env('BRAINTREE_PRIVATE_KEY'));
-  		$clientToken = Braintree_ClientToken::generate();
+			Braintree_Configuration::environment('sandbox');
+			Braintree_Configuration::merchantId(env('BRAINTREE_MERCHANT_ID'));
+			Braintree_Configuration::publicKey(env('BRAINTREE_PUBLIC_KEY'));
+			Braintree_Configuration::privateKey(env('BRAINTREE_PRIVATE_KEY'));
+		 	$clientToken = Braintree_ClientToken::generate();
+	  		
 
 		return view('cart.transaction', compact('cart', 'CountCart', 'grandtotal'));
 	}
 
 	public function checkout() {
-		// musthaveCart();
+		musthaveCart();
 		// Create a session_id if there is none	
 		$Cart_Session = SessionString('Cart');
 		$Shipping_Session = SessionString('Shipping');

@@ -7,6 +7,11 @@
 	<h1 class="pageTitle">Order Review</h1>
 	<hr>
 
+	<div class="jumbotron alert alert-warning text-center">
+		<h2>Reminder</h2>
+		<p>This is a demo website</p>
+	</div>
+
 	<div class="row">
 		<div class="col-sm-offset-2 col-sm-8">
 			<p>

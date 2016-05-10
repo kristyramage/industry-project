@@ -7,6 +7,11 @@
 	<h1 class="pageTitle">Payment</h1>
 	<hr>
 	{{-- <div class="row"> --}}
+	<div class="jumbotron alert alert-danger text-center">
+		<h2>Warning!</h2>
+		<p>This is a demo website</p>
+		<p>Please do not enter any real details.</p>
+	</div>
 
 
 		<form id="checkout" method="post" action="/checkout">

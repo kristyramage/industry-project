@@ -1,4 +1,6 @@
 <?php
+use App\Cart;
+
 function mustbeAdmin(){
 	if (\Auth::check()) {
 		if(\Auth::user()->role !== 'admin'){
@@ -24,4 +26,14 @@ function SessionString($modelName) {
 	$get_Session = Session::get('$modelName');
 	$flatten_Session = array_flatten($get_Session);
 	return $Session_String = $flatten_Session[0];
+}
+
+function musthaveCart(){
+	$Cart_Session = SessionString('Cart');
+	$cart = Cart::where('session_id', '=', $Cart_Session)->get();
+	$CountCart = $cart->count();
+
+	if($CountCart === 0){
+	     return abort(404);
+	}
 }
