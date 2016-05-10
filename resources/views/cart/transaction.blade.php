@@ -28,12 +28,9 @@
 				<a href="/cart/orderreview" class="pull-left"><i class="glyphicon glyphicon-chevron-left"></i>  Back to Order Review</a>
 			</div>
 
-			{{-- <div class="col-xs-12 col-sm-6 go-btn">
-				<button form="checkout" id="checkout" class="pull-right btn">Submit order <i class="glyphicon glyphicon-chevron-right"></i></button>
-			</div> --}}
 		</div>
 
-	{{-- </div> --}}
+
 
 	
 @endsection

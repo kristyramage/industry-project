@@ -89,12 +89,13 @@ class CartController extends Controller {
 					$updateCart->subtotal 	= $item['subtotal'] + $subtotalPrice;
 					break;
 				}
-
+				
 			}
 			$updateCart->save();
 
 		} else {
-
+			$Print->quantity = $Print['quantity'] - $request->print_quantity;
+			$Print->save();
 			// Adding Print to the guest cart
 			$newCart = new Cart();
 			$newCart->session_id 	= $Cart_Session;
@@ -121,12 +122,14 @@ class CartController extends Controller {
 
 		// update cart and database
 		if($refreshCartItem['quantity'] > $cartItem['quantity']){
+			$Difference = $refreshCartItem['quantity'] - $cartItem['quantity'];
 			// removing from database
-			$print->quantity = $print['quantity'] - $refreshCartItem['quantity'];
+			$print->quantity = $print['quantity'] - $Difference;
 
 		} else if($refreshCartItem['quantity'] < $cartItem['quantity']){
+			$Difference = $cartItem['quantity'] - $refreshCartItem['quantity'];
 			// adding to database
-			$print->quantity = $print['quantity'] + $refreshCartItem['quantity'];
+			$print->quantity = $print['quantity'] + $Difference;
 		}
 		$print->save();
 
