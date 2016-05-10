@@ -6,47 +6,22 @@
 @section('content')
 	<h1 class="pageTitle">Gallery</h1>
 	<hr>
-	<div id="featproducts" class="row">
-		<div class="col-xs-12 col-sm-4">
 
-			<div id="selector"></div>
-
-			<a href="#">
-				<img src="http://placehold.it/300x300" alt="..." class="col-xs-12">
-			</a>
-		</div>
-
-		<div class="col-xs-12 col-sm-4">
-			<a href="#">
-			<img src="http://placehold.it/300x300" alt="..." class="col-xs-12">
-			</a>
-		</div>
-
-		<div class="col-xs-12 col-sm-4">
-			<a href="#">
-				<img src="http://placehold.it/300x300" alt="..." class="col-xs-12">
-			</a>
-		</div>
-
+	<div class="row">
+		<div id="selector"></div>
 	</div>
-@endsection
-
-{{-- @section('scripts')
 
 	<script type="text/javascript">
 
-		$(document).ready(function () {
-
-		  $('#selector').pongstgrm({
-		  	accessId: '232888369',
-		    accessToken:     '3d94efba41ba405abfd577e8178dd71d',
-		  });
-
-		  $('#selector').pongstgrm({ show: 'recent' });
-		   $('#selector').pongstgrm({ show: 'feed' });
-
-		});
+		var id = '{{ env('INSTAGRAM_ID') }}';
+ 		var token = '{{ env('INSTAGRAM_TOKEN') }}';
+ 		
 
 	</script>
+@endsection
 
-@endsection --}}
+@section('scripts')
+
+	
+
+@endsection

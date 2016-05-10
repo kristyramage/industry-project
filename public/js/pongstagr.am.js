@@ -32,9 +32,9 @@
     // HTML OPTIONS
     // ===========================
     , preload:          "spinner"
-    , button:           "btn btn-success pull-right"
-    , buttontext:       "Load more"
-    , column:           "col-xs-12 col-sm-3 col-md-3 col-lg-3"
+    , button:           "btn btn-default btn-lg center-block"
+    , buttontext:       "+"
+    , column:           "col-xs-12 col-sm-4 col-md-4 col-lg-4"
     , likeicon:         "glyphicon glyphicon-heart"
     , muteicon:         "glyphicon glyphicon-volume-off"
     , videoicon:        "glyphicon glyphicon-play"
