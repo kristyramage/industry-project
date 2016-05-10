@@ -143,7 +143,16 @@ class CartController extends Controller {
 
 	public function remove($id){
 
-        $cartItem = Cart::where('id', '=', $id)->firstOrFail();
+        $Cart_Session = SessionString('Cart');
+		$cart = Cart::where('session_id', '=', $Cart_Session)->firstOrFail();
+		$cartItem = Cart::where('id', '=', $id)->firstOrFail();
+		
+		$printID = $cartItem['print_id'];
+
+		$print = Prints::where('id', '=', $printID)->firstOrFail();
+		$print->quantity = $print['quantity'] + $cartItem['quantity'];
+		$print->save();
+
         $cartItem->delete();
 
         return redirect('cart');

@@ -29,8 +29,6 @@
 		<div class="col-xs-12 col-md-7">
 			<div class="col-xs-12">
 				<h4>{{ $prints->title }}</h4>
-
-				{{--------------------------------------  -----------------------------------------}}
 				<h4>
 					@foreach($sizes as $size) 
 			        	{{ $size->size }} <small>&#36;{{  ($prints->price + $size->size_price) }}</small>
@@ -44,7 +42,7 @@
 			</div>
 
 			<div class="col-xs-12">
-				<p>DESCRIPTION</p>
+				<h4>DESCRIPTION</h4>
 			    <p>{{ $prints->description }}</p>
 			</div>
 
