@@ -43,11 +43,12 @@ Route::post('removefromcart/{id}', 'CartController@remove');
 
 // Cart payment
 Route::get('cart/shipping', 'TransactionController@shipping');
+Route::get('cart/submitshipping', 'TransactionController@submitShipping');
 Route::post('cart/submitshipping', 'TransactionController@submitShipping');
 Route::get('cart/orderreview', 'TransactionController@orderreview');
 Route::get('cart/transaction', 'TransactionController@transaction');
 Route::post('checkout', 'TransactionController@checkout');
-Route::get('cart/ordersummary', 'TransactionController@receipt');
+Route::get('cart/success', 'TransactionController@success');
 
 Route::get('gallery', 'GalleryController@index');
 

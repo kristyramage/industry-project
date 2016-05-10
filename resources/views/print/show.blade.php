@@ -29,7 +29,21 @@
 		<div class="col-xs-12 col-md-7">
 			<div class="col-xs-12">
 				<h4>{{ $prints->title }}</h4>
-				<h4>&#36;{{ $prints->price }}</h4>
+
+				{{--------------------------------------  -----------------------------------------}}
+				<h4>
+					@foreach($sizes as $size) 
+			        	{{ $size->size }} &#36;{{  ($prints->price + $size->size_price) }}
+			    	@endforeach
+				</h4>
+				<p>
+					* Frame the print for 
+					@foreach($sizes as $size) 
+						{{ $size->size }} &#36;{{ $frame->size_price}}
+					@endforeach
+				</p>
+				
+
 			</div>
 
 			<div class="col-xs-12">
@@ -64,7 +78,7 @@
 		        </div>
 
 		        <div class="form-group col-sm-4">
-			        <label type="checkbox" name="framed" value="framed">Framed</label>
+			        <label type="checkbox" name="framed" value="framed">* Framed</label>
 			        <div>
 			          <input type="checkbox" class="form-control" id="framed" name="framed">
 			        </div>

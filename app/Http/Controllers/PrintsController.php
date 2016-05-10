@@ -25,7 +25,11 @@ class PrintsController extends Controller
 	public function show($title) {
         $prints = Prints::where('title', "=", $title)->firstOrFail();
         $sizes = PrintSizes::all();
-        return view('print.show', compact('prints', 'sizes'));
+
+        // Calculate totals
+        // $singlePrice = $sizes['size_price'] + $print['price'];
+
+        return view('print.show', compact('prints', 'sizes', 'singlePrice'));
     }
 
     public function create()

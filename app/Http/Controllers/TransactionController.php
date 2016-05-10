@@ -47,8 +47,10 @@ class TransactionController extends Controller {
 
 		if(Session::has('Shipping')){
 // ----------- // Update Address
-			if(isset($_POST)){
+				if(isset($_POST)){
 	        
+					var_dump("here 1");
+
 	        $Shipping = Shipping::where('session_id', '=', $Shipping_Session)->firstOrFail();
 			$addShippingID = $Shipping['id'];
 			}
@@ -73,6 +75,7 @@ class TransactionController extends Controller {
 			$updateAddress->save();
 
 	} else {
+			var_dump("here 2");
 // ----------- // New Address
 		$data['messageLines'] = explode("\n", $request->get('message'));
 
@@ -188,7 +191,18 @@ class TransactionController extends Controller {
 
 			$order->save();
 
-			Session::flash('success', 'Your order is now complete.');
+			// Session::flash('success', 'Your order is now complete.');
+
+			// delete sessions
+			if(! Session::has('Shipping'))
+			{
+				Session::flush('Shipping');
+			}
+			if(! Session::has('Cart'))
+			{
+				Session::flush('Cart');
+			}
+
 		
 		} else {
 
@@ -197,29 +211,13 @@ class TransactionController extends Controller {
 			
 		} 
 
-		return redirect('cart/ordersummary');
+		return redirect('cart/success');
 	}
 
 
-	public function receipt(){
-		// Create a session_id if there is none
-		$Shipping_Session = SessionString('Shipping');
-		$Shipping = Shipping::where('session_id', '=', $Shipping_Session)->firstOrFail();
+	public function success(){	
 
-		// Create a session_id if there is none
-		$Cart_Session = SessionString('Cart');
-		$cart = Cart::where('session_id', '=', $Cart_Session)->get();
-
-		$CountCart = $cart->count();
-		$grandtotal = 0;		
-		foreach ($cart as $cartitem) {
-			$grandtotal += $cartitem->subtotal;
-		}
-		// flat rate shipping cost
-		$shippingCost = 10;
-		$grandtotal += $shippingCost;	
-
-		return view('cart.receipt', compact('Shipping', 'cart', 'CountCart', 'shippingCost', 'grandtotal'));
+		return view('cart.success');
 	}
 
 }
