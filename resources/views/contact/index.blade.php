@@ -34,7 +34,7 @@
 			<p class="para-title" >Holla at me,</p>
 		  	<form role="form" id="contactForm" action="/contact/message" method="POST" class="form horizontal">
 		  		{!! csrf_field() !!}
-		      <div class="form-group">
+		      <div class="form-group {{ $errors->has('name') ? 'has-error' :'' }}">
 		        <label for="name" class="control-label">Name</label>
 		        <div>
 		          <input class="form-control" id="name" name="name" value="{{old('name')}}">
@@ -42,7 +42,7 @@
 		        </div>
 		      </div>
 
-		      <div class="form-group">
+		      <div class="form-group {{ $errors->has('email') ? 'has-error' :'' }}">
 		        <label for="email" class="control-label">Email</label>
 		        <div>
 		          <input class="form-control" id="email" name="email" placeholder="jon@example.com"
@@ -51,7 +51,7 @@
 		        </div>
 		      </div>
 		        
-		      <div class="form-group">
+		      <div class="form-group {{ $errors->has('subject') ? 'has-error' :'' }}">
 		        <label for="text" class="control-label">Subject</label>
 		        <div>
 		          <input type="text" class="form-control" id="subject" name="subject" value="{{old('subject')}}">
@@ -59,7 +59,7 @@
 		        </div>
 		      </div>
 
-		      <div class="form-group">
+		      <div class="form-group {{ $errors->has('message') ? 'has-error' :'' }}">
 		        <label for="message" class="control-label">Message</label>
 		        <div>
 		          <textarea class="form-control" rows="3" name="message" placeholder="Type your message here">{{old('message')}}</textarea>

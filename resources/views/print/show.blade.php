@@ -33,14 +33,11 @@
 				{{--------------------------------------  -----------------------------------------}}
 				<h4>
 					@foreach($sizes as $size) 
-			        	{{ $size->size }} &#36;{{  ($prints->price + $size->size_price) }}
+			        	{{ $size->size }} <small>&#36;{{  ($prints->price + $size->size_price) }}</small>
 			    	@endforeach
 				</h4>
 				<p>
-					* Frame the print for 
-					@foreach($sizes as $size) 
-						{{ $size->size }} &#36;{{ $frame->size_price}}
-					@endforeach
+					<small>* Frame the print from &#36;5.00 - &#36;20.00</small>
 				</p>
 				
 

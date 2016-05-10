@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 
+use App\Frames;
 use App\Prints;
 use App\PrintSizes;
 use Intervention\Image\ImageManager;
@@ -26,9 +27,6 @@ class PrintsController extends Controller
         $prints = Prints::where('title', "=", $title)->firstOrFail();
         $sizes = PrintSizes::all();
 
-        // Calculate totals
-        // $singlePrice = $sizes['size_price'] + $print['price'];
-
         return view('print.show', compact('prints', 'sizes', 'singlePrice'));
     }
 
@@ -41,8 +39,6 @@ class PrintsController extends Controller
 
     public function store(Request $request)
     {
-
-
         mustbeAdmin();
         
         // validationRules
@@ -53,8 +49,6 @@ class PrintsController extends Controller
             'poster'=>'required|image',      
             'quantity'=>'required|numeric',
         ]);
-
-        
 
         // Adds page breaks into textarea
         $description = nl2br(htmlspecialchars($_POST['description']));
@@ -101,7 +95,7 @@ class PrintsController extends Controller
     public function update(Request $request)
     {
         mustbeAdmin();
-        // {{validationRules}}
+        // validationRules
         $this->validate($request, [
             'title' => 'required|max:120',
             'price' => 'required|numeric',

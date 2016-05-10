@@ -25,7 +25,7 @@
 		<div class="col-sm-6" >
 		  	<form role="form" id="customPrintForm" action="/contact/custom" method="POST" class="form horizontal">
 		  		{!! csrf_field() !!}
-		      <div class="form-group col-sm-12">
+		      <div class="form-group col-sm-12 {{ $errors->has('name') ? 'has-error' :'' }}">
 		        <label for="name" class="control-label">Your Name</label>
 		        <div>
 		          <input class="form-control" id="name" name="name" value=" ">
@@ -33,7 +33,7 @@
 		        </div>
 		      </div>
 
-		      <div class="form-group col-sm-12">
+		      <div class="form-group col-sm-12 {{ $errors->has('email') ? 'has-error' :'' }}">
 		        <label for="email" class="control-label">Email</label>
 		        <div>
 		          <input class="form-control" id="email" name="email" placeholder="jon@example.com"
@@ -42,7 +42,7 @@
 		        </div>
 		      </div>
 
-		      <div class="form-group col-sm-12">
+		      <div class="form-group col-sm-12 {{ $errors->has('description') ? 'has-error' :'' }}">
 		        <label for="description" class="control-label">Description</label>
 		        <div>
 		          <textarea class="form-control" rows="3" name="description" placeholder="Type your description here"></textarea>

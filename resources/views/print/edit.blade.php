@@ -14,7 +14,7 @@
 		  		{!! csrf_field() !!}
 		  		 <input type="hidden" name="id" value="{{$prints->id}}">
 
-		      <div class="form-group col-sm-4">
+		      <div class="form-group col-sm-4 {{ $errors->has('title') ? 'has-error' :'' }}">
 		        <label for="title" class="control-label">Print Title</label>
 		        <div>
 		          <input class="form-control" id="title" name="title" value="{{$prints->title}}">
@@ -22,7 +22,7 @@
 		        </div>
 		      </div>
 
-		      <div class="form-group col-sm-4">
+		      <div class="form-group col-sm-4 {{ $errors->has('price') ? 'has-error' :'' }}">
 		        <label for="price" class="control-label">Print price</label>
 		        <div>
 		          <input type="number" class="form-control" id="price" name="price" value="{{$prints->price}}">
@@ -30,7 +30,7 @@
 		        </div>
 		      </div>
 
-		      <div class="form-group col-sm-4">
+		      <div class="form-group col-sm-4 {{ $errors->has('quantity') ? 'has-error' :'' }}">
 		        <label for="quantity" class="control-label">Number of prints avaliable</label>
 		        <div>
 		          <input type="number" class="form-control" id="quantity" name="quantity" value="{{$prints->quantity}}">
@@ -38,13 +38,13 @@
 		        </div>
 		      </div>
 
-		        <div class="form-group col-xs-12 col-md-4">
+		        <div class="form-group col-xs-12 col-md-4 {{ $errors->has('poster') ? 'has-error' :'' }}">
 					<label for="poster">Print Poster</label>
 					<input type="file" for="poster" name="poster">
 					{!! $errors->first('poster','<span class="help-block">:message</span>') !!}
 				</div>
 
-		      <div class="form-group col-xs-12 col-sm-8">
+		      <div class="form-group col-xs-12 col-sm-8 {{ $errors->has('description') ? 'has-error' :'' }}">
 		        <label for="description" class="control-label">Print Description</label>
 		        <div>
 		          <textarea class="form-control" rows="3" name="description">{{$prints->description}}</textarea>
