@@ -10,8 +10,8 @@
 @if(\Auth::check())
 	@if(\Auth::user()->role === 'admin')
 
-		<div class="go-btn">
-	        <a class="btn" href="/prints/edit/{{$prints->id}}">Edit Print</a>	
+		<div class="btn-boarder">
+	        <a class="btn btn-default" href="/prints/edit/{{$prints->id}}">Edit Print</a>	
 	    </div>
 	@endif()
 @endif()

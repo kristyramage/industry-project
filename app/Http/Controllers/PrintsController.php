@@ -16,9 +16,10 @@ class PrintsController extends Controller
     public function index(){
         $allPrints = Prints::all();
 
-        $page = Prints::paginate(9);
+        $page = Prints::paginate(6);
+        $Size = PrintSizes::where('size', "=", 'A5')->firstOrFail();
 
-        return view('print.index', compact('allPrints', 'page'));
+        return view('print.index', compact('allPrints', 'page', 'Size'));
     }
 
 
@@ -27,7 +28,7 @@ class PrintsController extends Controller
         $prints = Prints::where('title', "=", $title)->firstOrFail();
         $sizes = PrintSizes::all();
 
-        return view('print.show', compact('prints', 'sizes', 'singlePrice'));
+        return view('print.show', compact('prints', 'sizes'));
     }
 
     public function create()

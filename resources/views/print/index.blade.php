@@ -10,8 +10,8 @@
 	@if(\Auth::check())
 		@if(\Auth::user()->role === 'admin')
 
-			<div class="go-btn">
-		        <a class="btn" href="prints/create">New Print</a>	
+			<div class="btn-boarder">
+		        <a class="btn btn-default" href="prints/create">New Print</a>	
 		    </div>
 		@endif()
 	@endif()
@@ -25,7 +25,7 @@
 				<img src="images/products/{{ $print->poster }}.jpg" alt=" {{ $print->description }} " class="col-xs-12">
 			</a>
 			<p class="text-center">{{ $print->title }} <br>
-			&#36;{{ $print->price }}</p>
+			From &#36;{{ ($Size->size_price + $print->price) }}</p>
 		</div>
 		@endforeach
 	</div>
