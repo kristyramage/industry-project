@@ -14,7 +14,7 @@
 
 	<hr>
 
-	<form role="form" id="shipping" name="shipping" action="/cart/submitshipping" method="POST" class="form horizontal" enctype="multipart/form-data">
+	<form role="form" id="shippingform" name="shippingform" action="/cart/submitshipping" method="POST" class="form horizontal" enctype="multipart/form-data">
 		{!! csrf_field() !!}
 		
 		<div class="row">
@@ -99,7 +99,7 @@
 			<a href="/cart" class="pull-left"><i class="glyphicon glyphicon-chevron-left"></i>  Back to Cart</a>
 		</div>
 		<div class="col-xs-12 col-sm-6 go-btn">
-			<button form="shipping" id="shipping" class="pull-right btn">Proceed to order Review  <i class="glyphicon glyphicon-chevron-right"></i></button>
+			<button form="shippingform" class="pull-right btn">Proceed to order Review  <i class="glyphicon glyphicon-chevron-right"></i></button>
 		</div>
 	</div>
 

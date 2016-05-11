@@ -29,9 +29,6 @@ class TransactionController extends Controller {
 
 
 	public function submitShipping(Request $request){
-		// Create a session_id
-		$Shipping_Session = SessionString('shipping');
-
 		// validate shipping form
 		$this->validate($request, [
 			'name'=>'required|min:2',
@@ -46,18 +43,43 @@ class TransactionController extends Controller {
 
 		]);
 
-		if(Session::has('Shipping')){
-// ----------- // Update Address
-				if(isset($_POST)){
+		// Create a session_id if there is none
+		$Shipping_Session = SessionString('Shipping');
+		$ShippingAll = Shipping::all();
+	var_dump('test 1');
+		// $Shipping = Shipping::where('session_id', '=', $Shipping_Session)->firstOrFail();
+		// dd($Shipping['session_id']);
 
+		if(isset($_POST)){
+	var_dump('test 1.5');
+			$AddressFound = false;
+			$Shipping = Shipping::where('session_id', '=', $Shipping_Session)->first();
+			$ShippingID = $Shipping['id'];
+	var_dump('test 2');
+
+			foreach($ShippingAll as &$item) {
+				// Check for a match
+				if (($item['session_id'] == $Shipping_Session) & ($item['id'] == $ShippingID)) {
+					$AddressFound = true;
+	var_dump('test 3');
+				}
+			}
+
+		};
+	var_dump('test 3.5');
+		if($AddressFound === true){
+// ----------- // Update Address
+	var_dump('test 4');
+			if(isset($_POST)){
+	var_dump('test 5');
 	        $Shipping = Shipping::where('session_id', '=', $Shipping_Session)->firstOrFail();
 			$addShippingID = $Shipping['id'];
 			}
-					
+	var_dump('test 6');	
 				$matchThese = [	'session_id'	=> $Shipping_Session, 
 									'id' 		=> $addShippingID,
 							  ];
-
+	var_dump('test 7');
 				$updateAddress = Shipping::where($matchThese)->firstOrFail();
 					
 				// Values that need to be updated
@@ -74,6 +96,7 @@ class TransactionController extends Controller {
 			$updateAddress->save();
 
 	} else {
+	var_dump('test 8');
 // ----------- // New Address
 		$data['messageLines'] = explode("\n", $request->get('message'));
 
