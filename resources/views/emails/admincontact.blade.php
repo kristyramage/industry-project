@@ -4,10 +4,10 @@
 <p>
   Here are the details:
 </p>
-<ul>
-  <li>Name: <strong>{{ $name }}</strong></li>
-  <li>Email: <strong>{{ $email }}</strong></li>
-</ul>
+
+  <p>Name: <strong>{{ $name }}</strong></p>
+  <p>Email: <strong>{{ $email }}</strong></p>
+
 <hr>
 <p>
   @foreach ($messageLines as $messageLine)
