@@ -1,14 +1,14 @@
 @extends('master')
 
-@section('title', 'Be right back')
-@section('meta-description', 'error 503')
+@section('title', 'Unauthorised!')
+@section('meta-description', 'error 401')
 
 @section('content')
 
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Be right back.</div>
+                <div class="title">Access Denied. Go Back.</div>
             </div>
         </div>
     </body>

@@ -23,6 +23,11 @@
 .top-space {
 	margin-top: 15px;
 }
+.title {
+    font-size: 72px;
+    margin-bottom: 40px;
+}
+
 /* --------------------------------------- nav and footer css --------------------------------------- */
 
 .navbar {
@@ -160,6 +165,26 @@ hr{
 #map {
 	margin: 10px 0;
 	height: 200px;
+}
+/* --------------------------------------- Prints page --------------------------------------- */
+.pagination>.active>span {
+	background-color: #000;
+	border-color: #FFD8D8;
+}
+
+.pagination>.active>a, 
+.pagination>.active>a:focus, 
+.pagination>.active>a:hover, 
+
+.pagination>.active>span:focus, 
+.pagination>.active>span:hover {
+	background-color: #FFD8D8;
+	border-color: #FFD8D8;
+}
+
+.pagination>li>a, 
+.pagination>li>span {
+	color: #000;
 }
 
 /* --------------------------------------- cart page --------------------------------------- */

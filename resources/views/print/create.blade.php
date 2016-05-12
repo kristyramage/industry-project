@@ -27,7 +27,7 @@
 			      <div class="form-group col-sm-4 {{ $errors->has('price') ? 'has-error' :'' }}">
 			        <label for="price" class="control-label">Print price</label>
 			        <div>
-			          <input type="number" class="form-control" id="price" name="price" value="{{old('price')}}">
+			          <input type="number" class="form-control" id="price" name="price" value="{{old('price')}}" min="0">
 			          {!! $errors->first('price','<span class="help-block">:message</span>') !!}
 			        </div>
 			      </div>
@@ -35,7 +35,7 @@
 			      <div class="form-group col-sm-4 {{ $errors->has('quantity') ? 'has-error' :'' }}">
 			        <label for="quantity" class="control-label">Number of prints avaliable</label>
 			        <div>
-			          <input type="number" class="form-control" id="quantity" name="quantity" value="{{old('quantity')}}">
+			          <input type="number" class="form-control" id="quantity" name="quantity" value="{{old('quantity')}}" min="1">
 			          {!! $errors->first('quantity','<span class="help-block">:message</span>') !!}
 			        </div>
 			      </div>

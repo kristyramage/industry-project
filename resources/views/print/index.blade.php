@@ -16,7 +16,9 @@
 		@endif()
 	@endif()
 
-	{!! $page->links() !!}
+	<div class="text-center">
+		{!! $allPrints->links() !!}
+	</div>
 
 	<div id="featproducts" class="row">
 		@foreach($allPrints as $print)
@@ -28,6 +30,10 @@
 			From &#36;{{ ($Size->size_price + $print->price) }}</p>
 		</div>
 		@endforeach
+	</div>
+
+	<div class="text-center">
+		{!! $allPrints->links() !!}
 	</div>
 
 @endsection
