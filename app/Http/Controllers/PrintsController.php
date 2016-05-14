@@ -14,9 +14,8 @@ use Session;
 class PrintsController extends Controller
 {
     public function index(){
-        $allPrints = Prints::paginate(6);
+        $allPrints = Prints::all()->paginate(6);
 
-        // $page = Prints::
         $Size = PrintSizes::where('size', "=", 'A5')->firstOrFail();
 
         return view('print.index', compact('allPrints', 'page', 'Size'));
