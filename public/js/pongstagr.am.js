@@ -32,7 +32,7 @@
     // HTML OPTIONS
     // ===========================
     , preload:          "spinner"
-    , button:           "btn btn-default btn-lg center-block"
+    , button:           "plus-btn center-block"
     , buttontext:       "+"
     , column:           "col-xs-12 col-sm-4 col-md-4 col-lg-4"
     , likeicon:         "glyphicon glyphicon-heart"

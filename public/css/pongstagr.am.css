@@ -76,6 +76,14 @@
   }
 }
 
+.plus-btn
+{
+  border: none;
+  background-color: transparent;
+  color: #FFD8D8; 
+  padding: 0 5px;
+  font-size: 3em;
+}
 .spinner {
   position: relative;
   top: 0;
