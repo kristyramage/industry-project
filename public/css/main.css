@@ -46,10 +46,16 @@
 						padding: 10px 0 15px 0;
 		    			border-left: none;
 		    			border-right: none;
+		    			border-color:  #FFD8D8;
 
 					}
 					.open {
 						border: none;
+					}
+
+					.dropdown-menu>li>a {
+						font-variant: small-caps;
+						font-size: 1.5em;
 					}
 
 				footer ul li a,
